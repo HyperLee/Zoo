@@ -115,8 +115,8 @@ Follow-up TODOs:
 
 ### 技術堆疊
 
-- **Framework**: ASP.NET Core 8.0 或更新版本
-- **語言**: C# 13 (啟用最新功能)
+- **Framework**: ASP.NET Core 10.0 或更新版本
+- **語言**: C# 14 (啟用最新功能)
 - **資料庫**: Entity Framework Core (支援SQL Server、SQLite、In-Memory)
 - **前端**: Razor Pages/MVC + Bootstrap 5 + jQuery
 - **API 檔案**: Swagger/OpenAPI
