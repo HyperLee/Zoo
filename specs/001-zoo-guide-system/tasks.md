@@ -154,26 +154,26 @@
 
 ### 服務層
 
-- [ ] T046 建立 IZoneService 介面於 `Zoo/Services/IZoneService.cs`
-- [ ] T047 實作 ZoneService 於 `Zoo/Services/ZoneService.cs`（GetAllAsync、GetByIdAsync、GetAnimalsByZoneAsync）
-- [ ] T048 於 `Zoo/Program.cs` 註冊 ZoneService 服務
+- [X] T046 建立 IZoneService 介面於 `Zoo/Services/IZoneService.cs`
+- [X] T047 實作 ZoneService 於 `Zoo/Services/ZoneService.cs`（GetAllAsync、GetByIdAsync、GetAnimalsByZoneAsync）
+- [X] T048 於 `Zoo/Program.cs` 註冊 ZoneService 服務
 
 ### API 端點
 
-- [ ] T049 [P] [US3] 建立區域清單 API 端點 `Zoo/Pages/Api/Zones/Index.cshtml.cs`（GET /api/zones）
-- [ ] T050 [P] [US3] 建立區域動物 API 端點 `Zoo/Pages/Api/Zones/Animals.cshtml.cs`（GET /api/zones/{id}/animals）
+- [X] T049 [P] [US3] 建立區域清單 API 端點 `Zoo/Pages/Api/Zones/Index.cshtml.cs`（GET /api/zones）
+- [X] T050 [P] [US3] 建立區域動物 API 端點 `Zoo/Pages/Api/Zones/Animals.cshtml.cs`（GET /api/zones/{id}/animals）
 
 ### 頁面實作
 
-- [ ] T051 [US3] 建立互動地圖頁面 `Zoo/Pages/Map/Index.cshtml` 與 `Zoo/Pages/Map/Index.cshtml.cs`
-- [ ] T052 [P] [US3] 建立園區 SVG 地圖於 `Zoo/wwwroot/images/map/zoo-map.svg`
+- [X] T051 [US3] 建立互動地圖頁面 `Zoo/Pages/Map/Index.cshtml` 與 `Zoo/Pages/Map/Index.cshtml.cs`
+- [X] T052 [P] [US3] 建立園區 SVG 地圖於 `Zoo/wwwroot/images/map/zoo-map.svg`
 
 ### 前端互動
 
-- [ ] T053 [US3] 實作地圖互動功能於 `Zoo/wwwroot/js/map.js`（縮放、拖曳、區域點擊）
-- [ ] T054 [P] [US3] 更新地圖樣式於 `Zoo/wwwroot/css/map.css`（hover 效果、區域標示）
+- [X] T053 [US3] 實作地圖互動功能於 `Zoo/wwwroot/js/map.js`（縮放、拖曳、區域點擊）
+- [X] T054 [P] [US3] 更新地圖樣式於 `Zoo/wwwroot/css/map.css`（hover 效果、區域標示）
 
-**Checkpoint**: User Story 3 完成 - 可瀏覽互動地圖
+**Checkpoint**: User Story 3 完成 - 可瀏覽互動地圖 ✅
 
 ---
 

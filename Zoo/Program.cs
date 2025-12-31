@@ -38,6 +38,9 @@ try
     // 註冊搜尋服務
     builder.Services.AddScoped<ISearchService, SearchService>();
 
+    // 註冊區域服務
+    builder.Services.AddScoped<IZoneService, ZoneService>();
+
     var app = builder.Build();
 
 // Configure the HTTP request pipeline.

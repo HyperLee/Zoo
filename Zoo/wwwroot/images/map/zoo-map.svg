@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <!-- 漸層定義 -->
+    <linearGradient id="grassGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#90EE90;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#228B22;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="waterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4169E1;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 樹木符號 -->
+    <symbol id="tree" viewBox="0 0 40 50">
+      <ellipse cx="20" cy="15" rx="15" ry="15" fill="#228B22"/>
+      <rect x="17" y="25" width="6" height="15" fill="#8B4513"/>
+    </symbol>
+    
+    <!-- 設施圖示 -->
+    <symbol id="restroom" viewBox="0 0 24 24">
+      <path d="M5.5 1c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.7 0-3 1.3-3 3v7h2v7h2v-7h2v-7c0-1.7-1.3-3-3-3zm13-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm1 18h-2v-6h-2v-3c0-1.7 1.3-3 3-3s3 1.3 3 3v3h-2v6z" fill="#666"/>
+    </symbol>
+    
+    <symbol id="restaurant" viewBox="0 0 24 24">
+      <path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z" fill="#D2691E"/>
+    </symbol>
+    
+    <symbol id="info" viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" fill="#1976D2"/>
+    </symbol>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="100%" height="100%" fill="#E8F5E9"/>
+  
+  <!-- 道路系統 -->
+  <g id="roads" stroke="#D7CCC8" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 主要道路 -->
+    <path d="M100,300 Q200,300 300,250 Q400,200 500,250 Q600,300 700,300"/>
+    <path d="M400,100 L400,500"/>
+    <path d="M200,150 Q300,200 400,200"/>
+    <path d="M400,200 Q500,200 600,150"/>
+    <path d="M200,450 Q300,400 400,400"/>
+    <path d="M400,400 Q500,400 600,450"/>
+  </g>
+  
+  <!-- 非洲草原區 -->
+  <g id="africa-zone-group" class="zone-group" data-zone-id="africa-zone">
+    <path id="africa-zone-path" 
+          d="M50,100 L250,100 L280,180 L250,280 L150,300 L50,250 Z" 
+          fill="#F4A460" 
+          stroke="#CD853F" 
+          stroke-width="3"
+          class="zone-path"
+          data-zone-id="africa-zone"/>
+    <text x="150" y="180" text-anchor="middle" class="zone-label" fill="#5D4037" font-size="16" font-weight="bold">非洲草原區</text>
+    <text x="150" y="200" text-anchor="middle" class="zone-label-en" fill="#795548" font-size="11">African Savanna</text>
+    <!-- 裝飾：草地紋理 -->
+    <g fill="#DAA520" opacity="0.3">
+      <circle cx="100" cy="150" r="8"/>
+      <circle cx="180" cy="140" r="6"/>
+      <circle cx="130" cy="220" r="7"/>
+      <circle cx="200" cy="180" r="5"/>
+    </g>
+  </g>
+  
+  <!-- 極地冰原區 -->
+  <g id="polar-zone-group" class="zone-group" data-zone-id="polar-zone">
+    <path id="polar-zone-path" 
+          d="M300,50 L550,50 L580,120 L550,200 L450,220 L350,200 L300,120 Z" 
+          fill="#87CEEB" 
+          stroke="#4682B4" 
+          stroke-width="3"
+          class="zone-path"
+          data-zone-id="polar-zone"/>
+    <text x="430" y="120" text-anchor="middle" class="zone-label" fill="#1565C0" font-size="16" font-weight="bold">極地冰原區</text>
+    <text x="430" y="140" text-anchor="middle" class="zone-label-en" fill="#1976D2" font-size="11">Polar Region</text>
+    <!-- 裝飾：冰塊 -->
+    <g fill="#E3F2FD" opacity="0.6">
+      <polygon points="350,80 365,100 355,100"/>
+      <polygon points="500,90 520,115 490,115"/>
+      <polygon points="420,160 440,185 410,185"/>
+    </g>
+  </g>
+  
+  <!-- 熱帶雨林區 -->
+  <g id="tropical-zone-group" class="zone-group" data-zone-id="tropical-zone">
+    <path id="tropical-zone-path" 
+          d="M280,280 L480,250 L520,350 L480,450 L320,470 L250,400 L250,330 Z" 
+          fill="#228B22" 
+          stroke="#006400" 
+          stroke-width="3"
+          class="zone-path"
+          data-zone-id="tropical-zone"/>
+    <text x="380" y="350" text-anchor="middle" class="zone-label" fill="#FFFFFF" font-size="16" font-weight="bold">熱帶雨林區</text>
+    <text x="380" y="370" text-anchor="middle" class="zone-label-en" fill="#E8F5E9" font-size="11">Tropical Rainforest</text>
+    <!-- 裝飾：樹木 -->
+    <g fill="#2E7D32" opacity="0.5">
+      <use href="#tree" x="300" y="290" width="30" height="35"/>
+      <use href="#tree" x="420" y="380" width="25" height="30"/>
+      <use href="#tree" x="340" y="420" width="28" height="33"/>
+    </g>
+  </g>
+  
+  <!-- 亞洲叢林區 -->
+  <g id="asia-zone-group" class="zone-group" data-zone-id="asia-zone">
+    <path id="asia-zone-path" 
+          d="M550,100 L750,80 L780,180 L750,300 L620,320 L550,250 L570,150 Z" 
+          fill="#32CD32" 
+          stroke="#228B22" 
+          stroke-width="3"
+          class="zone-path"
+          data-zone-id="asia-zone"/>
+    <text x="660" y="180" text-anchor="middle" class="zone-label" fill="#1B5E20" font-size="16" font-weight="bold">亞洲叢林區</text>
+    <text x="660" y="200" text-anchor="middle" class="zone-label-en" fill="#2E7D32" font-size="11">Asian Jungle</text>
+    <!-- 裝飾：竹子 -->
+    <g stroke="#4CAF50" stroke-width="3" fill="none" opacity="0.4">
+      <line x1="600" y1="120" x2="600" y2="180"/>
+      <line x1="620" y1="130" x2="620" y2="190"/>
+      <line x1="700" y1="250" x2="700" y2="300"/>
+    </g>
+  </g>
+  
+  <!-- 水生世界區 -->
+  <g id="aquatic-zone-group" class="zone-group" data-zone-id="aquatic-zone">
+    <path id="aquatic-zone-path" 
+          d="M50,320 L200,320 L220,400 L200,500 L100,520 L30,480 L30,380 Z" 
+          fill="#4169E1" 
+          stroke="#1E3A8A" 
+          stroke-width="3"
+          class="zone-path"
+          data-zone-id="aquatic-zone"/>
+    <text x="125" y="400" text-anchor="middle" class="zone-label" fill="#FFFFFF" font-size="16" font-weight="bold">水生世界區</text>
+    <text x="125" y="420" text-anchor="middle" class="zone-label-en" fill="#E3F2FD" font-size="11">Aquatic World</text>
+    <!-- 裝飾：波浪 -->
+    <g fill="none" stroke="#90CAF9" stroke-width="2" opacity="0.5">
+      <path d="M60,450 Q80,440 100,450 Q120,460 140,450"/>
+      <path d="M70,480 Q90,470 110,480 Q130,490 150,480"/>
+    </g>
+  </g>
+  
+  <!-- 入口區域 -->
+  <g id="entrance">
+    <rect x="370" y="530" width="60" height="40" rx="5" fill="#795548" stroke="#5D4037" stroke-width="2"/>
+    <text x="400" y="555" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="bold">入口</text>
+    <text x="400" y="567" text-anchor="middle" fill="#E8F5E9" font-size="9">Entrance</text>
+  </g>
+  
+  <!-- 設施標示 -->
+  <g id="facilities" class="facilities-group">
+    <!-- 廁所 -->
+    <g class="facility" data-facility-type="restroom" transform="translate(180, 280)">
+      <circle r="12" fill="#FFFFFF" stroke="#666" stroke-width="1"/>
+      <use href="#restroom" x="-8" y="-8" width="16" height="16"/>
+    </g>
+    
+    <g class="facility" data-facility-type="restroom" transform="translate(550, 380)">
+      <circle r="12" fill="#FFFFFF" stroke="#666" stroke-width="1"/>
+      <use href="#restroom" x="-8" y="-8" width="16" height="16"/>
+    </g>
+    
+    <!-- 餐廳 -->
+    <g class="facility" data-facility-type="restaurant" transform="translate(400, 300)">
+      <circle r="14" fill="#FFFFFF" stroke="#D2691E" stroke-width="2"/>
+      <use href="#restaurant" x="-9" y="-9" width="18" height="18"/>
+    </g>
+    
+    <!-- 遊客中心 -->
+    <g class="facility" data-facility-type="info" transform="translate(400, 480)">
+      <circle r="14" fill="#FFFFFF" stroke="#1976D2" stroke-width="2"/>
+      <use href="#info" x="-9" y="-9" width="18" height="18"/>
+    </g>
+  </g>
+  
+  <!-- 指北針 -->
+  <g id="compass" transform="translate(720, 520)">
+    <circle r="25" fill="#FFFFFF" stroke="#333" stroke-width="2"/>
+    <polygon points="0,-18 5,-5 0,-8 -5,-5" fill="#E53935"/>
+    <polygon points="0,18 5,5 0,8 -5,5" fill="#333"/>
+    <text x="0" y="-22" text-anchor="middle" fill="#E53935" font-size="10" font-weight="bold">N</text>
+  </g>
+  
+  <!-- 比例尺 -->
+  <g id="scale" transform="translate(50, 570)">
+    <line x1="0" y1="0" x2="100" y2="0" stroke="#333" stroke-width="2"/>
+    <line x1="0" y1="-5" x2="0" y2="5" stroke="#333" stroke-width="2"/>
+    <line x1="50" y1="-3" x2="50" y2="3" stroke="#333" stroke-width="1"/>
+    <line x1="100" y1="-5" x2="100" y2="5" stroke="#333" stroke-width="2"/>
+    <text x="50" y="15" text-anchor="middle" fill="#333" font-size="10">100m</text>
+  </g>
+  
+  <!-- 圖例 -->
+  <g id="legend" transform="translate(620, 450)">
+    <rect x="0" y="0" width="150" height="65" rx="5" fill="#FFFFFF" fill-opacity="0.9" stroke="#CCC"/>
+    <text x="75" y="15" text-anchor="middle" fill="#333" font-size="10" font-weight="bold">圖例 Legend</text>
+    
+    <circle cx="15" cy="32" r="6" fill="#FFFFFF" stroke="#666"/>
+    <use href="#restroom" x="9" y="26" width="12" height="12"/>
+    <text x="30" y="36" fill="#333" font-size="9">廁所</text>
+    
+    <circle cx="85" cy="32" r="6" fill="#FFFFFF" stroke="#D2691E"/>
+    <use href="#restaurant" x="79" y="26" width="12" height="12"/>
+    <text x="100" y="36" fill="#333" font-size="9">餐廳</text>
+    
+    <circle cx="15" cy="52" r="6" fill="#FFFFFF" stroke="#1976D2"/>
+    <use href="#info" x="9" y="46" width="12" height="12"/>
+    <text x="30" y="56" fill="#333" font-size="9">遊客中心</text>
+  </g>
+</svg>

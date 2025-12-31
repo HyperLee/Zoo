@@ -1,0 +1,181 @@
+@page
+@model Zoo.Pages.Map.IndexModel
+@{
+    ViewData["Title"] = "園區地圖";
+}
+
+<div class="row">
+    <div class="col-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-page="/Index">首頁</a></li>
+                <li class="breadcrumb-item active" aria-current="page">園區地圖</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="display-5">
+            <i class="bi bi-map text-success me-2"></i>園區地圖
+        </h1>
+        <p class="lead text-muted">
+            探索動物園的各個區域，點擊地圖上的區域查看該區的動物
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <!-- 地圖區域 -->
+    <div class="col-lg-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">
+                    <i class="bi bi-geo-alt me-2"></i>互動地圖
+                </h5>
+            </div>
+            <div class="card-body p-0 position-relative">
+                <!-- 地圖控制按鈕 -->
+                <div class="map-controls position-absolute top-0 end-0 m-3 z-3">
+                    <div class="btn-group-vertical shadow">
+                        <button type="button" class="btn btn-light btn-sm" id="zoomIn" title="放大">
+                            <i class="bi bi-plus-lg"></i>
+                        </button>
+                        <button type="button" class="btn btn-light btn-sm" id="zoomOut" title="縮小">
+                            <i class="bi bi-dash-lg"></i>
+                        </button>
+                        <button type="button" class="btn btn-light btn-sm" id="resetZoom" title="重置">
+                            <i class="bi bi-arrows-angle-contract"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- SVG 地圖容器 -->
+                <div class="map-container" id="mapContainer">
+                    <div class="map-wrapper" id="mapWrapper">
+                        <object data="/images/map/zoo-map.svg" type="image/svg+xml" id="zooMap" class="zoo-map">
+                            您的瀏覽器不支援 SVG
+                        </object>
+                    </div>
+                </div>
+                <!-- 載入指示器 -->
+                <div class="map-loading position-absolute top-50 start-50 translate-middle" id="mapLoading">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="visually-hidden">載入中...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 區域資訊面板 -->
+    <div class="col-lg-4 mt-4 mt-lg-0">
+        <!-- 區域清單 -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">
+                    <i class="bi bi-list-ul me-2"></i>區域導覽
+                </h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="list-group list-group-flush" id="zoneList">
+                    @foreach (var zone in Model.Zones)
+                    {
+                        var animalCount = Model.ZoneAnimalCounts.GetValueOrDefault(zone, 0);
+                        <a href="#" class="list-group-item list-group-item-action zone-item d-flex justify-content-between align-items-center"
+                           data-zone-id="@zone.Id"
+                           data-svg-path-id="@zone.SvgPathId">
+                            <div>
+                                <div class="d-flex align-items-center">
+                                    <span class="zone-color-dot me-2" style="background-color: @zone.Color;"></span>
+                                    <strong>@zone.NameZh</strong>
+                                </div>
+                                <small class="text-muted">@zone.NameEn</small>
+                            </div>
+                            <span class="badge bg-success rounded-pill">@animalCount 種動物</span>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- 選中區域的動物清單 -->
+        <div class="card shadow-sm" id="zoneAnimalsCard" style="display: none;">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0" id="zoneAnimalsTitle">
+                    <i class="bi bi-bug me-2"></i><span id="selectedZoneName">區域動物</span>
+                </h5>
+            </div>
+            <div class="card-body">
+                <div id="zoneAnimalsLoading" class="text-center py-4" style="display: none;">
+                    <div class="spinner-border spinner-border-sm text-primary" role="status">
+                        <span class="visually-hidden">載入中...</span>
+                    </div>
+                    <span class="ms-2">載入中...</span>
+                </div>
+                <div id="zoneAnimalsList" class="row row-cols-1 g-2">
+                    <!-- 動物清單將由 JavaScript 動態填充 -->
+                </div>
+                <div id="zoneAnimalsEmpty" class="text-center text-muted py-4" style="display: none;">
+                    <i class="bi bi-inbox display-4"></i>
+                    <p class="mt-2 mb-0">此區域暫無動物資料</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="#" id="viewAllZoneAnimals" class="btn btn-outline-primary btn-sm w-100">
+                    <i class="bi bi-arrow-right me-1"></i>查看更多
+                </a>
+            </div>
+        </div>
+
+        <!-- 使用說明 -->
+        <div class="card shadow-sm mt-4" id="helpCard">
+            <div class="card-header">
+                <h6 class="mb-0">
+                    <i class="bi bi-question-circle me-2"></i>操作說明
+                </h6>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mb-0 small">
+                    <li class="mb-2">
+                        <i class="bi bi-mouse text-success me-2"></i>
+                        <strong>點擊區域</strong>：查看該區動物
+                    </li>
+                    <li class="mb-2">
+                        <i class="bi bi-zoom-in text-success me-2"></i>
+                        <strong>滾輪縮放</strong>：放大或縮小地圖
+                    </li>
+                    <li class="mb-2">
+                        <i class="bi bi-arrows-move text-success me-2"></i>
+                        <strong>拖曳移動</strong>：移動地圖視角
+                    </li>
+                    <li>
+                        <i class="bi bi-hand-index text-success me-2"></i>
+                        <strong>點擊區域列表</strong>：快速定位
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="~/css/map.css" asp-append-version="true" />
+    <script src="~/js/map.js" asp-append-version="true"></script>
+    <script>
+        // 初始化地圖，傳入區域資料
+        document.addEventListener('DOMContentLoaded', function() {
+            const zonesData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Zones.Select(z => new {
+                id = z.Id,
+                nameZh = z.NameZh,
+                nameEn = z.NameEn,
+                svgPathId = z.SvgPathId,
+                color = z.Color
+            })));
+            
+            if (typeof ZooMap !== 'undefined') {
+                ZooMap.init(zonesData);
+            }
+        });
+    </script>
+}
