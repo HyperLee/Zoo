@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Zoo (.NET 10)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/Zoo/bin/Debug/net10.0/Zoo.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/Zoo",
+      "stopAtEntry": false,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "openOnSessionStart",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5000"
+      },
+      "serverReadyAction": {
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+        "action": "openExternally"
+      }
+    }
+  ]
+}
