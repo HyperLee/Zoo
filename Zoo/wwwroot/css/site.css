@@ -301,3 +301,347 @@ button:focus {
 .toast-container {
   z-index: 1100;
 }
+
+/* ===== 音效播放器樣式 ===== */
+
+.audio-player {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.audio-player-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.audio-play-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.audio-play-btn:hover {
+  transform: scale(1.1);
+}
+
+.audio-play-btn:active {
+  transform: scale(0.95);
+}
+
+.audio-progress-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.audio-progress {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #dee2e6;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.audio-progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--bs-success);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.15s ease-in-out;
+}
+
+.audio-progress::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.audio-progress::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: var(--bs-success);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.audio-progress::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, var(--bs-success) 0%, var(--bs-success) var(--progress, 0%), #dee2e6 var(--progress, 0%), #dee2e6 100%);
+  border-radius: 3px;
+}
+
+.audio-time {
+  display: flex;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: #6c757d;
+}
+
+.audio-volume-container {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.audio-volume-btn {
+  padding: 0.25rem;
+  color: #6c757d;
+}
+
+.audio-volume-btn:hover {
+  color: var(--bs-success);
+}
+
+.audio-volume {
+  width: 60px;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #dee2e6;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.audio-volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: var(--bs-success);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.audio-volume::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: var(--bs-success);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.audio-player-section {
+  background-color: rgba(25, 135, 84, 0.05);
+  border-top: 1px solid rgba(25, 135, 84, 0.15);
+}
+
+/* ===== 圖片輪播樣式 ===== */
+
+.animal-carousel-container {
+  position: relative;
+  outline: none;
+}
+
+.image-carousel {
+  position: relative;
+}
+
+.carousel-main {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+}
+
+.carousel-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  background-color: #f8f9fa;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+  z-index: 10;
+}
+
+.image-carousel:hover .carousel-control,
+.animal-carousel-container:focus .carousel-control {
+  opacity: 1;
+}
+
+.carousel-control:hover {
+  background: #fff;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-control-prev {
+  left: 10px;
+}
+
+.carousel-control-next {
+  right: 10px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.carousel-indicator {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  padding: 0;
+}
+
+.carousel-indicator:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.carousel-indicator.active {
+  background: var(--bs-success);
+  transform: scale(1.2);
+}
+
+.carousel-counter {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  z-index: 10;
+}
+
+.carousel-badge {
+  z-index: 11;
+}
+
+.carousel-thumbnails {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  overflow-x: auto;
+  background: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+}
+
+.carousel-thumbnail {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  background: none;
+}
+
+.carousel-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-thumbnail:hover {
+  border-color: rgba(25, 135, 84, 0.5);
+}
+
+.carousel-thumbnail.active {
+  border-color: var(--bs-success);
+  box-shadow: 0 0 0 2px rgba(25, 135, 84, 0.25);
+}
+
+.carousel-autoplay {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.carousel-autoplay-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== 響應式媒體播放器調整 ===== */
+
+@media (max-width: 768px) {
+  .audio-player-controls {
+    flex-wrap: wrap;
+  }
+  
+  .audio-progress-container {
+    order: 3;
+    width: 100%;
+  }
+  
+  .audio-volume-container {
+    order: 2;
+  }
+  
+  .carousel-control {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    opacity: 1;
+  }
+  
+  .carousel-thumbnail {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .carousel-image {
+    max-height: 300px;
+  }
+}
+
+/* ===== 減少動畫（尊重使用者偏好）===== */
+
+@media (prefers-reduced-motion: reduce) {
+  .audio-play-btn,
+  .carousel-control,
+  .carousel-indicator,
+  .carousel-thumbnail,
+  .carousel-image {
+    transition: none;
+  }
+}

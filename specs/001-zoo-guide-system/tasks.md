@@ -236,13 +236,13 @@
 
 ### 前端實作
 
-- [ ] T071 [P] [US6] 建立音效播放模組於 `Zoo/wwwroot/js/audio-player.js`（播放、暫停、音量控制）
-- [ ] T072 [P] [US6] 建立圖片輪播模組於 `Zoo/wwwroot/js/image-carousel.js`（輪播、姿態切換）
-- [ ] T073 [US6] 更新動物詳情頁面加入音效播放器於 `Zoo/Pages/Animals/Details.cshtml`
-- [ ] T074 [US6] 更新動物詳情頁面加入圖片輪播於 `Zoo/Pages/Animals/Details.cshtml`
-- [ ] T075 [P] [US6] 更新樣式加入媒體播放器樣式於 `Zoo/wwwroot/css/site.css`
+- [X] T071 [P] [US6] 建立音效播放模組於 `Zoo/wwwroot/js/audio-player.js`（播放、暫停、音量控制）
+- [X] T072 [P] [US6] 建立圖片輪播模組於 `Zoo/wwwroot/js/image-carousel.js`（輪播、姿態切換）
+- [X] T073 [US6] 更新動物詳情頁面加入音效播放器於 `Zoo/Pages/Animals/Details.cshtml`
+- [X] T074 [US6] 更新動物詳情頁面加入圖片輪播於 `Zoo/Pages/Animals/Details.cshtml`
+- [X] T075 [P] [US6] 更新樣式加入媒體播放器樣式於 `Zoo/wwwroot/css/site.css`
 
-**Checkpoint**: User Story 6 完成 - 可體驗多媒體內容
+**Checkpoint**: User Story 6 完成 - 可體驗多媒體內容 ✅
 
 ---
 
