@@ -185,27 +185,27 @@
 
 ### 服務層
 
-- [ ] T055 建立 IRouteService 介面於 `Zoo/Services/IRouteService.cs`
-- [ ] T056 實作 RouteService 於 `Zoo/Services/RouteService.cs`（GetAllAsync、GetByIdAsync、PlanCustomRouteAsync）
-- [ ] T057 於 `Zoo/Program.cs` 註冊 RouteService 服務
+- [X] T055 建立 IRouteService 介面於 `Zoo/Services/IRouteService.cs`
+- [X] T056 實作 RouteService 於 `Zoo/Services/RouteService.cs`（GetAllAsync、GetByIdAsync、PlanCustomRouteAsync）
+- [X] T057 於 `Zoo/Program.cs` 註冊 RouteService 服務
 
 ### API 端點
 
-- [ ] T058 [P] [US4] 建立路線清單 API 端點 `Zoo/Pages/Api/Routes/Index.cshtml.cs`（GET /api/routes）
-- [ ] T059 [P] [US4] 建立路線詳情 API 端點 `Zoo/Pages/Api/Routes/Details.cshtml.cs`（GET /api/routes/{id}）
-- [ ] T060 [US4] 建立自訂路線規劃 API 端點 `Zoo/Pages/Api/Routes/Plan.cshtml.cs`（POST /api/routes/plan）
+- [X] T058 [P] [US4] 建立路線清單 API 端點 `Zoo/Pages/Api/Routes/Index.cshtml.cs`（GET /api/routes）
+- [X] T059 [P] [US4] 建立路線詳情 API 端點 `Zoo/Pages/Api/Routes/Details.cshtml.cs`（GET /api/routes/{id}）
+- [X] T060 [US4] 建立自訂路線規劃 API 端點 `Zoo/Pages/Api/Routes/Plan.cshtml.cs`（POST /api/routes/plan）
 
 ### 頁面實作
 
-- [ ] T061 [US4] 建立路線規劃頁面 `Zoo/Pages/Routes/Index.cshtml` 與 `Zoo/Pages/Routes/Index.cshtml.cs`
-- [ ] T062 [US4] 整合路線顯示於地圖頁面 `Zoo/Pages/Map/Index.cshtml`
+- [X] T061 [US4] 建立路線規劃頁面 `Zoo/Pages/Routes/Index.cshtml` 與 `Zoo/Pages/Routes/Index.cshtml.cs`
+- [X] T062 [US4] 整合路線顯示於地圖頁面 `Zoo/Pages/Map/Index.cshtml`
 
 ### 前端互動
 
-- [ ] T063 [US4] 實作路線規劃功能於 `Zoo/wwwroot/js/route-planner.js`（選擇動物、規劃路線、分享連結）
-- [ ] T064 [US4] 實作路線分享功能（URL 編碼路線資訊）
+- [X] T063 [US4] 實作路線規劃功能於 `Zoo/wwwroot/js/route-planner.js`（選擇動物、規劃路線、分享連結）
+- [X] T064 [US4] 實作路線分享功能（URL 編碼路線資訊）
 
-**Checkpoint**: User Story 4 完成 - 可規劃導覽路線
+**Checkpoint**: User Story 4 完成 - 可規劃導覽路線 ✅
 
 ---
 

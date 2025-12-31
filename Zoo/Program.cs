@@ -41,6 +41,9 @@ try
     // 註冊區域服務
     builder.Services.AddScoped<IZoneService, ZoneService>();
 
+    // 註冊路線服務
+    builder.Services.AddScoped<IRouteService, RouteService>();
+
     var app = builder.Build();
 
 // Configure the HTTP request pipeline.

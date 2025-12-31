@@ -1,0 +1,318 @@
+@page
+@model Zoo.Pages.Routes.IndexModel
+@{
+    ViewData["Title"] = "路線規劃";
+}
+
+<div class="row">
+    <div class="col-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-page="/Index">首頁</a></li>
+                <li class="breadcrumb-item active" aria-current="page">路線規劃</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="display-5">
+            <i class="bi bi-signpost-2 text-primary me-2"></i>路線規劃
+        </h1>
+        <p class="lead text-muted">
+            選擇預設路線或自訂您的專屬導覽路線
+        </p>
+    </div>
+</div>
+
+<!-- 路線模式切換 -->
+<div class="row mb-4">
+    <div class="col-12">
+        <ul class="nav nav-tabs" id="routeTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="preset-tab" data-bs-toggle="tab" 
+                        data-bs-target="#preset-routes" type="button" role="tab" 
+                        aria-controls="preset-routes" aria-selected="true">
+                    <i class="bi bi-star me-1"></i>預設路線
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="custom-tab" data-bs-toggle="tab" 
+                        data-bs-target="#custom-route" type="button" role="tab" 
+                        aria-controls="custom-route" aria-selected="false">
+                    <i class="bi bi-pencil-square me-1"></i>自訂路線
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="tab-content" id="routeTabsContent">
+    <!-- 預設路線標籤 -->
+    <div class="tab-pane fade show active" id="preset-routes" role="tabpanel" aria-labelledby="preset-tab">
+        <div class="row">
+            @foreach (var route in Model.Routes)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm route-card" data-route-id="@route.Id">
+                        <div class="card-header @GetRouteHeaderClass(route.Type)">
+                            <h5 class="card-title mb-0 text-white">
+                                <i class="@GetRouteIcon(route.Type) me-2"></i>@route.NameZh
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-muted">@route.Description</p>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-light text-dark">
+                                    <i class="bi bi-clock me-1"></i>約 @route.EstimatedMinutes 分鐘
+                                </span>
+                                <span class="badge bg-light text-dark">
+                                    <i class="bi bi-geo-alt me-1"></i>@route.ZoneIds.Count 個區域
+                                </span>
+                                <span class="badge bg-light text-dark">
+                                    <i class="bi bi-bug me-1"></i>@route.AnimalIds.Count 種動物
+                                </span>
+                            </div>
+                            <p class="small mb-0"><strong>英文名稱：</strong>@route.NameEn</p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-grid gap-2">
+                                <a asp-page="/Map/Index" asp-route-route="@route.Id" class="btn btn-outline-primary">
+                                    <i class="bi bi-map me-1"></i>在地圖上查看
+                                </a>
+                                <button type="button" class="btn btn-outline-secondary btn-share-route" 
+                                        data-route-id="@route.Id" data-route-name="@route.NameZh">
+                                    <i class="bi bi-share me-1"></i>分享路線
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- 自訂路線標籤 -->
+    <div class="tab-pane fade" id="custom-route" role="tabpanel" aria-labelledby="custom-tab">
+        <div class="row">
+            <!-- 動物選擇區 -->
+            <div class="col-lg-7">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="bi bi-check2-square me-2"></i>選擇您想參觀的動物
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- 篩選器 -->
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-2 mb-md-0">
+                                <input type="text" class="form-control" id="animalSearch" 
+                                       placeholder="搜尋動物名稱...">
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-select" id="zoneFilter">
+                                    <option value="">全部區域</option>
+                                    @foreach (var zone in Model.Zones)
+                                    {
+                                        <option value="@zone.Id">@zone.NameZh</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- 動物清單 -->
+                        <div class="animal-selection-list" style="max-height: 500px; overflow-y: auto;">
+                            @foreach (var zone in Model.Zones)
+                            {
+                                var zoneAnimals = Model.Animals.Where(a => a.ZoneId == zone.Id).ToList();
+                                if (zoneAnimals.Count > 0)
+                                {
+                                    <div class="zone-group mb-3" data-zone-id="@zone.Id">
+                                        <h6 class="fw-bold text-primary border-bottom pb-2">
+                                            <span class="zone-color-dot me-2" style="background-color: @zone.Color;"></span>
+                                            @zone.NameZh (@zoneAnimals.Count)
+                                        </h6>
+                                        <div class="row row-cols-1 g-2">
+                                            @foreach (var animal in zoneAnimals)
+                                            {
+                                                <div class="col animal-item" data-animal-name="@animal.ChineseName @animal.EnglishName">
+                                                    <div class="form-check animal-select-item p-2 border rounded">
+                                                        <input class="form-check-input animal-checkbox" 
+                                                               type="checkbox" 
+                                                               value="@animal.Id" 
+                                                               id="animal-@animal.Id"
+                                                               data-zone-id="@animal.ZoneId">
+                                                        <label class="form-check-label d-flex align-items-center w-100" 
+                                                               for="animal-@animal.Id">
+                                                            <img src="@animal.Media.ThumbnailPath" 
+                                                                 alt="@animal.ChineseName" 
+                                                                 class="rounded me-2"
+                                                                 style="width: 40px; height: 40px; object-fit: cover;"
+                                                                 onerror="this.src='/images/animals/placeholder.webp'">
+                                                            <div class="flex-grow-1">
+                                                                <div class="fw-semibold">@animal.ChineseName</div>
+                                                                <small class="text-muted">@animal.EnglishName</small>
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 路線預覽區 -->
+            <div class="col-lg-5 mt-4 mt-lg-0">
+                <div class="card shadow-sm sticky-top" style="top: 80px;">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="bi bi-route me-2"></i>我的路線
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- 路線統計 -->
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="badge bg-primary fs-6">
+                                <i class="bi bi-bug me-1"></i>
+                                <span id="selectedAnimalCount">0</span> 隻動物
+                            </span>
+                            <span class="badge bg-info fs-6">
+                                <i class="bi bi-geo-alt me-1"></i>
+                                <span id="selectedZoneCount">0</span> 個區域
+                            </span>
+                            <span class="badge bg-warning text-dark fs-6">
+                                <i class="bi bi-clock me-1"></i>
+                                約 <span id="estimatedTime">0</span> 分鐘
+                            </span>
+                        </div>
+
+                        <!-- 選擇的動物清單 -->
+                        <div id="selectedAnimalsList" class="mb-3" style="max-height: 300px; overflow-y: auto;">
+                            <p class="text-muted text-center py-3" id="emptyMessage">
+                                <i class="bi bi-inbox display-6 d-block mb-2"></i>
+                                尚未選擇任何動物
+                            </p>
+                        </div>
+
+                        <!-- 操作按鈕 -->
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-success" id="planRouteBtn" disabled>
+                                <i class="bi bi-compass me-1"></i>規劃路線
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" id="viewOnMapBtn" disabled>
+                                <i class="bi bi-map me-1"></i>在地圖上查看
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" id="shareRouteBtn" disabled>
+                                <i class="bi bi-share me-1"></i>分享路線
+                            </button>
+                            <button type="button" class="btn btn-outline-danger" id="clearSelectionBtn">
+                                <i class="bi bi-trash me-1"></i>清除選擇
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 分享連結模態視窗 -->
+<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="shareModalLabel">
+                    <i class="bi bi-share me-2"></i>分享路線
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="關閉"></button>
+            </div>
+            <div class="modal-body">
+                <p>複製以下連結分享您的路線：</p>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="shareUrl" readonly>
+                    <button class="btn btn-primary" type="button" id="copyShareUrl">
+                        <i class="bi bi-clipboard me-1"></i>複製
+                    </button>
+                </div>
+                <div id="copySuccess" class="alert alert-success mt-2" style="display: none;">
+                    <i class="bi bi-check-circle me-1"></i>已複製到剪貼簿！
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/route-planner.js" asp-append-version="true"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 傳入動物資料
+            const animalsData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Animals.Select(a => new {
+                id = a.Id,
+                chineseName = a.ChineseName,
+                englishName = a.EnglishName,
+                thumbnailUrl = a.Media.ThumbnailPath,
+                zoneId = a.ZoneId
+            })));
+
+            const zonesData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Zones.Select(z => new {
+                id = z.Id,
+                nameZh = z.NameZh
+            })));
+
+            if (typeof RoutePlanner !== 'undefined') {
+                RoutePlanner.init(animalsData, zonesData);
+            }
+
+            // 檢查 URL 中是否有分享碼
+            const urlParams = new URLSearchParams(window.location.search);
+            const shareCode = urlParams.get('share');
+            if (shareCode && typeof RoutePlanner !== 'undefined') {
+                RoutePlanner.loadFromShareCode(shareCode);
+                // 切換到自訂路線標籤
+                const customTab = document.getElementById('custom-tab');
+                if (customTab) {
+                    customTab.click();
+                }
+            }
+        });
+    </script>
+}
+
+@functions {
+    private static string GetRouteHeaderClass(Zoo.Models.RouteType type)
+    {
+        return type switch
+        {
+            Zoo.Models.RouteType.Complete => "bg-primary",
+            Zoo.Models.RouteType.Highlights => "bg-success",
+            Zoo.Models.RouteType.FamilyFriendly => "bg-info",
+            Zoo.Models.RouteType.Photography => "bg-warning",
+            Zoo.Models.RouteType.Themed => "bg-secondary",
+            _ => "bg-dark"
+        };
+    }
+
+    private static string GetRouteIcon(Zoo.Models.RouteType type)
+    {
+        return type switch
+        {
+            Zoo.Models.RouteType.Complete => "bi bi-signpost-split",
+            Zoo.Models.RouteType.Highlights => "bi bi-stars",
+            Zoo.Models.RouteType.FamilyFriendly => "bi bi-people",
+            Zoo.Models.RouteType.Photography => "bi bi-camera",
+            Zoo.Models.RouteType.Themed => "bi bi-bookmark-star",
+            _ => "bi bi-signpost-2"
+        };
+    }
+}

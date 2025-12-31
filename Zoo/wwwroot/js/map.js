@@ -1,6 +1,6 @@
 /**
  * 動物園互動地圖模組
- * 提供地圖縮放、拖曳、區域點擊等互動功能
+ * 提供地圖縮放、拖曳、區域點擊、路線顯示等互動功能
  */
 const ZooMap = (function () {
     'use strict';
@@ -23,7 +23,9 @@ const ZooMap = (function () {
         startY: 0,
         zonesData: [],
         selectedZoneId: null,
-        svgDocument: null
+        svgDocument: null,
+        selectedRoute: null,
+        routeAnimals: []
     };
 
     // DOM 元素參考
@@ -48,9 +50,13 @@ const ZooMap = (function () {
     /**
      * 初始化地圖模組
      * @param {Array} zonesData - 區域資料陣列
+     * @param {Object} selectedRoute - 選擇的路線（可選）
+     * @param {Array} routeAnimals - 路線中的動物（可選）
      */
-    function init(zonesData) {
+    function init(zonesData, selectedRoute = null, routeAnimals = []) {
         state.zonesData = zonesData || [];
+        state.selectedRoute = selectedRoute;
+        state.routeAnimals = routeAnimals || [];
         
         // 取得 DOM 元素參考
         elements.mapContainer = document.getElementById('mapContainer');
@@ -102,6 +108,15 @@ const ZooMap = (function () {
 
                 // 綁定 SVG 內部區域的點擊事件
                 bindSvgZoneEvents();
+
+                // 如果有選擇路線，高亮路線區域
+                if (state.selectedRoute) {
+                    highlightRouteZones();
+                    // 顯示路線動物
+                    if (state.routeAnimals.length > 0) {
+                        showRouteAnimals();
+                    }
+                }
                 
                 console.log('SVG 地圖載入完成');
             }
@@ -493,13 +508,98 @@ const ZooMap = (function () {
         updateTransform(true);
     }
 
+    /**
+     * 高亮路線途經的區域
+     */
+    function highlightRouteZones() {
+        if (!state.svgDocument || !state.selectedRoute) return;
+
+        const routeZoneIds = state.selectedRoute.zoneIds || [];
+        const allPaths = state.svgDocument.querySelectorAll('.zone-path');
+
+        allPaths.forEach(path => {
+            const zoneId = path.getAttribute('data-zone-id');
+            const isInRoute = routeZoneIds.includes(zoneId);
+
+            if (isInRoute) {
+                // 路線中的區域：高亮顯示
+                path.style.strokeWidth = '5';
+                path.style.stroke = '#28a745';
+                path.style.filter = 'drop-shadow(0 0 8px rgba(40, 167, 69, 0.6))';
+                path.style.opacity = '1';
+            } else {
+                // 非路線區域：淡化顯示
+                path.style.strokeWidth = '2';
+                path.style.stroke = '#6c757d';
+                path.style.filter = '';
+                path.style.opacity = '0.5';
+            }
+        });
+
+        // 更新區域清單顯示
+        if (elements.zoneList) {
+            const zoneItems = elements.zoneList.querySelectorAll('.zone-item');
+            zoneItems.forEach(item => {
+                const zoneId = item.getAttribute('data-zone-id');
+                const isInRoute = routeZoneIds.includes(zoneId);
+
+                if (isInRoute) {
+                    item.classList.add('list-group-item-success');
+                    // 添加順序標示
+                    const orderIndex = routeZoneIds.indexOf(zoneId) + 1;
+                    const badge = item.querySelector('.route-order-badge');
+                    if (!badge) {
+                        const newBadge = document.createElement('span');
+                        newBadge.className = 'badge bg-success me-2 route-order-badge';
+                        newBadge.textContent = orderIndex;
+                        item.querySelector('div').prepend(newBadge);
+                    }
+                } else {
+                    item.classList.add('text-muted');
+                    item.style.opacity = '0.6';
+                }
+            });
+        }
+
+        console.log('已高亮路線區域:', routeZoneIds);
+    }
+
+    /**
+     * 顯示路線動物資訊
+     */
+    function showRouteAnimals() {
+        if (!elements.zoneAnimalsCard || state.routeAnimals.length === 0) return;
+
+        // 顯示動物卡片
+        elements.zoneAnimalsCard.style.display = 'block';
+        if (elements.helpCard) {
+            elements.helpCard.style.display = 'none';
+        }
+
+        // 更新標題
+        if (elements.selectedZoneName) {
+            elements.selectedZoneName.textContent = `${state.selectedRoute.nameZh} 路線`;
+        }
+
+        // 更新「查看更多」連結
+        if (elements.viewAllZoneAnimals) {
+            elements.viewAllZoneAnimals.href = `/Routes/Index`;
+            elements.viewAllZoneAnimals.innerHTML = '<i class="bi bi-signpost me-1"></i>查看完整路線';
+        }
+
+        // 渲染路線動物
+        renderAnimals(state.routeAnimals);
+    }
+
     // 公開 API
     return {
         init: init,
         zoom: zoom,
         resetView: resetView,
         selectZone: selectZone,
-        panToZone: panToZone
+        panToZone: panToZone,
+        highlightRouteZones: highlightRouteZones,
+        showRouteAnimals: showRouteAnimals
     };
 })();
 

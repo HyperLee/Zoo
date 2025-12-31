@@ -26,6 +26,65 @@
     </div>
 </div>
 
+<!-- 路線選擇區 -->
+@if (Model.Routes.Count > 0)
+{
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white py-2">
+                    <h6 class="mb-0">
+                        <i class="bi bi-signpost-2 me-2"></i>選擇路線
+                    </h6>
+                </div>
+                <div class="card-body py-2">
+                    <div class="d-flex flex-wrap gap-2 align-items-center">
+                        <a asp-page="/Map/Index" class="btn btn-sm @(Model.SelectedRoute is null ? "btn-primary" : "btn-outline-primary")">
+                            <i class="bi bi-map me-1"></i>全部區域
+                        </a>
+                        @foreach (var route in Model.Routes)
+                        {
+                            var isSelected = Model.SelectedRoute?.Id == route.Id;
+                            <a asp-page="/Map/Index" asp-route-route="@route.Id" 
+                               class="btn btn-sm @(isSelected ? "btn-success" : "btn-outline-success")">
+                                <i class="bi bi-signpost me-1"></i>@route.NameZh
+                                <span class="badge bg-light text-dark ms-1">@route.EstimatedMinutes 分</span>
+                            </a>
+                        }
+                        <a asp-page="/Routes/Index" class="btn btn-sm btn-outline-secondary ms-auto">
+                            <i class="bi bi-pencil-square me-1"></i>自訂路線
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- 選擇的路線資訊 -->
+@if (Model.SelectedRoute is not null)
+{
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+                <i class="bi bi-info-circle-fill me-2 fs-5"></i>
+                <div class="flex-grow-1">
+                    <strong>@Model.SelectedRoute.NameZh</strong> - @Model.SelectedRoute.Description
+                    <br>
+                    <small class="text-muted">
+                        <i class="bi bi-clock me-1"></i>約 @Model.SelectedRoute.EstimatedMinutes 分鐘 ·
+                        <i class="bi bi-geo-alt me-1"></i>@Model.SelectedRoute.ZoneIds.Count 個區域 ·
+                        <i class="bi bi-bug me-1"></i>@Model.RouteAnimals.Count 種動物
+                    </small>
+                </div>
+                <a asp-page="/Map/Index" class="btn btn-outline-success btn-sm">
+                    <i class="bi bi-x-lg"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
 <div class="row">
     <!-- 地圖區域 -->
     <div class="col-lg-8">
@@ -163,18 +222,36 @@
     <link rel="stylesheet" href="~/css/map.css" asp-append-version="true" />
     <script src="~/js/map.js" asp-append-version="true"></script>
     <script>
-        // 初始化地圖，傳入區域資料
+        // 初始化地圖，傳入區域資料和路線資料
         document.addEventListener('DOMContentLoaded', function() {
             const zonesData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Zones.Select(z => new {
                 id = z.Id,
                 nameZh = z.NameZh,
                 nameEn = z.NameEn,
                 svgPathId = z.SvgPathId,
-                color = z.Color
+                color = z.Color,
+                position = new { x = z.Position.X, y = z.Position.Y }
+            })));
+
+            const selectedRoute = @Html.Raw(Model.SelectedRoute is not null 
+                ? System.Text.Json.JsonSerializer.Serialize(new {
+                    id = Model.SelectedRoute.Id,
+                    nameZh = Model.SelectedRoute.NameZh,
+                    zoneIds = Model.SelectedRoute.ZoneIds,
+                    animalIds = Model.SelectedRoute.AnimalIds
+                }) 
+                : "null");
+
+            const routeAnimals = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.RouteAnimals.Select(a => new {
+                id = a.Id,
+                chineseName = a.ChineseName,
+                englishName = a.EnglishName,
+                thumbnailUrl = a.Media.ThumbnailPath,
+                zoneId = a.ZoneId
             })));
             
             if (typeof ZooMap !== 'undefined') {
-                ZooMap.init(zonesData);
+                ZooMap.init(zonesData, selectedRoute, routeAnimals);
             }
         });
     </script>
