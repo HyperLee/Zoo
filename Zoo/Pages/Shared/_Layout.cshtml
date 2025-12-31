@@ -51,6 +51,15 @@
                             </a>
                         </li>
                     </ul>
+                    <!-- 全站搜尋框 -->
+                    <div class="d-flex me-3" style="min-width: 250px;">
+                        @{ 
+                            ViewData["SearchBoxId"] = "globalSearchBox";
+                            ViewData["Placeholder"] = "搜尋動物...";
+                            ViewData["ShowHistory"] = true;
+                        }
+                        <partial name="_SearchBox" />
+                    </div>
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/About/Index">
@@ -87,6 +96,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/search.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

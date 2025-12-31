@@ -1,0 +1,55 @@
+@* 共用搜尋框部分檢視 *@
+@* 可透過 id 屬性指定不同的 ID 以區分多個搜尋框 *@
+@{
+    var searchBoxId = ViewData["SearchBoxId"]?.ToString() ?? "globalSearchBox";
+    var placeholder = ViewData["Placeholder"]?.ToString() ?? "搜尋動物...";
+    var showHistory = ViewData["ShowHistory"] as bool? ?? true;
+}
+
+<div class="search-box-container position-relative" id="@searchBoxId-container">
+    <form action="/Search" method="get" class="d-flex" role="search">
+        <div class="input-group">
+            <span class="input-group-text bg-white border-end-0">
+                <i class="bi bi-search text-muted"></i>
+            </span>
+            <input type="text" 
+                   class="form-control border-start-0 search-input" 
+                   id="@searchBoxId" 
+                   name="q" 
+                   placeholder="@placeholder"
+                   autocomplete="off"
+                   aria-label="搜尋動物"
+                   aria-describedby="@searchBoxId-suggestions">
+            <button class="btn btn-success" type="submit">
+                <i class="bi bi-search d-md-none"></i>
+                <span class="d-none d-md-inline">搜尋</span>
+            </button>
+        </div>
+    </form>
+    
+    <!-- 搜尋建議下拉選單 -->
+    <div class="search-suggestions dropdown-menu w-100 shadow" 
+         id="@searchBoxId-suggestions" 
+         aria-live="polite"
+         style="display: none;">
+        <!-- 搜尋建議將由 JavaScript 動態填入 -->
+    </div>
+    
+    @if (showHistory)
+    {
+        <!-- 搜尋歷史下拉選單 -->
+        <div class="search-history dropdown-menu w-100 shadow" 
+             id="@searchBoxId-history" 
+             style="display: none;">
+            <div class="dropdown-header d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-clock-history me-1"></i>搜尋歷史</span>
+                <button type="button" class="btn btn-sm btn-link text-danger p-0 clear-history-btn">
+                    清除
+                </button>
+            </div>
+            <div class="search-history-items">
+                <!-- 搜尋歷史將由 JavaScript 動態填入 -->
+            </div>
+        </div>
+    }
+</div>

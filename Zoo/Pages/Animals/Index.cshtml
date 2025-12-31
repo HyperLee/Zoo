@@ -26,11 +26,146 @@
         </div>
     </div>
 
+    <!-- 篩選區塊 -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-light d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">
+                <i class="bi bi-funnel me-2"></i>篩選條件
+            </h5>
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#filterCollapse" aria-expanded="@(Model.HasActiveFilters ? "true" : "false")" 
+                    aria-controls="filterCollapse">
+                <i class="bi bi-chevron-down"></i>
+            </button>
+        </div>
+        <div class="collapse @(Model.HasActiveFilters ? "show" : "")" id="filterCollapse">
+            <div class="card-body">
+                <form method="get" asp-page="/Animals/Index">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label for="class" class="form-label">生物分類</label>
+                            <select class="form-select" id="class" name="class">
+                                <option value="">全部</option>
+                                <option value="Mammal" selected="@(Model.BiologicalClass == "Mammal")">哺乳類</option>
+                                <option value="Bird" selected="@(Model.BiologicalClass == "Bird")">鳥類</option>
+                                <option value="Reptile" selected="@(Model.BiologicalClass == "Reptile")">爬蟲類</option>
+                                <option value="Amphibian" selected="@(Model.BiologicalClass == "Amphibian")">兩棲類</option>
+                                <option value="Fish" selected="@(Model.BiologicalClass == "Fish")">魚類</option>
+                                <option value="Invertebrate" selected="@(Model.BiologicalClass == "Invertebrate")">無脊椎動物</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="habitat" class="form-label">棲息地</label>
+                            <select class="form-select" id="habitat" name="habitat">
+                                <option value="">全部</option>
+                                <option value="TropicalRainforest" selected="@(Model.HabitatFilter == "TropicalRainforest")">熱帶雨林</option>
+                                <option value="Desert" selected="@(Model.HabitatFilter == "Desert")">沙漠</option>
+                                <option value="Grassland" selected="@(Model.HabitatFilter == "Grassland")">草原</option>
+                                <option value="Polar" selected="@(Model.HabitatFilter == "Polar")">極地</option>
+                                <option value="Ocean" selected="@(Model.HabitatFilter == "Ocean")">海洋</option>
+                                <option value="Freshwater" selected="@(Model.HabitatFilter == "Freshwater")">淡水</option>
+                                <option value="Mountain" selected="@(Model.HabitatFilter == "Mountain")">山區</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="diet" class="form-label">飲食習性</label>
+                            <select class="form-select" id="diet" name="diet">
+                                <option value="">全部</option>
+                                <option value="Carnivore" selected="@(Model.DietFilter == "Carnivore")">肉食性</option>
+                                <option value="Herbivore" selected="@(Model.DietFilter == "Herbivore")">草食性</option>
+                                <option value="Omnivore" selected="@(Model.DietFilter == "Omnivore")">雜食性</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="activity" class="form-label">活動時間</label>
+                            <select class="form-select" id="activity" name="activity">
+                                <option value="">全部</option>
+                                <option value="Diurnal" selected="@(Model.ActivityFilter == "Diurnal")">日行性</option>
+                                <option value="Nocturnal" selected="@(Model.ActivityFilter == "Nocturnal")">夜行性</option>
+                                <option value="Crepuscular" selected="@(Model.ActivityFilter == "Crepuscular")">晨昏性</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 d-flex gap-2">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-funnel me-1"></i>套用篩選
+                            </button>
+                            <a asp-page="/Animals/Index" class="btn btn-outline-secondary">
+                                <i class="bi bi-x-circle me-1"></i>清除條件
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @if (Model.HasActiveFilters)
+    {
+        <div class="mb-3">
+            <span class="text-muted me-2">目前篩選：</span>
+            @if (!string.IsNullOrWhiteSpace(Model.BiologicalClass))
+            {
+                <span class="badge bg-primary me-1">
+                    生物分類: @Model.GetBiologicalClassName()
+                    <a asp-page="/Animals/Index" asp-route-habitat="@Model.HabitatFilter" asp-route-diet="@Model.DietFilter" 
+                       asp-route-activity="@Model.ActivityFilter" class="text-white ms-1">
+                        <i class="bi bi-x"></i>
+                    </a>
+                </span>
+            }
+            @if (!string.IsNullOrWhiteSpace(Model.HabitatFilter))
+            {
+                <span class="badge bg-info me-1">
+                    棲息地: @Model.GetHabitatName()
+                    <a asp-page="/Animals/Index" asp-route-class="@Model.BiologicalClass" asp-route-diet="@Model.DietFilter" 
+                       asp-route-activity="@Model.ActivityFilter" class="text-white ms-1">
+                        <i class="bi bi-x"></i>
+                    </a>
+                </span>
+            }
+            @if (!string.IsNullOrWhiteSpace(Model.DietFilter))
+            {
+                <span class="badge bg-warning text-dark me-1">
+                    飲食: @Model.GetDietName()
+                    <a asp-page="/Animals/Index" asp-route-class="@Model.BiologicalClass" asp-route-habitat="@Model.HabitatFilter" 
+                       asp-route-activity="@Model.ActivityFilter" class="text-dark ms-1">
+                        <i class="bi bi-x"></i>
+                    </a>
+                </span>
+            }
+            @if (!string.IsNullOrWhiteSpace(Model.ActivityFilter))
+            {
+                <span class="badge bg-secondary me-1">
+                    活動時間: @Model.GetActivityName()
+                    <a asp-page="/Animals/Index" asp-route-class="@Model.BiologicalClass" asp-route-habitat="@Model.HabitatFilter" 
+                       asp-route-diet="@Model.DietFilter" class="text-white ms-1">
+                        <i class="bi bi-x"></i>
+                    </a>
+                </span>
+            }
+        </div>
+    }
+
     @if (Model.Animals.Count == 0)
     {
         <div class="alert alert-info" role="alert">
-            <i class="bi bi-info-circle me-2"></i>
-            目前沒有動物資料，請稍後再試。
+            <h4 class="alert-heading">
+                <i class="bi bi-info-circle me-2"></i>找不到符合的動物
+            </h4>
+            @if (Model.HasActiveFilters)
+            {
+                <p class="mb-0">請嘗試調整篩選條件。</p>
+                <hr>
+                <a asp-page="/Animals/Index" class="btn btn-primary">
+                    <i class="bi bi-arrow-counterclockwise me-1"></i>顯示所有動物
+                </a>
+            }
+            else
+            {
+                <p class="mb-0">目前沒有動物資料，請稍後再試。</p>
+            }
         </div>
     }
     else
@@ -45,3 +180,4 @@
         </div>
     }
 </div>
+

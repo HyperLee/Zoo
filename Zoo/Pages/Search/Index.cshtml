@@ -1,0 +1,137 @@
+@page
+@model Zoo.Pages.Search.IndexModel
+@{
+    ViewData["Title"] = string.IsNullOrWhiteSpace(Model.Keyword) ? "搜尋" : $"搜尋：{Model.Keyword}";
+}
+
+<div class="container-fluid px-4">
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-page="/Index">首頁</a></li>
+            <li class="breadcrumb-item active" aria-current="page">搜尋結果</li>
+        </ol>
+    </nav>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="mb-0">
+                <i class="bi bi-search text-success me-2"></i>搜尋結果
+            </h1>
+            @if (!string.IsNullOrWhiteSpace(Model.Keyword))
+            {
+                <p class="text-muted mb-0">關鍵字：「@Model.Keyword」</p>
+            }
+        </div>
+        <div>
+            <span class="badge bg-success fs-6">
+                <i class="bi bi-list-ul me-1"></i>共 @Model.Results.Count 筆結果
+            </span>
+        </div>
+    </div>
+
+    <!-- 進階搜尋區塊 -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-light">
+            <h5 class="mb-0">
+                <i class="bi bi-funnel me-2"></i>進階搜尋
+            </h5>
+        </div>
+        <div class="card-body">
+            <form method="get" asp-page="/Search/Index">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label for="keyword" class="form-label">關鍵字</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" id="keyword" name="q" 
+                                   value="@Model.Keyword" placeholder="輸入動物名稱或特徵...">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="class" class="form-label">生物分類</label>
+                        <select class="form-select" id="class" name="class">
+                            <option value="">全部</option>
+                            <option value="Mammal" selected="@(Model.BiologicalClass == "Mammal")">哺乳類</option>
+                            <option value="Bird" selected="@(Model.BiologicalClass == "Bird")">鳥類</option>
+                            <option value="Reptile" selected="@(Model.BiologicalClass == "Reptile")">爬蟲類</option>
+                            <option value="Amphibian" selected="@(Model.BiologicalClass == "Amphibian")">兩棲類</option>
+                            <option value="Fish" selected="@(Model.BiologicalClass == "Fish")">魚類</option>
+                            <option value="Invertebrate" selected="@(Model.BiologicalClass == "Invertebrate")">無脊椎動物</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="habitat" class="form-label">棲息地</label>
+                        <select class="form-select" id="habitat" name="habitat">
+                            <option value="">全部</option>
+                            <option value="TropicalRainforest" selected="@(Model.HabitatFilter == "TropicalRainforest")">熱帶雨林</option>
+                            <option value="Desert" selected="@(Model.HabitatFilter == "Desert")">沙漠</option>
+                            <option value="Grassland" selected="@(Model.HabitatFilter == "Grassland")">草原</option>
+                            <option value="Polar" selected="@(Model.HabitatFilter == "Polar")">極地</option>
+                            <option value="Ocean" selected="@(Model.HabitatFilter == "Ocean")">海洋</option>
+                            <option value="Freshwater" selected="@(Model.HabitatFilter == "Freshwater")">淡水</option>
+                            <option value="Mountain" selected="@(Model.HabitatFilter == "Mountain")">山區</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="diet" class="form-label">飲食習性</label>
+                        <select class="form-select" id="diet" name="diet">
+                            <option value="">全部</option>
+                            <option value="Carnivore" selected="@(Model.DietFilter == "Carnivore")">肉食性</option>
+                            <option value="Herbivore" selected="@(Model.DietFilter == "Herbivore")">草食性</option>
+                            <option value="Omnivore" selected="@(Model.DietFilter == "Omnivore")">雜食性</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="activity" class="form-label">活動時間</label>
+                        <select class="form-select" id="activity" name="activity">
+                            <option value="">全部</option>
+                            <option value="Diurnal" selected="@(Model.ActivityFilter == "Diurnal")">日行性</option>
+                            <option value="Nocturnal" selected="@(Model.ActivityFilter == "Nocturnal")">夜行性</option>
+                            <option value="Crepuscular" selected="@(Model.ActivityFilter == "Crepuscular")">晨昏性</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12 d-flex gap-2">
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-search me-1"></i>搜尋
+                        </button>
+                        <a asp-page="/Search/Index" class="btn btn-outline-secondary">
+                            <i class="bi bi-x-circle me-1"></i>清除條件
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @if (Model.Results.Count == 0)
+    {
+        <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">
+                <i class="bi bi-info-circle me-2"></i>找不到符合的動物
+            </h4>
+            <p class="mb-0">請嘗試調整搜尋條件或使用不同的關鍵字。</p>
+            <hr>
+            <p class="mb-0">
+                <strong>提示：</strong>
+                <ul class="mb-0 mt-2">
+                    <li>嘗試使用較短的關鍵字</li>
+                    <li>使用動物的中文名稱或英文名稱</li>
+                    <li>減少篩選條件</li>
+                </ul>
+            </p>
+        </div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            @foreach (var result in Model.Results)
+            {
+                <div class="col">
+                    <partial name="_AnimalCard" model="result.Animal" />
+                </div>
+            }
+        </div>
+    }
+</div>

@@ -116,33 +116,33 @@
 
 ### 服務層
 
-- [ ] T035 建立 ISearchService 介面於 `Zoo/Services/ISearchService.cs`
-- [ ] T036 實作 SearchService 於 `Zoo/Services/SearchService.cs`（SearchAsync、SuggestAsync、篩選邏輯）
-- [ ] T037 於 `Zoo/Program.cs` 註冊 SearchService 服務
+- [X] T035 建立 ISearchService 介面於 `Zoo/Services/ISearchService.cs`
+- [X] T036 實作 SearchService 於 `Zoo/Services/SearchService.cs`（SearchAsync、SuggestAsync、篩選邏輯）
+- [X] T037 於 `Zoo/Program.cs` 註冊 SearchService 服務
 
 ### API 端點
 
-- [ ] T038 [US2] 建立搜尋建議 API 端點 `Zoo/Pages/Api/Search/Suggest.cshtml.cs`（GET /api/search/suggest）
-- [ ] T039 [P] [US2] 建立動物清單 API 端點 `Zoo/Pages/Api/Animals/Index.cshtml.cs`（GET /api/animals）
-- [ ] T040 [P] [US2] 建立單一動物 API 端點 `Zoo/Pages/Api/Animals/Details.cshtml.cs`（GET /api/animals/{id}）
+- [X] T038 [US2] 建立搜尋建議 API 端點 `Zoo/Pages/Api/Search/Suggest.cshtml.cs`（GET /api/search/suggest）
+- [X] T039 [P] [US2] 建立動物清單 API 端點 `Zoo/Pages/Api/Animals/Index.cshtml.cs`（GET /api/animals）
+- [X] T040 [P] [US2] 建立單一動物 API 端點 `Zoo/Pages/Api/Animals/Details.cshtml.cs`（GET /api/animals/{id}）
 
 ### 頁面實作
 
-- [ ] T041 [US2] 建立搜尋結果頁面 `Zoo/Pages/Search/Index.cshtml` 與 `Zoo/Pages/Search/Index.cshtml.cs`
-- [ ] T042 [US2] 更新動物清單頁面 `Zoo/Pages/Animals/Index.cshtml` 加入篩選功能（生物分類、棲息地、飲食習性、活動時間）
-- [ ] T043 [P] [US2] 建立共用搜尋框部分檢視於 `Zoo/Pages/Shared/_SearchBox.cshtml`
+- [X] T041 [US2] 建立搜尋結果頁面 `Zoo/Pages/Search/Index.cshtml` 與 `Zoo/Pages/Search/Index.cshtml.cs`
+- [X] T042 [US2] 更新動物清單頁面 `Zoo/Pages/Animals/Index.cshtml` 加入篩選功能（生物分類、棲息地、飲食習性、活動時間）
+- [X] T043 [P] [US2] 建立共用搜尋框部分檢視於 `Zoo/Pages/Shared/_SearchBox.cshtml`
 
 ### 前端互動
 
-- [ ] T044 [US2] 實作即時搜尋建議功能於 `Zoo/wwwroot/js/search.js`（自動完成、搜尋歷史）
-- [ ] T045 [P] [US2] 更新 Layout 加入全站搜尋框於 `Zoo/Pages/Shared/_Layout.cshtml`
+- [X] T044 [US2] 實作即時搜尋建議功能於 `Zoo/wwwroot/js/search.js`（自動完成、搜尋歷史）
+- [X] T045 [P] [US2] 更新 Layout 加入全站搜尋框於 `Zoo/Pages/Shared/_Layout.cshtml`
 
 ### 測試 (US2)
 
-- [ ] T045a [US2] 建立 SearchService 單元測試於 `Zoo.Tests/Unit/Services/SearchServiceTests.cs`
-- [ ] T045b [US2] 建立搜尋 API 整合測試於 `Zoo.Tests/Integration/Api/SearchApiTests.cs`
+- [X] T045a [US2] 建立 SearchService 單元測試於 `Zoo.Tests/Unit/Services/SearchServiceTests.cs`
+- [X] T045b [US2] 建立搜尋 API 整合測試於 `Zoo.Tests/Integration/Api/SearchApiTests.cs`
 
-**Checkpoint**: User Story 2 完成 - 可搜尋與篩選動物（含測試通過）
+**Checkpoint**: User Story 2 完成 - 可搜尋與篩選動物（含測試通過） ✅
 
 ---
 

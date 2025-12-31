@@ -35,6 +35,9 @@ try
     // 註冊動物服務
     builder.Services.AddScoped<IAnimalService, AnimalService>();
 
+    // 註冊搜尋服務
+    builder.Services.AddScoped<ISearchService, SearchService>();
+
     var app = builder.Build();
 
 // Configure the HTTP request pipeline.
