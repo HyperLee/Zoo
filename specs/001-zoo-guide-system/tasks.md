@@ -3,7 +3,7 @@
 **Input**: Design documents from `/specs/001-zoo-guide-system/`  
 **Prerequisites**: plan.md ✅, spec.md ✅, research.md ✅, data-model.md ✅, contracts/ ✅
 
-**Tests**: 本專案未明確要求測試優先，因此測試任務列為選用。
+**Tests**: 遵循憲章 Principle II「測試優先開發」原則，每個 Phase 包含對應的單元測試與整合測試任務。
 
 **Organization**: 任務依 User Story 分組，支援獨立實作與測試。
 
@@ -30,6 +30,8 @@
 - [ ] T003 [P] 設定 Serilog 於 `Zoo/Program.cs` 中進行結構化日誌記錄
 - [ ] T004 [P] 更新 `Zoo/appsettings.json` 加入 DataPaths 設定區塊
 - [ ] T005 [P] 建立共用 Layout 樣式與導航列於 `Zoo/Pages/Shared/_Layout.cshtml`
+- [ ] T005a [P] 建立測試專案 `Zoo.Tests/Zoo.Tests.csproj`，安裝 xUnit、Moq、Microsoft.AspNetCore.Mvc.Testing 套件
+- [ ] T005b [P] 建立測試專案資料夾結構 `Zoo.Tests/Unit/`、`Zoo.Tests/Integration/`
 
 ---
 
@@ -96,7 +98,13 @@
 - [ ] T033 [P] [US1] 建立音效目錄結構 `Zoo/wwwroot/audio/`
 - [ ] T034 [P] [US1] 更新網站樣式 `Zoo/wwwroot/css/site.css` 加入動物卡片樣式
 
-**Checkpoint**: User Story 1 完成 - 可獨立瀏覽動物資訊
+### 測試 (US1)
+
+- [ ] T034a [US1] 建立 AnimalService 單元測試於 `Zoo.Tests/Unit/Services/AnimalServiceTests.cs`
+- [ ] T034b [US1] 建立動物清單頁面整合測試於 `Zoo.Tests/Integration/Pages/AnimalsIndexTests.cs`
+- [ ] T034c [US1] 建立動物詳情頁面整合測試於 `Zoo.Tests/Integration/Pages/AnimalsDetailsTests.cs`
+
+**Checkpoint**: User Story 1 完成 - 可獨立瀏覽動物資訊（含測試通過）
 
 ---
 
@@ -129,7 +137,12 @@
 - [ ] T044 [US2] 實作即時搜尋建議功能於 `Zoo/wwwroot/js/search.js`（自動完成、搜尋歷史）
 - [ ] T045 [P] [US2] 更新 Layout 加入全站搜尋框於 `Zoo/Pages/Shared/_Layout.cshtml`
 
-**Checkpoint**: User Story 2 完成 - 可搜尋與篩選動物
+### 測試 (US2)
+
+- [ ] T045a [US2] 建立 SearchService 單元測試於 `Zoo.Tests/Unit/Services/SearchServiceTests.cs`
+- [ ] T045b [US2] 建立搜尋 API 整合測試於 `Zoo.Tests/Integration/Api/SearchApiTests.cs`
+
+**Checkpoint**: User Story 2 完成 - 可搜尋與篩選動物（含測試通過）
 
 ---
 
@@ -315,7 +328,25 @@
 
 - [ ] T103 執行 quickstart.md 驗證流程
 - [ ] T104 程式碼清理與重構
-- [ ] T105 效能優化（確保頁面載入 < 3 秒）
+
+### 效能驗證 (SC-003, SC-004)
+
+- [ ] T105 建立前端效能監測腳本於 `Zoo/wwwroot/js/performance-monitor.js`（記錄頁面載入時間）
+- [ ] T105a 建立效能測試案例於 `Zoo.Tests/Integration/PerformanceTests.cs`（驗證頁面載入 < 3 秒）
+- [ ] T105b 執行效能基準測試，確保 95% 頁面載入時間 < 3 秒 (SC-003, SC-004)
+
+### 無障礙驗證 (SC-005)
+
+- [ ] T106 執行 WCAG 2.1 Level AA 自動化檢測（使用 axe-core 或 Pa11y）
+- [ ] T106a 建立無障礙測試案例於 `Zoo.Tests/Integration/AccessibilityTests.cs`
+- [ ] T106b 驗證所有頁面無障礙測試通過率 100% (SC-005)
+
+### 跨瀏覽器相容性測試 (SC-008)
+
+- [ ] T107 驗證 Chrome 最新版本及前兩版功能相容性
+- [ ] T107a 驗證 Firefox 最新版本及前兩版功能相容性
+- [ ] T107b 驗證 Edge 最新版本及前兩版功能相容性
+- [ ] T107c 驗證 Safari 最新版本及前兩版功能相容性
 
 ---
 
