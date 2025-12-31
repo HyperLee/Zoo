@@ -25,13 +25,13 @@
 
 **Purpose**: 專案基礎設定與結構建立
 
-- [ ] T001 建立專案資料夾結構，包含 `Zoo/Models/`、`Zoo/Services/`、`Zoo/Data/` 目錄
-- [ ] T002 [P] 安裝 Serilog 相關套件至 `Zoo/Zoo.csproj`（Serilog.AspNetCore、Serilog.Sinks.Console、Serilog.Sinks.File）
-- [ ] T003 [P] 設定 Serilog 於 `Zoo/Program.cs` 中進行結構化日誌記錄
-- [ ] T004 [P] 更新 `Zoo/appsettings.json` 加入 DataPaths 設定區塊
-- [ ] T005 [P] 建立共用 Layout 樣式與導航列於 `Zoo/Pages/Shared/_Layout.cshtml`
-- [ ] T005a [P] 建立測試專案 `Zoo.Tests/Zoo.Tests.csproj`，安裝 xUnit、Moq、Microsoft.AspNetCore.Mvc.Testing 套件
-- [ ] T005b [P] 建立測試專案資料夾結構 `Zoo.Tests/Unit/`、`Zoo.Tests/Integration/`
+- [X] T001 建立專案資料夾結構，包含 `Zoo/Models/`、`Zoo/Services/`、`Zoo/Data/` 目錄
+- [X] T002 [P] 安裝 Serilog 相關套件至 `Zoo/Zoo.csproj`（Serilog.AspNetCore、Serilog.Sinks.Console、Serilog.Sinks.File）
+- [X] T003 [P] 設定 Serilog 於 `Zoo/Program.cs` 中進行結構化日誌記錄
+- [X] T004 [P] 更新 `Zoo/appsettings.json` 加入 DataPaths 設定區塊
+- [X] T005 [P] 建立共用 Layout 樣式與導航列於 `Zoo/Pages/Shared/_Layout.cshtml`
+- [X] T005a [P] 建立測試專案 `Zoo.Tests/Zoo.Tests.csproj`，安裝 xUnit、Moq、Microsoft.AspNetCore.Mvc.Testing 套件
+- [X] T005b [P] 建立測試專案資料夾結構 `Zoo.Tests/Unit/`、`Zoo.Tests/Integration/`
 
 ---
 
