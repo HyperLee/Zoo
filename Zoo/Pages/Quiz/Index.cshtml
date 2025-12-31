@@ -1,0 +1,160 @@
+@page
+@model Zoo.Pages.Quiz.IndexModel
+@{
+    ViewData["Title"] = "知識測驗";
+}
+
+<div class="container py-4">
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-page="/Index">首頁</a></li>
+            <li class="breadcrumb-item active" aria-current="page">知識測驗</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <!-- 頁面標題 -->
+            <div class="text-center mb-5">
+                <i class="bi bi-mortarboard-fill text-primary display-3 mb-3 d-block"></i>
+                <h1 class="display-5 fw-bold">動物知識測驗</h1>
+                <p class="lead text-muted">測試你對動物園朋友們的認識程度！</p>
+            </div>
+
+            <!-- 測驗選項卡片 -->
+            <div class="row g-4 mb-5">
+                <!-- 快速測驗 -->
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm border-primary quiz-option-card">
+                        <div class="card-body text-center p-4">
+                            <div class="mb-3">
+                                <i class="bi bi-lightning-charge text-primary display-4"></i>
+                            </div>
+                            <h5 class="card-title">快速測驗</h5>
+                            <p class="card-text text-muted">隨機抽選 5 道題目，快速挑戰你的知識！</p>
+                            <button type="button" 
+                                    class="btn btn-primary"
+                                    id="quickQuizBtn"
+                                    data-quiz-count="5">
+                                <i class="bi bi-play-fill me-1"></i>開始挑戰
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 完整測驗 -->
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm border-success quiz-option-card">
+                        <div class="card-body text-center p-4">
+                            <div class="mb-3">
+                                <i class="bi bi-trophy text-success display-4"></i>
+                            </div>
+                            <h5 class="card-title">完整測驗</h5>
+                            <p class="card-text text-muted">挑戰全部 @Model.TotalQuizCount 道題目，成為動物專家！</p>
+                            <button type="button" 
+                                    class="btn btn-success"
+                                    id="fullQuizBtn"
+                                    data-quiz-count="@Model.TotalQuizCount">
+                                <i class="bi bi-award me-1"></i>完整挑戰
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 依動物測驗 -->
+            <div class="card shadow-sm mb-5">
+                <div class="card-header bg-info text-white">
+                    <i class="bi bi-search me-2"></i>依動物測驗
+                </div>
+                <div class="card-body">
+                    <p class="text-muted mb-3">選擇你想測驗的動物：</p>
+                    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+                        @foreach (var animal in Model.AnimalsWithQuizzes)
+                        {
+                            <div class="col">
+                                <button type="button" 
+                                        class="btn btn-outline-info w-100 animal-quiz-btn"
+                                        data-animal-id="@animal.Id"
+                                        data-animal-name="@animal.ChineseName">
+                                    <i class="bi bi-emoji-smile me-1"></i>@animal.ChineseName
+                                </button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- 測驗說明 -->
+            <div class="card shadow-sm border-0 bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="bi bi-info-circle text-info me-2"></i>測驗說明
+                    </h5>
+                    <ul class="mb-0">
+                        <li>每道題目只能作答一次</li>
+                        <li>作答後會立即顯示結果與詳細解說</li>
+                        <li>完成測驗後可查看總成績</li>
+                        <li>題目包含選擇題與是非題兩種類型</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 測驗彈窗 -->
+<partial name="_QuizModal" />
+
+@section Scripts {
+    <script src="~/js/quiz.js" asp-append-version="true"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 快速測驗按鈕
+            const quickQuizBtn = document.getElementById('quickQuizBtn');
+            if (quickQuizBtn) {
+                quickQuizBtn.addEventListener('click', function() {
+                    const count = parseInt(this.dataset.quizCount, 10);
+                    window.ZooQuiz.startRandomQuiz(count, '快速測驗');
+                });
+            }
+
+            // 完整測驗按鈕
+            const fullQuizBtn = document.getElementById('fullQuizBtn');
+            if (fullQuizBtn) {
+                fullQuizBtn.addEventListener('click', function() {
+                    const count = parseInt(this.dataset.quizCount, 10);
+                    window.ZooQuiz.startRandomQuiz(count, '完整測驗');
+                });
+            }
+
+            // 動物測驗按鈕
+            document.querySelectorAll('.animal-quiz-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const animalId = this.dataset.animalId;
+                    const animalName = this.dataset.animalName;
+                    window.ZooQuiz.startAnimalQuiz(animalId, animalName);
+                });
+            });
+        });
+    </script>
+}
+
+<style>
+    .quiz-option-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .quiz-option-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .animal-quiz-btn {
+        transition: all 0.2s ease;
+    }
+
+    .animal-quiz-btn:hover {
+        transform: scale(1.05);
+    }
+</style>

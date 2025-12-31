@@ -254,26 +254,26 @@
 
 ### 服務層
 
-- [ ] T076 建立 IQuizService 介面於 `Zoo/Services/IQuizService.cs`
-- [ ] T077 實作 QuizService 於 `Zoo/Services/QuizService.cs`（GetByAnimalIdAsync、ValidateAnswerAsync）
-- [ ] T078 於 `Zoo/Program.cs` 註冊 QuizService 服務
+- [X] T076 建立 IQuizService 介面於 `Zoo/Services/IQuizService.cs`
+- [X] T077 實作 QuizService 於 `Zoo/Services/QuizService.cs`（GetByAnimalIdAsync、ValidateAnswerAsync）
+- [X] T078 於 `Zoo/Program.cs` 註冊 QuizService 服務
 
 ### API 端點
 
-- [ ] T079 [P] [US7] 建立測驗題目 API 端點 `Zoo/Pages/Api/Quizzes/Animal.cshtml.cs`（GET /api/quizzes/animal/{animalId}）
-- [ ] T080 [P] [US7] 建立答案驗證 API 端點 `Zoo/Pages/Api/Quizzes/Answer.cshtml.cs`（POST /api/quizzes/{quizId}/answer）
+- [X] T079 [P] [US7] 建立測驗題目 API 端點 `Zoo/Pages/Api/Quizzes/Animal.cshtml.cs`（GET /api/quizzes/animal/{animalId}）
+- [X] T080 [P] [US7] 建立答案驗證 API 端點 `Zoo/Pages/Api/Quizzes/Answer.cshtml.cs`（POST /api/quizzes/{quizId}/answer）
 
 ### 頁面實作
 
-- [ ] T081 [P] [US7] 建立測驗彈窗部分檢視於 `Zoo/Pages/Shared/_QuizModal.cshtml`
-- [ ] T082 [US7] 更新動物詳情頁面加入測驗按鈕於 `Zoo/Pages/Animals/Details.cshtml`
-- [ ] T083 [US7] 建立綜合測驗頁面 `Zoo/Pages/Quiz/Index.cshtml` 與 `Zoo/Pages/Quiz/Index.cshtml.cs`
+- [X] T081 [P] [US7] 建立測驗彈窗部分檢視於 `Zoo/Pages/Shared/_QuizModal.cshtml`
+- [X] T082 [US7] 更新動物詳情頁面加入測驗按鈕於 `Zoo/Pages/Animals/Details.cshtml`
+- [X] T083 [US7] 建立綜合測驗頁面 `Zoo/Pages/Quiz/Index.cshtml` 與 `Zoo/Pages/Quiz/Index.cshtml.cs`
 
 ### 前端互動
 
-- [ ] T084 [US7] 實作測驗互動功能於 `Zoo/wwwroot/js/quiz.js`（顯示題目、提交答案、顯示結果）
+- [X] T084 [US7] 實作測驗互動功能於 `Zoo/wwwroot/js/quiz.js`（顯示題目、提交答案、顯示結果）
 
-**Checkpoint**: User Story 7 完成 - 可進行知識測驗
+**Checkpoint**: User Story 7 完成 - 可進行知識測驗 ✅
 
 ---
 

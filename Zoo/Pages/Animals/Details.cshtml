@@ -269,6 +269,22 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- 知識測驗按鈕 -->
+            <div class="card mb-4 shadow-sm border-primary">
+                <div class="card-body text-center py-4">
+                    <i class="bi bi-question-circle fs-1 text-primary mb-3 d-block"></i>
+                    <h5 class="card-title">測試你對 @animal.ChineseName 的認識！</h5>
+                    <p class="card-text text-muted mb-3">透過小測驗，檢驗你剛學到的知識</p>
+                    <button type="button" 
+                            class="btn btn-primary btn-lg"
+                            id="startQuizBtn"
+                            data-animal-id="@animal.Id"
+                            data-animal-name="@animal.ChineseName">
+                        <i class="bi bi-play-circle me-2"></i>開始測驗
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -297,11 +313,15 @@
     </div>
 </div>
 
+<!-- 測驗彈窗 -->
+<partial name="_QuizModal" />
+
 @section Scripts {
     <script src="~/js/favorites.js" asp-append-version="true"></script>
     <script src="~/js/history.js" asp-append-version="true"></script>
     <script src="~/js/audio-player.js" asp-append-version="true"></script>
     <script src="~/js/image-carousel.js" asp-append-version="true"></script>
+    <script src="~/js/quiz.js" asp-append-version="true"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // 初始化圖片輪播

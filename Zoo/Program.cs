@@ -44,6 +44,9 @@ try
     // 註冊路線服務
     builder.Services.AddScoped<IRouteService, RouteService>();
 
+    // 註冊測驗服務
+    builder.Services.AddScoped<IQuizService, QuizService>();
+
     var app = builder.Build();
 
 // Configure the HTTP request pipeline.

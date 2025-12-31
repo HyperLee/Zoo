@@ -1,0 +1,191 @@
+@*
+    測驗彈窗部分檢視
+    此檢視提供測驗互動的彈窗元件，支援選擇題與是非題
+*@
+
+<!-- 測驗彈窗 -->
+<div class="modal fade" id="quizModal" tabindex="-1" aria-labelledby="quizModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="quizModalLabel">
+                    <i class="bi bi-question-circle me-2"></i>
+                    <span id="quizModalTitle">知識測驗</span>
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="關閉"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 載入中狀態 -->
+                <div id="quizLoading" class="text-center py-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">載入中...</span>
+                    </div>
+                    <p class="mt-3 text-muted">正在載入測驗題目...</p>
+                </div>
+
+                <!-- 無題目狀態 -->
+                <div id="quizEmpty" class="text-center py-5" style="display: none;">
+                    <i class="bi bi-emoji-frown fs-1 text-muted"></i>
+                    <p class="mt-3 text-muted">這隻動物目前沒有測驗題目</p>
+                </div>
+
+                <!-- 題目區塊 -->
+                <div id="quizContent" style="display: none;">
+                    <!-- 進度指示 -->
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-secondary" id="quizProgress">第 1 題 / 共 1 題</span>
+                        <span class="badge bg-success" id="quizScore">答對: 0 題</span>
+                    </div>
+
+                    <!-- 題目 -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3" id="quizQuestion">題目載入中...</h5>
+                            <p class="card-text text-muted small" id="quizQuestionEn"></p>
+                        </div>
+                    </div>
+
+                    <!-- 選項區 (選擇題) -->
+                    <div id="quizOptions" class="list-group mb-4"></div>
+
+                    <!-- 是非題選項 -->
+                    <div id="quizTrueFalse" class="d-flex gap-3 justify-content-center mb-4" style="display: none;">
+                        <button type="button" class="btn btn-outline-success btn-lg px-5" data-answer="true">
+                            <i class="bi bi-check-circle me-2"></i>正確
+                        </button>
+                        <button type="button" class="btn btn-outline-danger btn-lg px-5" data-answer="false">
+                            <i class="bi bi-x-circle me-2"></i>錯誤
+                        </button>
+                    </div>
+
+                    <!-- 回饋區 -->
+                    <div id="quizFeedback" class="alert" style="display: none;">
+                        <div class="d-flex align-items-start">
+                            <i class="bi fs-3 me-3" id="feedbackIcon"></i>
+                            <div>
+                                <h6 class="alert-heading" id="feedbackTitle"></h6>
+                                <p class="mb-0" id="feedbackText"></p>
+                                <p class="mb-0 mt-2 small text-muted" id="feedbackTextEn"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 結果區塊 -->
+                <div id="quizResult" class="text-center py-4" style="display: none;">
+                    <div id="resultIcon" class="mb-3">
+                        <i class="bi bi-trophy fs-1 text-warning"></i>
+                    </div>
+                    <h4 id="resultTitle">測驗完成！</h4>
+                    <p class="fs-5" id="resultScore">你答對了 0 / 0 題</p>
+                    <div class="progress mb-3" style="height: 25px;">
+                        <div id="resultProgress" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                    </div>
+                    <p class="text-muted" id="resultMessage">繼續努力學習更多動物知識吧！</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="bi bi-x-lg me-1"></i>關閉
+                </button>
+                <button type="button" class="btn btn-primary" id="quizNextBtn" style="display: none;">
+                    下一題 <i class="bi bi-arrow-right ms-1"></i>
+                </button>
+                <button type="button" class="btn btn-success" id="quizRetryBtn" style="display: none;">
+                    <i class="bi bi-arrow-clockwise me-1"></i>再測一次
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* 測驗彈窗樣式 */
+    #quizModal .modal-content {
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    #quizModal .modal-header {
+        border-bottom: none;
+    }
+
+    #quizModal .list-group-item {
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border-radius: 8px !important;
+        margin-bottom: 8px;
+    }
+
+    #quizModal .list-group-item:hover:not(.disabled):not(.selected) {
+        background-color: #f8f9fa;
+        transform: translateX(5px);
+    }
+
+    #quizModal .list-group-item.selected {
+        background-color: #e7f1ff;
+        border-color: #0d6efd;
+    }
+
+    #quizModal .list-group-item.correct {
+        background-color: #d1e7dd;
+        border-color: #198754;
+    }
+
+    #quizModal .list-group-item.incorrect {
+        background-color: #f8d7da;
+        border-color: #dc3545;
+    }
+
+    #quizModal .list-group-item.disabled {
+        pointer-events: none;
+    }
+
+    #quizModal #quizTrueFalse .btn {
+        min-width: 150px;
+    }
+
+    #quizModal #quizTrueFalse .btn.selected {
+        transform: scale(1.05);
+    }
+
+    #quizModal #quizTrueFalse .btn.correct {
+        background-color: #198754;
+        border-color: #198754;
+        color: white;
+    }
+
+    #quizModal #quizTrueFalse .btn.incorrect {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: white;
+    }
+
+    #quizFeedback {
+        animation: fadeIn 0.3s ease;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    #quizResult #resultIcon i {
+        animation: bounce 0.5s ease;
+    }
+
+    @@keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+</style>
