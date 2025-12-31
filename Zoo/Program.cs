@@ -1,3 +1,5 @@
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 using Serilog;
 using Zoo.Services;
 
@@ -24,7 +26,28 @@ try
     builder.Host.UseSerilog();
 
     // Add services to the container.
-    builder.Services.AddRazorPages();
+    builder.Services.AddRazorPages()
+        .AddViewLocalization()
+        .AddDataAnnotationsLocalization();
+
+    // 加入本地化服務
+    builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+    // 設定支援的語言文化
+    var supportedCultures = new[]
+    {
+        new CultureInfo("zh-TW"),
+        new CultureInfo("en")
+    };
+
+    builder.Services.Configure<RequestLocalizationOptions>(options =>
+    {
+        options.DefaultRequestCulture = new RequestCulture("zh-TW");
+        options.SupportedCultures = supportedCultures;
+        options.SupportedUICultures = supportedCultures;
+        // 使用 Cookie 儲存使用者的語言偏好
+        options.RequestCultureProviders.Insert(0, new CookieRequestCultureProvider());
+    });
 
     // 加入記憶體快取服務
     builder.Services.AddMemoryCache();
@@ -48,6 +71,9 @@ try
     builder.Services.AddScoped<IQuizService, QuizService>();
 
     var app = builder.Build();
+
+    // 啟用本地化中介軟體
+    app.UseRequestLocalization();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

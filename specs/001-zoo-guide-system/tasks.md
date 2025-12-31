@@ -285,15 +285,15 @@
 
 ### 本地化設定
 
-- [ ] T085 [P] [US8] 安裝本地化套件並設定於 `Zoo/Program.cs`
-- [ ] T086 [P] [US8] 建立資源檔案目錄 `Zoo/Resources/`
-- [ ] T087 [P] [US8] 建立繁體中文資源檔 `Zoo/Resources/Pages/Index.zh-TW.resx`
-- [ ] T088 [P] [US8] 建立英文資源檔 `Zoo/Resources/Pages/Index.en.resx`
-- [ ] T089 [US8] 更新所有頁面使用 IStringLocalizer 進行文字本地化
-- [ ] T090 [P] [US8] 建立語言切換部分檢視於 `Zoo/Pages/Shared/_LanguageSwitcher.cshtml`
-- [ ] T091 [US8] 更新 Layout 加入語言切換按鈕於 `Zoo/Pages/Shared/_Layout.cshtml`
+- [X] T085 [P] [US8] 安裝本地化套件並設定於 `Zoo/Program.cs`
+- [X] T086 [P] [US8] 建立資源檔案目錄 `Zoo/Resources/`
+- [X] T087 [P] [US8] 建立繁體中文資源檔 `Zoo/Resources/SharedResource.zh-TW.resx`
+- [X] T088 [P] [US8] 建立英文資源檔 `Zoo/Resources/SharedResource.en.resx`
+- [X] T089 [US8] 更新所有頁面使用 IStringLocalizer 進行文字本地化
+- [X] T090 [P] [US8] 建立語言切換部分檢視於 `Zoo/Pages/Shared/_LanguageSwitcher.cshtml`
+- [X] T091 [US8] 更新 Layout 加入語言切換按鈕於 `Zoo/Pages/Shared/_Layout.cshtml`
 
-**Checkpoint**: User Story 8 完成 - 支援多語言切換
+**Checkpoint**: User Story 8 完成 - 支援多語言切換 ✅
 
 ---
 

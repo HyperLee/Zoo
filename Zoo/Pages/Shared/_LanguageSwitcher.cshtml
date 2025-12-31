@@ -1,0 +1,35 @@
+@using System.Globalization
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Localization
+@using Zoo.Resources
+@inject IStringLocalizer<SharedResource> Localizer
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var currentCulture = requestCulture?.RequestCulture.UICulture.Name ?? "zh-TW";
+    var returnUrl = Context.Request.Path + Context.Request.QueryString;
+}
+
+<div class="dropdown">
+    <button class="btn btn-outline-light dropdown-toggle" type="button" id="languageDropdown" 
+            data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-globe me-1"></i>
+        @(currentCulture == "en" ? "EN" : "中")
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+        <li>
+            <form method="post" asp-page="/SetLanguage" asp-route-culture="zh-TW" asp-route-returnUrl="@returnUrl">
+                <button type="submit" class="dropdown-item @(currentCulture == "zh-TW" ? "active" : "")">
+                    <span class="me-2">🇹🇼</span>@Localizer["Chinese"]
+                </button>
+            </form>
+        </li>
+        <li>
+            <form method="post" asp-page="/SetLanguage" asp-route-culture="en" asp-route-returnUrl="@returnUrl">
+                <button type="submit" class="dropdown-item @(currentCulture == "en" ? "active" : "")">
+                    <span class="me-2">🇺🇸</span>@Localizer["English"]
+                </button>
+            </form>
+        </li>
+    </ul>
+</div>

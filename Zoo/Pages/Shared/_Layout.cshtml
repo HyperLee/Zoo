@@ -1,10 +1,15 @@
-﻿<!DOCTYPE html>
-<html lang="zh-TW">
+﻿@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var currentCulture = requestCulture?.RequestCulture.UICulture.Name ?? "zh-TW";
+    var htmlLang = currentCulture == "en" ? "en" : "zh-TW";
+}
+<!DOCTYPE html>
+<html lang="@htmlLang">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="探索動物園的奇妙世界，認識各種動物的生態、習性與保育知識" />
-    <title>@ViewData["Title"] - 動物園導覽系統</title>
+    <meta name="description" content="@Localizer["SiteDescription"]" />
+    <title>@ViewData["Title"] - @Localizer["SiteTitle"]</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
@@ -17,37 +22,37 @@
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" asp-area="" asp-page="/Index">
                     <i class="bi bi-tree-fill me-2"></i>
-                    <span>動物園導覽</span>
+                    <span>@Localizer["SiteName"]</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="切換導航">
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="@Localizer["ToggleNavigation"]">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Index">
-                                <i class="bi bi-house-door me-1"></i>首頁
+                                <i class="bi bi-house-door me-1"></i>@Localizer["Home"]
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Animals/Index">
-                                <i class="bi bi-bug me-1"></i>動物介紹
+                                <i class="bi bi-bug me-1"></i>@Localizer["AnimalIntro"]
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Map/Index">
-                                <i class="bi bi-map me-1"></i>園區地圖
+                                <i class="bi bi-map me-1"></i>@Localizer["ZoneMap"]
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Routes/Index">
-                                <i class="bi bi-signpost-2 me-1"></i>導覽路線
+                                <i class="bi bi-signpost-2 me-1"></i>@Localizer["TourRoutes"]
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Favorites/Index">
-                                <i class="bi bi-heart me-1"></i>我的收藏
+                                <i class="bi bi-heart me-1"></i>@Localizer["MyFavorites"]
                             </a>
                         </li>
                     </ul>
@@ -55,7 +60,7 @@
                     <div class="d-flex me-3" style="min-width: 250px;">
                         @{ 
                             ViewData["SearchBoxId"] = "globalSearchBox";
-                            ViewData["Placeholder"] = "搜尋動物...";
+                            ViewData["Placeholder"] = Localizer["SearchAnimals"].Value;
                             ViewData["ShowHistory"] = true;
                         }
                         <partial name="_SearchBox" />
@@ -63,8 +68,11 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/About/Index">
-                                <i class="bi bi-info-circle me-1"></i>關於我們
+                                <i class="bi bi-info-circle me-1"></i>@Localizer["AboutUs"]
                             </a>
+                        </li>
+                        <li class="nav-item ms-2">
+                            <partial name="_LanguageSwitcher" />
                         </li>
                     </ul>
                 </div>
@@ -82,12 +90,12 @@
         <div class="container py-4">
             <div class="row">
                 <div class="col-md-6">
-                    <h5><i class="bi bi-tree-fill text-success me-2"></i>動物園導覽系統</h5>
-                    <p class="mb-0">探索動物的奇妙世界，認識生態與保育知識</p>
+                    <h5><i class="bi bi-tree-fill text-success me-2"></i>@Localizer["SiteTitle"]</h5>
+                    <p class="mb-0">@Localizer["SiteDescription"]</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="mb-0">&copy; @DateTime.Now.Year 動物園導覽系統</p>
-                    <a asp-area="" asp-page="/Privacy" class="text-muted text-decoration-none">隱私權政策</a>
+                    <p class="mb-0">&copy; @DateTime.Now.Year @Localizer["SiteTitle"]</p>
+                    <a asp-area="" asp-page="/Privacy" class="text-muted text-decoration-none">@Localizer["PrivacyPolicy"]</a>
                 </div>
             </div>
         </div>

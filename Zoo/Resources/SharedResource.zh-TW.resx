@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="0" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  
+  <!-- 網站標題與導航 -->
+  <data name="SiteTitle" xml:space="preserve">
+    <value>動物園導覽系統</value>
+  </data>
+  <data name="SiteName" xml:space="preserve">
+    <value>動物園導覽</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>首頁</value>
+  </data>
+  <data name="AnimalIntro" xml:space="preserve">
+    <value>動物介紹</value>
+  </data>
+  <data name="ZoneMap" xml:space="preserve">
+    <value>園區地圖</value>
+  </data>
+  <data name="TourRoutes" xml:space="preserve">
+    <value>導覽路線</value>
+  </data>
+  <data name="MyFavorites" xml:space="preserve">
+    <value>我的收藏</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>關於我們</value>
+  </data>
+  <data name="ToggleNavigation" xml:space="preserve">
+    <value>切換導航</value>
+  </data>
+  <data name="SearchAnimals" xml:space="preserve">
+    <value>搜尋動物...</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>隱私權政策</value>
+  </data>
+  <data name="SiteDescription" xml:space="preserve">
+    <value>探索動物的奇妙世界，認識生態與保育知識</value>
+  </data>
+  
+  <!-- 首頁 -->
+  <data name="WelcomeTitle" xml:space="preserve">
+    <value>歡迎來到動物園導覽系統</value>
+  </data>
+  <data name="WelcomeDescription" xml:space="preserve">
+    <value>探索動物的奇妙世界，認識各種動物的生態、習性與保育知識。透過互動地圖、導覽路線和知識測驗，開啟一段有趣的學習之旅！</value>
+  </data>
+  <data name="ExploreAnimals" xml:space="preserve">
+    <value>探索動物</value>
+  </data>
+  <data name="ViewMap" xml:space="preserve">
+    <value>查看地圖</value>
+  </data>
+  <data name="ViewRoutes" xml:space="preserve">
+    <value>查看路線</value>
+  </data>
+  <data name="ViewAll" xml:space="preserve">
+    <value>查看全部</value>
+  </data>
+  
+  <!-- 動物介紹區塊 -->
+  <data name="AnimalIntroDesc" xml:space="preserve">
+    <value>認識動物園裡各種可愛的動物們，了解牠們的特徵與習性</value>
+  </data>
+  <data name="ViewAnimals" xml:space="preserve">
+    <value>查看動物</value>
+  </data>
+  
+  <!-- 園區地圖區塊 -->
+  <data name="ZoneMapDesc" xml:space="preserve">
+    <value>透過互動地圖了解動物園的整體配置，輕鬆規劃您的參觀路線</value>
+  </data>
+  
+  <!-- 導覽路線區塊 -->
+  <data name="TourRoutesDesc" xml:space="preserve">
+    <value>選擇預設路線或自訂您的參觀行程，不錯過任何精彩景點</value>
+  </data>
+  
+  <!-- 精選動物 -->
+  <data name="FeaturedAnimals" xml:space="preserve">
+    <value>精選動物</value>
+  </data>
+  <data name="FeaturedAnimalsDesc" xml:space="preserve">
+    <value>探索我們最受歡迎的動物明星</value>
+  </data>
+  
+  <!-- 保育知識 -->
+  <data name="ConservationKnowledge" xml:space="preserve">
+    <value>保育知識</value>
+  </data>
+  <data name="CriticallyEndangered" xml:space="preserve">
+    <value>極危 (Critically Endangered)</value>
+  </data>
+  <data name="CriticallyEndangeredDesc" xml:space="preserve">
+    <value>物種在野外面臨極高的滅絕風險</value>
+  </data>
+  <data name="Endangered" xml:space="preserve">
+    <value>瀕危 (Endangered)</value>
+  </data>
+  <data name="EndangeredDesc" xml:space="preserve">
+    <value>物種在野外面臨很高的滅絕風險</value>
+  </data>
+  <data name="Vulnerable" xml:space="preserve">
+    <value>易危 (Vulnerable)</value>
+  </data>
+  <data name="VulnerableDesc" xml:space="preserve">
+    <value>物種在野外面臨高滅絕風險</value>
+  </data>
+  
+  <!-- 動物清單頁面 -->
+  <data name="AnimalList" xml:space="preserve">
+    <value>動物清單</value>
+  </data>
+  <data name="FilterAnimals" xml:space="preserve">
+    <value>篩選動物</value>
+  </data>
+  <data name="Classification" xml:space="preserve">
+    <value>生物分類</value>
+  </data>
+  <data name="AllClassifications" xml:space="preserve">
+    <value>所有分類</value>
+  </data>
+  <data name="Habitat" xml:space="preserve">
+    <value>棲息地</value>
+  </data>
+  <data name="AllHabitats" xml:space="preserve">
+    <value>所有棲息地</value>
+  </data>
+  <data name="Diet" xml:space="preserve">
+    <value>飲食習性</value>
+  </data>
+  <data name="AllDiets" xml:space="preserve">
+    <value>所有習性</value>
+  </data>
+  <data name="ActivityTime" xml:space="preserve">
+    <value>活動時間</value>
+  </data>
+  <data name="AllActivityTimes" xml:space="preserve">
+    <value>所有時段</value>
+  </data>
+  <data name="ResetFilter" xml:space="preserve">
+    <value>重設篩選</value>
+  </data>
+  <data name="NoAnimalsFound" xml:space="preserve">
+    <value>找不到符合條件的動物</value>
+  </data>
+  <data name="TryAdjustFilter" xml:space="preserve">
+    <value>請嘗試調整篩選條件</value>
+  </data>
+  
+  <!-- 動物詳情頁面 -->
+  <data name="AnimalDetails" xml:space="preserve">
+    <value>動物詳情</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>返回清單</value>
+  </data>
+  <data name="AddToFavorites" xml:space="preserve">
+    <value>加入收藏</value>
+  </data>
+  <data name="RemoveFromFavorites" xml:space="preserve">
+    <value>取消收藏</value>
+  </data>
+  <data name="ScientificName" xml:space="preserve">
+    <value>學名</value>
+  </data>
+  <data name="Family" xml:space="preserve">
+    <value>科別</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>目別</value>
+  </data>
+  <data name="ConservationStatus" xml:space="preserve">
+    <value>保育等級</value>
+  </data>
+  <data name="BasicInfo" xml:space="preserve">
+    <value>基本資訊</value>
+  </data>
+  <data name="FunFacts" xml:space="preserve">
+    <value>趣味事實</value>
+  </data>
+  <data name="ListenToSound" xml:space="preserve">
+    <value>聆聽叫聲</value>
+  </data>
+  <data name="TakeQuiz" xml:space="preserve">
+    <value>小測驗</value>
+  </data>
+  <data name="RelatedAnimals" xml:space="preserve">
+    <value>相關動物推薦</value>
+  </data>
+  <data name="Lifespan" xml:space="preserve">
+    <value>壽命</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>年</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>體重</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>身高</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>展區位置</value>
+  </data>
+  
+  <!-- 搜尋頁面 -->
+  <data name="SearchResults" xml:space="preserve">
+    <value>搜尋結果</value>
+  </data>
+  <data name="SearchResultsFor" xml:space="preserve">
+    <value>搜尋「{0}」的結果</value>
+  </data>
+  <data name="FoundResults" xml:space="preserve">
+    <value>找到 {0} 個結果</value>
+  </data>
+  <data name="NoSearchResults" xml:space="preserve">
+    <value>找不到相關結果</value>
+  </data>
+  <data name="TryDifferentKeywords" xml:space="preserve">
+    <value>請嘗試使用不同的關鍵字</value>
+  </data>
+  
+  <!-- 地圖頁面 -->
+  <data name="InteractiveMap" xml:space="preserve">
+    <value>互動地圖</value>
+  </data>
+  <data name="ClickZoneToView" xml:space="preserve">
+    <value>點擊區域查看動物</value>
+  </data>
+  <data name="ZoomIn" xml:space="preserve">
+    <value>放大</value>
+  </data>
+  <data name="ZoomOut" xml:space="preserve">
+    <value>縮小</value>
+  </data>
+  <data name="ResetView" xml:space="preserve">
+    <value>重設視圖</value>
+  </data>
+  
+  <!-- 路線頁面 -->
+  <data name="RoutePlanning" xml:space="preserve">
+    <value>路線規劃</value>
+  </data>
+  <data name="PresetRoutes" xml:space="preserve">
+    <value>預設路線</value>
+  </data>
+  <data name="CustomRoute" xml:space="preserve">
+    <value>自訂路線</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>預估時間</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>分鐘</value>
+  </data>
+  <data name="SelectRoute" xml:space="preserve">
+    <value>選擇路線</value>
+  </data>
+  <data name="ShareRoute" xml:space="preserve">
+    <value>分享路線</value>
+  </data>
+  
+  <!-- 收藏頁面 -->
+  <data name="FavoriteAnimals" xml:space="preserve">
+    <value>收藏的動物</value>
+  </data>
+  <data name="NoFavorites" xml:space="preserve">
+    <value>尚未收藏任何動物</value>
+  </data>
+  <data name="StartExploring" xml:space="preserve">
+    <value>開始探索動物園，收藏您喜歡的動物吧！</value>
+  </data>
+  <data name="ExportFavorites" xml:space="preserve">
+    <value>匯出收藏清單</value>
+  </data>
+  <data name="ClearAll" xml:space="preserve">
+    <value>清除全部</value>
+  </data>
+  
+  <!-- 測驗頁面 -->
+  <data name="KnowledgeQuiz" xml:space="preserve">
+    <value>知識測驗</value>
+  </data>
+  <data name="QuizDescription" xml:space="preserve">
+    <value>測試您對動物的了解程度</value>
+  </data>
+  <data name="StartQuiz" xml:space="preserve">
+    <value>開始測驗</value>
+  </data>
+  <data name="NextQuestion" xml:space="preserve">
+    <value>下一題</value>
+  </data>
+  <data name="SubmitAnswer" xml:space="preserve">
+    <value>提交答案</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>答對了！</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>答錯了</value>
+  </data>
+  <data name="QuizComplete" xml:space="preserve">
+    <value>測驗完成</value>
+  </data>
+  <data name="YourScore" xml:space="preserve">
+    <value>您的分數</value>
+  </data>
+  <data name="TryAgain" xml:space="preserve">
+    <value>再試一次</value>
+  </data>
+  
+  <!-- 錯誤頁面 -->
+  <data name="Error" xml:space="preserve">
+    <value>錯誤</value>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>發生錯誤</value>
+  </data>
+  <data name="ErrorDescription" xml:space="preserve">
+    <value>抱歉，處理您的請求時發生錯誤。</value>
+  </data>
+  <data name="BackToHome" xml:space="preserve">
+    <value>返回首頁</value>
+  </data>
+  <data name="RequestId" xml:space="preserve">
+    <value>請求 ID</value>
+  </data>
+  
+  <!-- 語言切換 -->
+  <data name="Language" xml:space="preserve">
+    <value>語言</value>
+  </data>
+  <data name="Chinese" xml:space="preserve">
+    <value>繁體中文</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  
+  <!-- 通用 -->
+  <data name="Loading" xml:space="preserve">
+    <value>載入中...</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>儲存</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>否</value>
+  </data>
+  
+  <!-- 生物分類 -->
+  <data name="Mammal" xml:space="preserve">
+    <value>哺乳類</value>
+  </data>
+  <data name="Bird" xml:space="preserve">
+    <value>鳥類</value>
+  </data>
+  <data name="Reptile" xml:space="preserve">
+    <value>爬蟲類</value>
+  </data>
+  <data name="Amphibian" xml:space="preserve">
+    <value>兩棲類</value>
+  </data>
+  <data name="Fish" xml:space="preserve">
+    <value>魚類</value>
+  </data>
+  <data name="Invertebrate" xml:space="preserve">
+    <value>無脊椎動物</value>
+  </data>
+  
+  <!-- 棲息地 -->
+  <data name="Forest" xml:space="preserve">
+    <value>森林</value>
+  </data>
+  <data name="Grassland" xml:space="preserve">
+    <value>草原</value>
+  </data>
+  <data name="Desert" xml:space="preserve">
+    <value>沙漠</value>
+  </data>
+  <data name="Wetland" xml:space="preserve">
+    <value>濕地</value>
+  </data>
+  <data name="Ocean" xml:space="preserve">
+    <value>海洋</value>
+  </data>
+  <data name="Freshwater" xml:space="preserve">
+    <value>淡水</value>
+  </data>
+  <data name="Arctic" xml:space="preserve">
+    <value>極地</value>
+  </data>
+  <data name="Mountain" xml:space="preserve">
+    <value>山地</value>
+  </data>
+  
+  <!-- 飲食習性 -->
+  <data name="Herbivore" xml:space="preserve">
+    <value>草食性</value>
+  </data>
+  <data name="Carnivore" xml:space="preserve">
+    <value>肉食性</value>
+  </data>
+  <data name="Omnivore" xml:space="preserve">
+    <value>雜食性</value>
+  </data>
+  <data name="Insectivore" xml:space="preserve">
+    <value>食蟲性</value>
+  </data>
+  
+  <!-- 活動時間 -->
+  <data name="Diurnal" xml:space="preserve">
+    <value>日行性</value>
+  </data>
+  <data name="Nocturnal" xml:space="preserve">
+    <value>夜行性</value>
+  </data>
+  <data name="Crepuscular" xml:space="preserve">
+    <value>晨昏性</value>
+  </data>
+</root>

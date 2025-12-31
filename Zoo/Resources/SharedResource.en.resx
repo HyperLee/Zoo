@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="0" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  
+  <!-- Site title and navigation -->
+  <data name="SiteTitle" xml:space="preserve">
+    <value>Zoo Guide System</value>
+  </data>
+  <data name="SiteName" xml:space="preserve">
+    <value>Zoo Guide</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="AnimalIntro" xml:space="preserve">
+    <value>Animals</value>
+  </data>
+  <data name="ZoneMap" xml:space="preserve">
+    <value>Zoo Map</value>
+  </data>
+  <data name="TourRoutes" xml:space="preserve">
+    <value>Tour Routes</value>
+  </data>
+  <data name="MyFavorites" xml:space="preserve">
+    <value>My Favorites</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="ToggleNavigation" xml:space="preserve">
+    <value>Toggle Navigation</value>
+  </data>
+  <data name="SearchAnimals" xml:space="preserve">
+    <value>Search animals...</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="SiteDescription" xml:space="preserve">
+    <value>Explore the wonderful world of animals, learn about ecology and conservation</value>
+  </data>
+  
+  <!-- Home page -->
+  <data name="WelcomeTitle" xml:space="preserve">
+    <value>Welcome to Zoo Guide System</value>
+  </data>
+  <data name="WelcomeDescription" xml:space="preserve">
+    <value>Explore the wonderful world of animals, learn about their ecology, habits, and conservation. Start an exciting learning journey through interactive maps, tour routes, and knowledge quizzes!</value>
+  </data>
+  <data name="ExploreAnimals" xml:space="preserve">
+    <value>Explore Animals</value>
+  </data>
+  <data name="ViewMap" xml:space="preserve">
+    <value>View Map</value>
+  </data>
+  <data name="ViewRoutes" xml:space="preserve">
+    <value>View Routes</value>
+  </data>
+  <data name="ViewAll" xml:space="preserve">
+    <value>View All</value>
+  </data>
+  
+  <!-- Animal introduction section -->
+  <data name="AnimalIntroDesc" xml:space="preserve">
+    <value>Meet various cute animals in the zoo and learn about their characteristics and habits</value>
+  </data>
+  <data name="ViewAnimals" xml:space="preserve">
+    <value>View Animals</value>
+  </data>
+  
+  <!-- Zoo map section -->
+  <data name="ZoneMapDesc" xml:space="preserve">
+    <value>Explore the zoo layout through an interactive map and easily plan your visit</value>
+  </data>
+  
+  <!-- Tour routes section -->
+  <data name="TourRoutesDesc" xml:space="preserve">
+    <value>Choose preset routes or customize your own itinerary to not miss any highlights</value>
+  </data>
+  
+  <!-- Featured animals -->
+  <data name="FeaturedAnimals" xml:space="preserve">
+    <value>Featured Animals</value>
+  </data>
+  <data name="FeaturedAnimalsDesc" xml:space="preserve">
+    <value>Discover our most popular animal stars</value>
+  </data>
+  
+  <!-- Conservation knowledge -->
+  <data name="ConservationKnowledge" xml:space="preserve">
+    <value>Conservation Knowledge</value>
+  </data>
+  <data name="CriticallyEndangered" xml:space="preserve">
+    <value>Critically Endangered</value>
+  </data>
+  <data name="CriticallyEndangeredDesc" xml:space="preserve">
+    <value>Species facing extremely high risk of extinction in the wild</value>
+  </data>
+  <data name="Endangered" xml:space="preserve">
+    <value>Endangered</value>
+  </data>
+  <data name="EndangeredDesc" xml:space="preserve">
+    <value>Species facing very high risk of extinction in the wild</value>
+  </data>
+  <data name="Vulnerable" xml:space="preserve">
+    <value>Vulnerable</value>
+  </data>
+  <data name="VulnerableDesc" xml:space="preserve">
+    <value>Species facing high risk of extinction in the wild</value>
+  </data>
+  
+  <!-- Animal list page -->
+  <data name="AnimalList" xml:space="preserve">
+    <value>Animal List</value>
+  </data>
+  <data name="FilterAnimals" xml:space="preserve">
+    <value>Filter Animals</value>
+  </data>
+  <data name="Classification" xml:space="preserve">
+    <value>Classification</value>
+  </data>
+  <data name="AllClassifications" xml:space="preserve">
+    <value>All Classifications</value>
+  </data>
+  <data name="Habitat" xml:space="preserve">
+    <value>Habitat</value>
+  </data>
+  <data name="AllHabitats" xml:space="preserve">
+    <value>All Habitats</value>
+  </data>
+  <data name="Diet" xml:space="preserve">
+    <value>Diet</value>
+  </data>
+  <data name="AllDiets" xml:space="preserve">
+    <value>All Diets</value>
+  </data>
+  <data name="ActivityTime" xml:space="preserve">
+    <value>Activity Time</value>
+  </data>
+  <data name="AllActivityTimes" xml:space="preserve">
+    <value>All Times</value>
+  </data>
+  <data name="ResetFilter" xml:space="preserve">
+    <value>Reset Filter</value>
+  </data>
+  <data name="NoAnimalsFound" xml:space="preserve">
+    <value>No animals found</value>
+  </data>
+  <data name="TryAdjustFilter" xml:space="preserve">
+    <value>Please try adjusting the filter criteria</value>
+  </data>
+  
+  <!-- Animal details page -->
+  <data name="AnimalDetails" xml:space="preserve">
+    <value>Animal Details</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="AddToFavorites" xml:space="preserve">
+    <value>Add to Favorites</value>
+  </data>
+  <data name="RemoveFromFavorites" xml:space="preserve">
+    <value>Remove from Favorites</value>
+  </data>
+  <data name="ScientificName" xml:space="preserve">
+    <value>Scientific Name</value>
+  </data>
+  <data name="Family" xml:space="preserve">
+    <value>Family</value>
+  </data>
+  <data name="Order" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="ConservationStatus" xml:space="preserve">
+    <value>Conservation Status</value>
+  </data>
+  <data name="BasicInfo" xml:space="preserve">
+    <value>Basic Information</value>
+  </data>
+  <data name="FunFacts" xml:space="preserve">
+    <value>Fun Facts</value>
+  </data>
+  <data name="ListenToSound" xml:space="preserve">
+    <value>Listen to Sound</value>
+  </data>
+  <data name="TakeQuiz" xml:space="preserve">
+    <value>Take Quiz</value>
+  </data>
+  <data name="RelatedAnimals" xml:space="preserve">
+    <value>Related Animals</value>
+  </data>
+  <data name="Lifespan" xml:space="preserve">
+    <value>Lifespan</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>years</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  
+  <!-- Search page -->
+  <data name="SearchResults" xml:space="preserve">
+    <value>Search Results</value>
+  </data>
+  <data name="SearchResultsFor" xml:space="preserve">
+    <value>Search results for "{0}"</value>
+  </data>
+  <data name="FoundResults" xml:space="preserve">
+    <value>Found {0} results</value>
+  </data>
+  <data name="NoSearchResults" xml:space="preserve">
+    <value>No results found</value>
+  </data>
+  <data name="TryDifferentKeywords" xml:space="preserve">
+    <value>Please try different keywords</value>
+  </data>
+  
+  <!-- Map page -->
+  <data name="InteractiveMap" xml:space="preserve">
+    <value>Interactive Map</value>
+  </data>
+  <data name="ClickZoneToView" xml:space="preserve">
+    <value>Click zone to view animals</value>
+  </data>
+  <data name="ZoomIn" xml:space="preserve">
+    <value>Zoom In</value>
+  </data>
+  <data name="ZoomOut" xml:space="preserve">
+    <value>Zoom Out</value>
+  </data>
+  <data name="ResetView" xml:space="preserve">
+    <value>Reset View</value>
+  </data>
+  
+  <!-- Routes page -->
+  <data name="RoutePlanning" xml:space="preserve">
+    <value>Route Planning</value>
+  </data>
+  <data name="PresetRoutes" xml:space="preserve">
+    <value>Preset Routes</value>
+  </data>
+  <data name="CustomRoute" xml:space="preserve">
+    <value>Custom Route</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="SelectRoute" xml:space="preserve">
+    <value>Select Route</value>
+  </data>
+  <data name="ShareRoute" xml:space="preserve">
+    <value>Share Route</value>
+  </data>
+  
+  <!-- Favorites page -->
+  <data name="FavoriteAnimals" xml:space="preserve">
+    <value>Favorite Animals</value>
+  </data>
+  <data name="NoFavorites" xml:space="preserve">
+    <value>No favorites yet</value>
+  </data>
+  <data name="StartExploring" xml:space="preserve">
+    <value>Start exploring the zoo and add your favorite animals!</value>
+  </data>
+  <data name="ExportFavorites" xml:space="preserve">
+    <value>Export Favorites</value>
+  </data>
+  <data name="ClearAll" xml:space="preserve">
+    <value>Clear All</value>
+  </data>
+  
+  <!-- Quiz page -->
+  <data name="KnowledgeQuiz" xml:space="preserve">
+    <value>Knowledge Quiz</value>
+  </data>
+  <data name="QuizDescription" xml:space="preserve">
+    <value>Test your knowledge about animals</value>
+  </data>
+  <data name="StartQuiz" xml:space="preserve">
+    <value>Start Quiz</value>
+  </data>
+  <data name="NextQuestion" xml:space="preserve">
+    <value>Next Question</value>
+  </data>
+  <data name="SubmitAnswer" xml:space="preserve">
+    <value>Submit Answer</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+    <value>Correct!</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+    <value>Incorrect</value>
+  </data>
+  <data name="QuizComplete" xml:space="preserve">
+    <value>Quiz Complete</value>
+  </data>
+  <data name="YourScore" xml:space="preserve">
+    <value>Your Score</value>
+  </data>
+  <data name="TryAgain" xml:space="preserve">
+    <value>Try Again</value>
+  </data>
+  
+  <!-- Error page -->
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>An Error Occurred</value>
+  </data>
+  <data name="ErrorDescription" xml:space="preserve">
+    <value>Sorry, an error occurred while processing your request.</value>
+  </data>
+  <data name="BackToHome" xml:space="preserve">
+    <value>Back to Home</value>
+  </data>
+  <data name="RequestId" xml:space="preserve">
+    <value>Request ID</value>
+  </data>
+  
+  <!-- Language switcher -->
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Chinese" xml:space="preserve">
+    <value>繁體中文</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  
+  <!-- Common -->
+  <data name="Loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  
+  <!-- Biological classification -->
+  <data name="Mammal" xml:space="preserve">
+    <value>Mammal</value>
+  </data>
+  <data name="Bird" xml:space="preserve">
+    <value>Bird</value>
+  </data>
+  <data name="Reptile" xml:space="preserve">
+    <value>Reptile</value>
+  </data>
+  <data name="Amphibian" xml:space="preserve">
+    <value>Amphibian</value>
+  </data>
+  <data name="Fish" xml:space="preserve">
+    <value>Fish</value>
+  </data>
+  <data name="Invertebrate" xml:space="preserve">
+    <value>Invertebrate</value>
+  </data>
+  
+  <!-- Habitats -->
+  <data name="Forest" xml:space="preserve">
+    <value>Forest</value>
+  </data>
+  <data name="Grassland" xml:space="preserve">
+    <value>Grassland</value>
+  </data>
+  <data name="Desert" xml:space="preserve">
+    <value>Desert</value>
+  </data>
+  <data name="Wetland" xml:space="preserve">
+    <value>Wetland</value>
+  </data>
+  <data name="Ocean" xml:space="preserve">
+    <value>Ocean</value>
+  </data>
+  <data name="Freshwater" xml:space="preserve">
+    <value>Freshwater</value>
+  </data>
+  <data name="Arctic" xml:space="preserve">
+    <value>Arctic</value>
+  </data>
+  <data name="Mountain" xml:space="preserve">
+    <value>Mountain</value>
+  </data>
+  
+  <!-- Diet types -->
+  <data name="Herbivore" xml:space="preserve">
+    <value>Herbivore</value>
+  </data>
+  <data name="Carnivore" xml:space="preserve">
+    <value>Carnivore</value>
+  </data>
+  <data name="Omnivore" xml:space="preserve">
+    <value>Omnivore</value>
+  </data>
+  <data name="Insectivore" xml:space="preserve">
+    <value>Insectivore</value>
+  </data>
+  
+  <!-- Activity patterns -->
+  <data name="Diurnal" xml:space="preserve">
+    <value>Diurnal</value>
+  </data>
+  <data name="Nocturnal" xml:space="preserve">
+    <value>Nocturnal</value>
+  </data>
+  <data name="Crepuscular" xml:space="preserve">
+    <value>Crepuscular</value>
+  </data>
+</root>
