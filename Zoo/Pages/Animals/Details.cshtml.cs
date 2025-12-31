@@ -24,6 +24,16 @@ public class DetailsModel : PageModel
     public IReadOnlyList<Animal> RelatedAnimals { get; private set; } = [];
 
     /// <summary>
+    /// 上一個動物
+    /// </summary>
+    public Animal? PreviousAnimal { get; private set; }
+
+    /// <summary>
+    /// 下一個動物
+    /// </summary>
+    public Animal? NextAnimal { get; private set; }
+
+    /// <summary>
     /// 初始化動物詳情頁面模型
     /// </summary>
     /// <param name="animalService">動物服務</param>
@@ -59,6 +69,21 @@ public class DetailsModel : PageModel
         }
 
         RelatedAnimals = await _animalService.GetRelatedAsync(id, cancellationToken);
+
+        // 取得上一個和下一個動物以支援導航
+        var allAnimals = await _animalService.GetAllAsync(cancellationToken);
+        var animalList = allAnimals.ToList();
+        var currentIndex = animalList.FindIndex(a => a.Id == id);
+        
+        if (currentIndex > 0)
+        {
+            PreviousAnimal = animalList[currentIndex - 1];
+        }
+        
+        if (currentIndex < animalList.Count - 1)
+        {
+            NextAnimal = animalList[currentIndex + 1];
+        }
 
         _logger.LogInformation("成功載入動物 {ChineseName} 的詳情，相關動物數量: {Count}", 
             Animal.ChineseName, RelatedAnimals.Count);

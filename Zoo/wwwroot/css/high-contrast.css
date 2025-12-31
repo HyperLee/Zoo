@@ -1,0 +1,346 @@
+/* ===== 高對比模式樣式 ===== */
+/* High Contrast Mode Styles for WCAG 2.1 Level AA Compliance */
+
+/* 高對比模式開關 - 由 body class 控制 */
+body.high-contrast {
+    --bs-body-color: #000000;
+    --bs-body-bg: #ffffff;
+    --bs-link-color: #0000EE;
+    --bs-link-hover-color: #551A8B;
+}
+
+/* 強制高對比文字顏色 */
+body.high-contrast,
+body.high-contrast p,
+body.high-contrast span,
+body.high-contrast li,
+body.high-contrast td,
+body.high-contrast th,
+body.high-contrast label {
+    color: #000000 !important;
+}
+
+/* 高對比背景 */
+body.high-contrast .bg-success,
+body.high-contrast .bg-primary,
+body.high-contrast .bg-info,
+body.high-contrast .bg-warning,
+body.high-contrast .bg-secondary {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.high-contrast .bg-light,
+body.high-contrast .card,
+body.high-contrast .card-body {
+    background-color: #ffffff !important;
+    border: 2px solid #000000 !important;
+}
+
+/* 高對比連結 */
+body.high-contrast a {
+    color: #0000EE !important;
+    text-decoration: underline !important;
+}
+
+body.high-contrast a:hover,
+body.high-contrast a:focus {
+    color: #551A8B !important;
+}
+
+body.high-contrast a:visited {
+    color: #551A8B !important;
+}
+
+/* 高對比按鈕 */
+body.high-contrast .btn {
+    border: 2px solid #000000 !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+body.high-contrast .btn:hover,
+body.high-contrast .btn:focus {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.high-contrast .btn-primary,
+body.high-contrast .btn-success,
+body.high-contrast .btn-info,
+body.high-contrast .btn-warning,
+body.high-contrast .btn-danger {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.high-contrast .btn-outline-success,
+body.high-contrast .btn-outline-primary,
+body.high-contrast .btn-outline-info,
+body.high-contrast .btn-outline-warning {
+    border: 2px solid #000000 !important;
+    color: #000000 !important;
+}
+
+body.high-contrast .btn-outline-success:hover,
+body.high-contrast .btn-outline-primary:hover,
+body.high-contrast .btn-outline-info:hover,
+body.high-contrast .btn-outline-warning:hover {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+/* 高對比導航列 */
+body.high-contrast .navbar {
+    background-color: #000000 !important;
+    border-bottom: 3px solid #ffffff !important;
+}
+
+body.high-contrast .navbar .nav-link,
+body.high-contrast .navbar .navbar-brand {
+    color: #ffffff !important;
+}
+
+body.high-contrast .navbar .nav-link:hover,
+body.high-contrast .navbar .nav-link:focus {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+/* 高對比表單元素 */
+body.high-contrast .form-control,
+body.high-contrast .form-select,
+body.high-contrast input,
+body.high-contrast textarea,
+body.high-contrast select {
+    border: 2px solid #000000 !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+body.high-contrast .form-control:focus,
+body.high-contrast .form-select:focus,
+body.high-contrast input:focus,
+body.high-contrast textarea:focus,
+body.high-contrast select:focus {
+    outline: 3px solid #0000EE !important;
+    outline-offset: 2px !important;
+}
+
+/* 高對比徽章 */
+body.high-contrast .badge {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #ffffff !important;
+}
+
+body.high-contrast .badge.bg-light {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #000000 !important;
+}
+
+/* 高對比動物卡片 */
+body.high-contrast .animal-card {
+    border: 3px solid #000000 !important;
+}
+
+body.high-contrast .animal-card:hover,
+body.high-contrast .animal-card:focus-within {
+    outline: 3px solid #0000EE !important;
+    outline-offset: 2px !important;
+}
+
+/* 高對比聚焦樣式 */
+body.high-contrast *:focus {
+    outline: 3px solid #0000EE !important;
+    outline-offset: 2px !important;
+}
+
+/* 高對比圖示 */
+body.high-contrast .bi {
+    color: inherit !important;
+}
+
+/* 高對比頁尾 */
+body.high-contrast footer {
+    background-color: #ffffff !important;
+    border-top: 3px solid #000000 !important;
+}
+
+body.high-contrast footer,
+body.high-contrast footer p,
+body.high-contrast footer a {
+    color: #000000 !important;
+}
+
+/* 高對比麵包屑 */
+body.high-contrast .breadcrumb-item a {
+    color: #0000EE !important;
+}
+
+body.high-contrast .breadcrumb-item.active {
+    color: #000000 !important;
+}
+
+/* 高對比搜尋建議 */
+body.high-contrast .search-suggestions,
+body.high-contrast .search-history {
+    background-color: #ffffff !important;
+    border: 2px solid #000000 !important;
+}
+
+body.high-contrast .suggestion-item:hover,
+body.high-contrast .history-item:hover {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+/* 高對比地圖區域 */
+body.high-contrast .zone-polygon {
+    stroke: #000000 !important;
+    stroke-width: 3px !important;
+}
+
+/* 高對比模態視窗 */
+body.high-contrast .modal-content {
+    background-color: #ffffff !important;
+    border: 3px solid #000000 !important;
+}
+
+body.high-contrast .modal-header,
+body.high-contrast .modal-footer {
+    border-color: #000000 !important;
+}
+
+/* 高對比表格 */
+body.high-contrast table,
+body.high-contrast th,
+body.high-contrast td {
+    border: 2px solid #000000 !important;
+}
+
+body.high-contrast th {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.high-contrast tr:nth-child(even) {
+    background-color: #f0f0f0 !important;
+}
+
+/* 高對比下拉選單 */
+body.high-contrast .dropdown-menu {
+    background-color: #ffffff !important;
+    border: 2px solid #000000 !important;
+}
+
+body.high-contrast .dropdown-item:hover,
+body.high-contrast .dropdown-item:focus {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+/* ===== 字體大小調整 ===== */
+/* Font Size Adjustment Classes */
+
+body.font-size-small {
+    font-size: 14px !important;
+}
+
+body.font-size-normal {
+    font-size: 16px !important;
+}
+
+body.font-size-large {
+    font-size: 18px !important;
+}
+
+body.font-size-xlarge {
+    font-size: 20px !important;
+}
+
+/* 調整標題字體大小比例 */
+body.font-size-large h1,
+body.font-size-large .h1 {
+    font-size: 2.25rem !important;
+}
+
+body.font-size-large h2,
+body.font-size-large .h2 {
+    font-size: 1.875rem !important;
+}
+
+body.font-size-large h3,
+body.font-size-large .h3 {
+    font-size: 1.5rem !important;
+}
+
+body.font-size-xlarge h1,
+body.font-size-xlarge .h1 {
+    font-size: 2.5rem !important;
+}
+
+body.font-size-xlarge h2,
+body.font-size-xlarge .h2 {
+    font-size: 2rem !important;
+}
+
+body.font-size-xlarge h3,
+body.font-size-xlarge .h3 {
+    font-size: 1.625rem !important;
+}
+
+/* ===== 無障礙工具列樣式 ===== */
+/* Accessibility Toolbar Styles */
+
+.accessibility-toolbar {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1060;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.accessibility-toolbar .btn {
+    padding: 8px 12px;
+    font-size: 0.875rem;
+}
+
+.accessibility-toolbar .btn i {
+    margin-right: 4px;
+}
+
+/* 高對比模式下的工具列 */
+body.high-contrast .accessibility-toolbar {
+    background-color: #ffffff !important;
+    border: 3px solid #000000 !important;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .accessibility-toolbar {
+        bottom: 10px;
+        left: 10px;
+        padding: 6px;
+    }
+
+    .accessibility-toolbar .btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* 隱藏工具列按鈕文字（小螢幕） */
+@media (max-width: 576px) {
+    .accessibility-toolbar .btn-text {
+        display: none;
+    }
+}

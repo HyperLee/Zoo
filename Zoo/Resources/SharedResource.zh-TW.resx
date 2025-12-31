@@ -66,6 +66,9 @@
   <data name="SiteName" xml:space="preserve">
     <value>動物園導覽</value>
   </data>
+  <data name="QuickNavigation" xml:space="preserve">
+    <value>快速導航</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>首頁</value>
   </data>
@@ -490,4 +493,98 @@
   <data name="Crepuscular" xml:space="preserve">
     <value>晨昏性</value>
   </data>
+  
+  <!-- 無障礙與導航 -->
+  <data name="SkipToContent" xml:space="preserve">
+    <value>跳至主要內容</value>
+  </data>
+  <data name="MainNavigation" xml:space="preserve">
+    <value>主要導航</value>
+  </data>
+  <data name="Breadcrumb" xml:space="preserve">
+    <value>麵包屑導航</value>
+  </data>
+  <data name="BackToTop" xml:space="preserve">
+    <value>返回頂部</value>
+  </data>
+  <data name="HighContrastMode" xml:space="preserve">
+    <value>高對比模式</value>
+  </data>
+  <data name="FontSize" xml:space="preserve">
+    <value>字體大小</value>
+  </data>
+  <data name="PreviousAnimal" xml:space="preserve">
+    <value>上一個動物</value>
+  </data>
+  <data name="NextAnimal" xml:space="preserve">
+    <value>下一個動物</value>
+  </data>
+  
+  <!-- 錯誤頁面 -->
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>發生錯誤</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>抱歉，處理您的請求時發生錯誤。</value>
+  </data>
+  <data name="ErrorBackHome" xml:space="preserve">
+    <value>返回首頁</value>
+  </data>
+  <data name="ErrorTryAgain" xml:space="preserve">
+    <value>請稍後再試</value>
+  </data>
+  <data name="PageNotFound" xml:space="preserve">
+    <value>找不到頁面</value>
+  </data>
+  <data name="PageNotFoundMessage" xml:space="preserve">
+    <value>您要尋找的頁面不存在或已被移除。</value>
+  </data>
+  
+  <!-- 關於我們頁面 -->
+  <data name="AboutTitle" xml:space="preserve">
+    <value>關於我們</value>
+  </data>
+  <data name="AboutDescription" xml:space="preserve">
+    <value>認識動物園導覽系統的願景與使命</value>
+  </data>
+  <data name="OurMission" xml:space="preserve">
+    <value>我們的使命</value>
+  </data>
+  <data name="OurMissionDesc" xml:space="preserve">
+    <value>透過數位科技，讓每位遊客都能深入了解動物的奇妙世界，培養對自然生態的尊重與保育意識。</value>
+  </data>
+  <data name="OurVision" xml:space="preserve">
+    <value>我們的願景</value>
+  </data>
+  <data name="OurVisionDesc" xml:space="preserve">
+    <value>成為最具教育意義的數位動物園導覽平台，讓學習變得有趣且充滿互動。</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+    <value>平台特色</value>
+  </data>
+  <data name="FeatureInteractive" xml:space="preserve">
+    <value>互動式體驗</value>
+  </data>
+  <data name="FeatureInteractiveDesc" xml:space="preserve">
+    <value>透過互動地圖、知識測驗和多媒體內容，提供沉浸式學習體驗。</value>
+  </data>
+  <data name="FeatureEducation" xml:space="preserve">
+    <value>教育導向</value>
+  </data>
+  <data name="FeatureEducationDesc" xml:space="preserve">
+    <value>專注於生態知識與保育意識的培養，適合各年齡層的遊客。</value>
+  </data>
+  <data name="FeatureAccessible" xml:space="preserve">
+    <value>無障礙設計</value>
+  </data>
+  <data name="FeatureAccessibleDesc" xml:space="preserve">
+    <value>符合 WCAG 2.1 Level AA 標準，確保所有人都能輕鬆使用。</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>聯絡我們</value>
+  </data>
+  <data name="ContactUsDesc" xml:space="preserve">
+    <value>如有任何問題或建議，歡迎透過以下方式聯繫我們。</value>
+  </data>
 </root>
+

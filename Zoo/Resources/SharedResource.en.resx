@@ -66,6 +66,9 @@
   <data name="SiteName" xml:space="preserve">
     <value>Zoo Guide</value>
   </data>
+  <data name="QuickNavigation" xml:space="preserve">
+    <value>Quick Navigation</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
@@ -490,4 +493,98 @@
   <data name="Crepuscular" xml:space="preserve">
     <value>Crepuscular</value>
   </data>
+  
+  <!-- Accessibility and navigation -->
+  <data name="SkipToContent" xml:space="preserve">
+    <value>Skip to main content</value>
+  </data>
+  <data name="MainNavigation" xml:space="preserve">
+    <value>Main navigation</value>
+  </data>
+  <data name="Breadcrumb" xml:space="preserve">
+    <value>Breadcrumb</value>
+  </data>
+  <data name="BackToTop" xml:space="preserve">
+    <value>Back to top</value>
+  </data>
+  <data name="HighContrastMode" xml:space="preserve">
+    <value>High contrast mode</value>
+  </data>
+  <data name="FontSize" xml:space="preserve">
+    <value>Font size</value>
+  </data>
+  <data name="PreviousAnimal" xml:space="preserve">
+    <value>Previous animal</value>
+  </data>
+  <data name="NextAnimal" xml:space="preserve">
+    <value>Next animal</value>
+  </data>
+  
+  <!-- Error pages -->
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>Sorry, an error occurred while processing your request.</value>
+  </data>
+  <data name="ErrorBackHome" xml:space="preserve">
+    <value>Back to Home</value>
+  </data>
+  <data name="ErrorTryAgain" xml:space="preserve">
+    <value>Please try again later</value>
+  </data>
+  <data name="PageNotFound" xml:space="preserve">
+    <value>Page Not Found</value>
+  </data>
+  <data name="PageNotFoundMessage" xml:space="preserve">
+    <value>The page you are looking for does not exist or has been removed.</value>
+  </data>
+  
+  <!-- About page -->
+  <data name="AboutTitle" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="AboutDescription" xml:space="preserve">
+    <value>Learn about the vision and mission of the Zoo Guide System</value>
+  </data>
+  <data name="OurMission" xml:space="preserve">
+    <value>Our Mission</value>
+  </data>
+  <data name="OurMissionDesc" xml:space="preserve">
+    <value>Through digital technology, we help every visitor gain a deeper understanding of the wonderful world of animals, fostering respect for nature and conservation awareness.</value>
+  </data>
+  <data name="OurVision" xml:space="preserve">
+    <value>Our Vision</value>
+  </data>
+  <data name="OurVisionDesc" xml:space="preserve">
+    <value>To become the most educational digital zoo guide platform, making learning fun and interactive.</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+    <value>Platform Features</value>
+  </data>
+  <data name="FeatureInteractive" xml:space="preserve">
+    <value>Interactive Experience</value>
+  </data>
+  <data name="FeatureInteractiveDesc" xml:space="preserve">
+    <value>Immersive learning through interactive maps, knowledge quizzes, and multimedia content.</value>
+  </data>
+  <data name="FeatureEducation" xml:space="preserve">
+    <value>Education-Focused</value>
+  </data>
+  <data name="FeatureEducationDesc" xml:space="preserve">
+    <value>Dedicated to ecological knowledge and conservation awareness for visitors of all ages.</value>
+  </data>
+  <data name="FeatureAccessible" xml:space="preserve">
+    <value>Accessible Design</value>
+  </data>
+  <data name="FeatureAccessibleDesc" xml:space="preserve">
+    <value>Compliant with WCAG 2.1 Level AA standards, ensuring accessibility for everyone.</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="ContactUsDesc" xml:space="preserve">
+    <value>If you have any questions or suggestions, please feel free to contact us.</value>
+  </data>
 </root>
+

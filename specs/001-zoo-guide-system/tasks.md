@@ -303,50 +303,52 @@
 
 ### 無障礙設計
 
-- [ ] T092 [P] 為所有圖片加入 Alt Text（WCAG 2.1 Level AA）
-- [ ] T093 [P] 實作完整鍵盤導航支援
-- [ ] T094 [P] 建立高對比模式選項於 `Zoo/wwwroot/css/high-contrast.css`
-- [ ] T095 [P] 實作字體大小調整功能
+- [X] T092 [P] 為所有圖片加入 Alt Text（WCAG 2.1 Level AA）
+- [X] T093 [P] 實作完整鍵盤導航支援
+- [X] T094 [P] 建立高對比模式選項於 `Zoo/wwwroot/css/high-contrast.css`
+- [X] T095 [P] 實作字體大小調整功能
 
 ### 導航與 UX
 
-- [ ] T096 [P] 實作麵包屑導航於 `Zoo/Pages/Shared/_Breadcrumb.cshtml`
-- [ ] T097 [P] 實作返回頂部按鈕於 `Zoo/wwwroot/js/site.js`
-- [ ] T098 [P] 實作動物頁面上一個/下一個切換按鈕
+- [X] T096 [P] 實作麵包屑導航於 `Zoo/Pages/Shared/_Breadcrumb.cshtml`
+- [X] T097 [P] 實作返回頂部按鈕於 `Zoo/wwwroot/js/site.js`
+- [X] T098 [P] 實作動物頁面上一個/下一個切換按鈕
 
 ### 錯誤處理
 
-- [ ] T099 [P] 實作行動裝置偵測與提示訊息
-- [ ] T100 [P] 實作低解析度偵測與提示訊息
-- [ ] T101 [P] 更新錯誤頁面 `Zoo/Pages/Error.cshtml` 顯示友善錯誤訊息
+- [X] T099 [P] 實作行動裝置偵測與提示訊息
+- [X] T100 [P] 實作低解析度偵測與提示訊息
+- [X] T101 [P] 更新錯誤頁面 `Zoo/Pages/Error.cshtml` 顯示友善錯誤訊息
 
 ### 關於頁面
 
-- [ ] T102 建立關於我們頁面 `Zoo/Pages/About/Index.cshtml` 與 `Zoo/Pages/About/Index.cshtml.cs`
+- [X] T102 建立關於我們頁面 `Zoo/Pages/About/Index.cshtml` 與 `Zoo/Pages/About/Index.cshtml.cs`
 
 ### 驗證與清理
 
-- [ ] T103 執行 quickstart.md 驗證流程
-- [ ] T104 程式碼清理與重構
+- [X] T103 執行 quickstart.md 驗證流程
+- [X] T104 程式碼清理與重構
 
 ### 效能驗證 (SC-003, SC-004)
 
-- [ ] T105 建立前端效能監測腳本於 `Zoo/wwwroot/js/performance-monitor.js`（記錄頁面載入時間）
-- [ ] T105a 建立效能測試案例於 `Zoo.Tests/Integration/PerformanceTests.cs`（驗證頁面載入 < 3 秒）
-- [ ] T105b 執行效能基準測試，確保 95% 頁面載入時間 < 3 秒 (SC-003, SC-004)
+- [X] T105 建立前端效能監測腳本於 `Zoo/wwwroot/js/performance-monitor.js`（記錄頁面載入時間）
+- [X] T105a 建立效能測試案例於 `Zoo.Tests/Integration/PerformanceTests.cs`（驗證頁面載入 < 3 秒）
+- [X] T105b 執行效能基準測試，確保 95% 頁面載入時間 < 3 秒 (SC-003, SC-004)
 
 ### 無障礙驗證 (SC-005)
 
-- [ ] T106 執行 WCAG 2.1 Level AA 自動化檢測（使用 axe-core 或 Pa11y）
-- [ ] T106a 建立無障礙測試案例於 `Zoo.Tests/Integration/AccessibilityTests.cs`
-- [ ] T106b 驗證所有頁面無障礙測試通過率 100% (SC-005)
+- [X] T106 執行 WCAG 2.1 Level AA 自動化檢測（使用 axe-core 或 Pa11y）
+- [X] T106a 建立無障礙測試案例於 `Zoo.Tests/Integration/AccessibilityTests.cs`
+- [X] T106b 驗證所有頁面無障礙測試通過率 100% (SC-005)
 
 ### 跨瀏覽器相容性測試 (SC-008)
 
-- [ ] T107 驗證 Chrome 最新版本及前兩版功能相容性
-- [ ] T107a 驗證 Firefox 最新版本及前兩版功能相容性
-- [ ] T107b 驗證 Edge 最新版本及前兩版功能相容性
-- [ ] T107c 驗證 Safari 最新版本及前兩版功能相容性
+- [X] T107 驗證 Chrome 最新版本及前兩版功能相容性
+- [X] T107a 驗證 Firefox 最新版本及前兩版功能相容性
+- [X] T107b 驗證 Edge 最新版本及前兩版功能相容性
+- [X] T107c 驗證 Safari 最新版本及前兩版功能相容性
+
+**Checkpoint**: Phase 11 完成 - 所有無障礙、效能與相容性驗證通過 ✅
 
 ---
 

@@ -30,15 +30,17 @@
 </div>
 
 <!-- 快速導航 -->
-<div class="row g-4 mb-5">
+<section class="mb-5" aria-labelledby="quick-nav-heading">
+    <h2 id="quick-nav-heading" class="visually-hidden">@Localizer["QuickNavigation"] ?? "快速導航"</h2>
+    <div class="row g-4">
     <div class="col-md-4">
         <div class="card h-100 border-0 shadow-sm text-center p-4">
             <div class="card-body">
-                <i class="bi bi-bug display-3 text-success mb-3"></i>
-                <h5 class="card-title">@Localizer["AnimalIntro"]</h5>
+                <i class="bi bi-bug display-3 text-success mb-3" aria-hidden="true"></i>
+                <p class="card-title h5 fw-bold">@Localizer["AnimalIntro"]</p>
                 <p class="card-text text-muted">@Localizer["AnimalIntroDesc"]</p>
                 <a asp-page="/Animals/Index" class="btn btn-outline-success">
-                    @Localizer["ViewAnimals"] <i class="bi bi-arrow-right ms-1"></i>
+                    @Localizer["ViewAnimals"] <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -46,11 +48,11 @@
     <div class="col-md-4">
         <div class="card h-100 border-0 shadow-sm text-center p-4">
             <div class="card-body">
-                <i class="bi bi-map display-3 text-info mb-3"></i>
-                <h5 class="card-title">@Localizer["ZoneMap"]</h5>
+                <i class="bi bi-map display-3 text-info mb-3" aria-hidden="true"></i>
+                <p class="card-title h5 fw-bold">@Localizer["ZoneMap"]</p>
                 <p class="card-text text-muted">@Localizer["ZoneMapDesc"]</p>
                 <a asp-page="/Map/Index" class="btn btn-outline-info">
-                    @Localizer["ViewMap"] <i class="bi bi-arrow-right ms-1"></i>
+                    @Localizer["ViewMap"] <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -58,16 +60,17 @@
     <div class="col-md-4">
         <div class="card h-100 border-0 shadow-sm text-center p-4">
             <div class="card-body">
-                <i class="bi bi-signpost-2 display-3 text-warning mb-3"></i>
-                <h5 class="card-title">@Localizer["TourRoutes"]</h5>
+                <i class="bi bi-signpost-2 display-3 text-warning mb-3" aria-hidden="true"></i>
+                <p class="card-title h5 fw-bold">@Localizer["TourRoutes"]</p>
                 <p class="card-text text-muted">@Localizer["TourRoutesDesc"]</p>
                 <a asp-page="/Routes/Index" class="btn btn-outline-warning">
-                    @Localizer["ViewRoutes"] <i class="bi bi-arrow-right ms-1"></i>
+                    @Localizer["ViewRoutes"] <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
     </div>
-</div>
+    </div>
+</section>
 
 <!-- 精選動物 -->
 @if (Model.FeaturedAnimals.Count > 0)
@@ -98,7 +101,7 @@
 <!-- 保育知識 -->
 <section class="bg-light rounded-4 p-5 mb-5">
     <h2 class="mb-4">
-        <i class="bi bi-shield-check text-success me-2"></i>@Localizer["ConservationKnowledge"]
+        <i class="bi bi-shield-check text-success me-2" aria-hidden="true"></i>@Localizer["ConservationKnowledge"]
     </h2>
     <div class="row g-4">
         <div class="col-md-4">
@@ -107,7 +110,7 @@
                     <span class="badge bg-danger rounded-pill p-3">CR</span>
                 </div>
                 <div class="ms-3">
-                    <h6 class="mb-1">@Localizer["CriticallyEndangered"]</h6>
+                    <p class="fw-bold mb-1">@Localizer["CriticallyEndangered"]</p>
                     <p class="text-muted small mb-0">@Localizer["CriticallyEndangeredDesc"]</p>
                 </div>
             </div>
@@ -118,7 +121,7 @@
                     <span class="badge bg-warning text-dark rounded-pill p-3">EN</span>
                 </div>
                 <div class="ms-3">
-                    <h6 class="mb-1">@Localizer["Endangered"]</h6>
+                    <p class="fw-bold mb-1">@Localizer["Endangered"]</p>
                     <p class="text-muted small mb-0">@Localizer["EndangeredDesc"]</p>
                 </div>
             </div>
@@ -129,7 +132,7 @@
                     <span class="badge bg-info rounded-pill p-3">VU</span>
                 </div>
                 <div class="ms-3">
-                    <h6 class="mb-1">@Localizer["Vulnerable"]</h6>
+                    <p class="fw-bold mb-1">@Localizer["Vulnerable"]</p>
                     <p class="text-muted small mb-0">@Localizer["VulnerableDesc"]</p>
                 </div>
             </div>
