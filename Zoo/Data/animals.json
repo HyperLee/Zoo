@@ -1,0 +1,152 @@
+{
+  "animals": [
+    {
+      "id": "lion-001",
+      "chineseName": "非洲獅",
+      "englishName": "African Lion",
+      "scientificName": "Panthera leo",
+      "zoneId": "africa-zone",
+      "classification": {
+        "biologicalClass": "Mammal",
+        "habitat": "Grassland",
+        "diet": "Carnivore",
+        "activityPattern": "Crepuscular"
+      },
+      "description": {
+        "size": "體長 1.4-2.5 公尺，體重 120-250 公斤",
+        "appearance": "雄獅擁有標誌性的鬃毛，毛色從金黃到棕色",
+        "behavior": "群居動物，由雌獅負責狩獵，雄獅負責保護領地",
+        "fullDescriptionZh": "非洲獅是現存最大的貓科動物之一，也是唯一群居的貓科動物。牠們生活在稱為「獅群」的社會結構中，通常由 1-2 隻雄獅、數隻雌獅和幼崽組成。雄獅的鬃毛是其最顯著的特徵，鬃毛越深色越濃密，代表該雄獅越健康強壯。獅子主要在黃昏和黎明時分活動，白天大部分時間都在休息，每天可睡眠長達 20 小時。",
+        "fullDescriptionEn": "The African lion is one of the largest cats and the only cat that lives in groups. They live in social structures called 'prides', typically consisting of 1-2 males, several females, and cubs. The male's mane is its most distinctive feature - darker and thicker manes indicate healthier, stronger males. Lions are primarily active at dusk and dawn, spending most of the day resting and can sleep up to 20 hours daily."
+      },
+      "funFacts": [
+        "獅子每天可睡眠長達 20 小時",
+        "獅吼可傳達 8 公里遠",
+        "雌獅是主要的狩獵者，成功率約 25%",
+        "獅子是唯一群居的貓科動物"
+      ],
+      "conservationStatus": "VU",
+      "media": {
+        "images": [
+          "/images/animals/lion-001-1.webp",
+          "/images/animals/lion-001-2.webp",
+          "/images/animals/lion-001-3.webp"
+        ],
+        "soundPath": "/audio/lion-roar.mp3",
+        "thumbnailPath": "/images/animals/lion-001-thumb.webp"
+      },
+      "relatedAnimalIds": ["elephant-001", "giraffe-001"]
+    },
+    {
+      "id": "elephant-001",
+      "chineseName": "非洲象",
+      "englishName": "African Elephant",
+      "scientificName": "Loxodonta africana",
+      "zoneId": "africa-zone",
+      "classification": {
+        "biologicalClass": "Mammal",
+        "habitat": "Grassland",
+        "diet": "Herbivore",
+        "activityPattern": "Diurnal"
+      },
+      "description": {
+        "size": "肩高 3-4 公尺，體重 4,000-7,000 公斤",
+        "appearance": "擁有巨大的耳朵和長長的象鼻，皮膚呈灰色且有皺摺",
+        "behavior": "由年長雌象領導的母系社會，群體成員間有緊密的情感連結",
+        "fullDescriptionZh": "非洲象是地球上現存最大的陸地動物。牠們擁有高度發達的智慧和情感能力，能夠表達悲傷、快樂和同理心。象鼻由超過 40,000 條肌肉組成，可以用來呼吸、喝水、抓取食物、交流和洗澡。非洲象的耳朵形狀類似非洲大陸的輪廓，比亞洲象的耳朵大得多，用於散熱調節體溫。",
+        "fullDescriptionEn": "The African elephant is the largest living land animal on Earth. They possess highly developed intelligence and emotional capabilities, able to express grief, joy, and empathy. Their trunk contains over 40,000 muscles and can be used for breathing, drinking, grabbing food, communication, and bathing. African elephants' ears are shaped like the African continent and are much larger than Asian elephants', helping to regulate body temperature."
+      },
+      "funFacts": [
+        "大象是唯一不能跳躍的哺乳動物",
+        "象群會哀悼死去的成員",
+        "大象每天需要喝 150-200 公升的水",
+        "象牙實際上是延長的門牙，終生持續生長"
+      ],
+      "conservationStatus": "EN",
+      "media": {
+        "images": [
+          "/images/animals/elephant-001-1.webp",
+          "/images/animals/elephant-001-2.webp",
+          "/images/animals/elephant-001-3.webp"
+        ],
+        "soundPath": "/audio/elephant-trumpet.mp3",
+        "thumbnailPath": "/images/animals/elephant-001-thumb.webp"
+      },
+      "relatedAnimalIds": ["lion-001", "giraffe-001"]
+    },
+    {
+      "id": "giraffe-001",
+      "chineseName": "長頸鹿",
+      "englishName": "Giraffe",
+      "scientificName": "Giraffa camelopardalis",
+      "zoneId": "africa-zone",
+      "classification": {
+        "biologicalClass": "Mammal",
+        "habitat": "Grassland",
+        "diet": "Herbivore",
+        "activityPattern": "Diurnal"
+      },
+      "description": {
+        "size": "身高 4.5-5.8 公尺，體重 800-1,200 公斤",
+        "appearance": "擁有獨特的長脖子和斑點花紋，每隻長頸鹿的斑紋都是獨一無二的",
+        "behavior": "性情溫和的群居動物，以樹葉為主食，特別喜歡金合歡樹",
+        "fullDescriptionZh": "長頸鹿是世界上最高的陸地動物，牠們的脖子雖然很長，但頸椎數量和人類相同，都是 7 節，只是每一節都特別長。長頸鹿的心臟重達 11 公斤，能夠將血液泵送到高處的大腦。每隻長頸鹿的斑點花紋都是獨一無二的，就像人類的指紋一樣。牠們每天只需睡眠 30 分鐘到 2 小時，而且通常是站著睡覺。",
+        "fullDescriptionEn": "The giraffe is the tallest living land animal. Despite their long necks, they have the same number of neck vertebrae as humans - just 7, but each one is extremely elongated. A giraffe's heart weighs about 11 kg and can pump blood up to their high brain. Each giraffe has unique spot patterns, like human fingerprints. They only need 30 minutes to 2 hours of sleep per day and usually sleep standing up."
+      },
+      "funFacts": [
+        "長頸鹿的舌頭長達 50 公分，呈深紫色以防曬傷",
+        "每隻長頸鹿的斑紋都是獨一無二的",
+        "長頸鹿每天只睡 30 分鐘到 2 小時",
+        "長頸鹿的心臟重達 11 公斤"
+      ],
+      "conservationStatus": "VU",
+      "media": {
+        "images": [
+          "/images/animals/giraffe-001-1.webp",
+          "/images/animals/giraffe-001-2.webp",
+          "/images/animals/giraffe-001-3.webp"
+        ],
+        "soundPath": "/audio/giraffe-hum.mp3",
+        "thumbnailPath": "/images/animals/giraffe-001-thumb.webp"
+      },
+      "relatedAnimalIds": ["lion-001", "elephant-001"]
+    },
+    {
+      "id": "penguin-001",
+      "chineseName": "國王企鵝",
+      "englishName": "King Penguin",
+      "scientificName": "Aptenodytes patagonicus",
+      "zoneId": "polar-zone",
+      "classification": {
+        "biologicalClass": "Bird",
+        "habitat": "Polar",
+        "diet": "Carnivore",
+        "activityPattern": "Diurnal"
+      },
+      "description": {
+        "size": "身高 85-95 公分，體重 9-16 公斤",
+        "appearance": "背部呈藍灰色，腹部白色，頭部兩側有鮮豔的橙黃色斑塊",
+        "behavior": "群居動物，成千上萬隻聚集在一起繁殖和撫養幼鳥",
+        "fullDescriptionZh": "國王企鵝是企鵝家族中體型第二大的成員，僅次於皇帝企鵝。牠們主要分布在南極洲周圍的亞南極島嶼。國王企鵝是優秀的游泳者，可以潛入 300 公尺深的海水中捕魚。牠們不築巢，而是將蛋放在腳背上，用腹部的育兒袋保溫。國王企鵝的繁殖週期長達 14-16 個月，是企鵝中最長的。",
+        "fullDescriptionEn": "The King Penguin is the second-largest penguin species, after the Emperor Penguin. They mainly inhabit sub-Antarctic islands around Antarctica. King Penguins are excellent swimmers, capable of diving up to 300 meters deep to catch fish. They don't build nests but incubate their eggs on their feet, keeping them warm with a brood pouch. Their breeding cycle of 14-16 months is the longest among all penguin species."
+      },
+      "funFacts": [
+        "國王企鵝可以潛入 300 公尺深的海水中",
+        "牠們的繁殖週期長達 14-16 個月",
+        "國王企鵝用腳背孵蛋，而不是築巢",
+        "牠們可以在水中閉氣長達 5 分鐘"
+      ],
+      "conservationStatus": "LC",
+      "media": {
+        "images": [
+          "/images/animals/penguin-001-1.webp",
+          "/images/animals/penguin-001-2.webp",
+          "/images/animals/penguin-001-3.webp"
+        ],
+        "soundPath": "/audio/penguin-call.mp3",
+        "thumbnailPath": "/images/animals/penguin-001-thumb.webp"
+      },
+      "relatedAnimalIds": []
+    }
+  ]
+}

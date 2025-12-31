@@ -1,0 +1,112 @@
+{
+  "facilities": [
+    {
+      "id": "restroom-001",
+      "nameZh": "非洲區洗手間",
+      "nameEn": "Africa Zone Restroom",
+      "type": "Restroom",
+      "zoneId": "africa-zone",
+      "position": {
+        "x": 180,
+        "y": 120
+      },
+      "iconName": "restroom"
+    },
+    {
+      "id": "restroom-002",
+      "nameZh": "極地區洗手間",
+      "nameEn": "Polar Zone Restroom",
+      "type": "Restroom",
+      "zoneId": "polar-zone",
+      "position": {
+        "x": 420,
+        "y": 80
+      },
+      "iconName": "restroom"
+    },
+    {
+      "id": "foodcourt-001",
+      "nameZh": "草原餐廳",
+      "nameEn": "Savanna Restaurant",
+      "type": "FoodCourt",
+      "zoneId": "africa-zone",
+      "position": {
+        "x": 230,
+        "y": 170
+      },
+      "iconName": "restaurant"
+    },
+    {
+      "id": "foodcourt-002",
+      "nameZh": "叢林小吃",
+      "nameEn": "Jungle Snacks",
+      "type": "FoodCourt",
+      "zoneId": "tropical-zone",
+      "position": {
+        "x": 370,
+        "y": 320
+      },
+      "iconName": "restaurant"
+    },
+    {
+      "id": "giftshop-001",
+      "nameZh": "動物園紀念品店",
+      "nameEn": "Zoo Gift Shop",
+      "type": "GiftShop",
+      "zoneId": "africa-zone",
+      "position": {
+        "x": 210,
+        "y": 140
+      },
+      "iconName": "shopping"
+    },
+    {
+      "id": "servicecenter-001",
+      "nameZh": "遊客服務中心",
+      "nameEn": "Visitor Service Center",
+      "type": "ServiceCenter",
+      "zoneId": "africa-zone",
+      "position": {
+        "x": 200,
+        "y": 100
+      },
+      "iconName": "info"
+    },
+    {
+      "id": "firstaid-001",
+      "nameZh": "急救站",
+      "nameEn": "First Aid Station",
+      "type": "FirstAid",
+      "zoneId": "africa-zone",
+      "position": {
+        "x": 190,
+        "y": 130
+      },
+      "iconName": "medical"
+    },
+    {
+      "id": "restarea-001",
+      "nameZh": "獅子觀景休息區",
+      "nameEn": "Lion View Rest Area",
+      "type": "RestArea",
+      "zoneId": "africa-zone",
+      "position": {
+        "x": 220,
+        "y": 160
+      },
+      "iconName": "bench"
+    },
+    {
+      "id": "restarea-002",
+      "nameZh": "企鵝館休息區",
+      "nameEn": "Penguin House Rest Area",
+      "type": "RestArea",
+      "zoneId": "polar-zone",
+      "position": {
+        "x": 410,
+        "y": 110
+      },
+      "iconName": "bench"
+    }
+  ]
+}

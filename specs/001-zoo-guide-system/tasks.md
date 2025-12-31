@@ -43,32 +43,32 @@
 
 ### 資料模型 (Models)
 
-- [ ] T006 [P] 建立列舉定義於 `Zoo/Models/Enums.cs`（BiologicalClass、Habitat、Diet、ActivityPattern、ConservationStatus、RouteType、FacilityType、QuizType）
-- [ ] T007 [P] 建立 Coordinate 記錄類型於 `Zoo/Models/Coordinate.cs`
-- [ ] T008 [P] 建立 Classification 類別於 `Zoo/Models/Classification.cs`
-- [ ] T009 [P] 建立 Description 類別於 `Zoo/Models/Description.cs`
-- [ ] T010 [P] 建立 MediaResources 類別於 `Zoo/Models/MediaResources.cs`
-- [ ] T011 建立 Animal 類別於 `Zoo/Models/Animal.cs`（依賴 T006-T010）
-- [ ] T012 [P] 建立 Zone 類別於 `Zoo/Models/Zone.cs`
-- [ ] T013 [P] 建立 Route 類別於 `Zoo/Models/Route.cs`
-- [ ] T014 [P] 建立 Facility 類別於 `Zoo/Models/Facility.cs`
-- [ ] T015 [P] 建立 Quiz 及 QuizOption 類別於 `Zoo/Models/Quiz.cs`
+- [X] T006 [P] 建立列舉定義於 `Zoo/Models/Enums.cs`（BiologicalClass、Habitat、Diet、ActivityPattern、ConservationStatus、RouteType、FacilityType、QuizType）
+- [X] T007 [P] 建立 Coordinate 記錄類型於 `Zoo/Models/Coordinate.cs`
+- [X] T008 [P] 建立 Classification 類別於 `Zoo/Models/Classification.cs`
+- [X] T009 [P] 建立 Description 類別於 `Zoo/Models/Description.cs`
+- [X] T010 [P] 建立 MediaResources 類別於 `Zoo/Models/MediaResources.cs`
+- [X] T011 建立 Animal 類別於 `Zoo/Models/Animal.cs`（依賴 T006-T010）
+- [X] T012 [P] 建立 Zone 類別於 `Zoo/Models/Zone.cs`
+- [X] T013 [P] 建立 Route 類別於 `Zoo/Models/Route.cs`
+- [X] T014 [P] 建立 Facility 類別於 `Zoo/Models/Facility.cs`
+- [X] T015 [P] 建立 Quiz 及 QuizOption 類別於 `Zoo/Models/Quiz.cs`
 
 ### JSON 資料服務
 
-- [ ] T016 建立泛型 JSON 資料服務介面 `Zoo/Services/IJsonDataService.cs`
-- [ ] T017 實作 JsonDataService 於 `Zoo/Services/JsonDataService.cs`（含 IMemoryCache 緩存）
-- [ ] T018 於 `Zoo/Program.cs` 註冊 JsonDataService 與 IMemoryCache 服務
+- [X] T016 建立泛型 JSON 資料服務介面 `Zoo/Services/IJsonDataService.cs`
+- [X] T017 實作 JsonDataService 於 `Zoo/Services/JsonDataService.cs`（含 IMemoryCache 緩存）
+- [X] T018 於 `Zoo/Program.cs` 註冊 JsonDataService 與 IMemoryCache 服務
 
 ### 初始 JSON 資料檔案
 
-- [ ] T019 [P] 建立範例動物資料於 `Zoo/Data/animals.json`（至少 3 隻動物）
-- [ ] T020 [P] 建立園區區域資料於 `Zoo/Data/zones.json`
-- [ ] T021 [P] 建立設施資料於 `Zoo/Data/facilities.json`
-- [ ] T022 [P] 建立導覽路線資料於 `Zoo/Data/routes.json`
-- [ ] T023 [P] 建立測驗題目資料於 `Zoo/Data/quizzes.json`
+- [X] T019 [P] 建立範例動物資料於 `Zoo/Data/animals.json`（至少 3 隻動物）
+- [X] T020 [P] 建立園區區域資料於 `Zoo/Data/zones.json`
+- [X] T021 [P] 建立設施資料於 `Zoo/Data/facilities.json`
+- [X] T022 [P] 建立導覽路線資料於 `Zoo/Data/routes.json`
+- [X] T023 [P] 建立測驗題目資料於 `Zoo/Data/quizzes.json`
 
-**Checkpoint**: 基礎設施完成 - User Story 實作可以開始
+**Checkpoint**: 基礎設施完成 - User Story 實作可以開始 ✅
 
 ---
 

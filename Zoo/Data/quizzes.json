@@ -1,0 +1,149 @@
+{
+  "quizzes": [
+    {
+      "id": "quiz-lion-001",
+      "animalId": "lion-001",
+      "type": "MultipleChoice",
+      "questionZh": "獅子每天可以睡多長時間？",
+      "questionEn": "How many hours can a lion sleep per day?",
+      "options": [
+        {
+          "textZh": "8 小時",
+          "textEn": "8 hours"
+        },
+        {
+          "textZh": "12 小時",
+          "textEn": "12 hours"
+        },
+        {
+          "textZh": "20 小時",
+          "textEn": "20 hours"
+        },
+        {
+          "textZh": "4 小時",
+          "textEn": "4 hours"
+        }
+      ],
+      "answer": 2,
+      "correctFeedbackZh": "答對了！獅子是著名的「懶惰」動物，每天可以睡眠長達 20 小時，只在黃昏和黎明時分活動狩獵。",
+      "correctFeedbackEn": "Correct! Lions are known for being 'lazy' - they can sleep up to 20 hours a day and are mainly active during dusk and dawn for hunting."
+    },
+    {
+      "id": "quiz-lion-002",
+      "animalId": "lion-001",
+      "type": "TrueFalse",
+      "questionZh": "雄獅是獅群中主要的狩獵者。",
+      "questionEn": "Male lions are the primary hunters in a pride.",
+      "options": null,
+      "answer": false,
+      "correctFeedbackZh": "答對了！實際上，雌獅才是主要的狩獵者。雄獅主要負責保護領地和獅群，而雌獅則合作狩獵，成功率約為 25%。",
+      "correctFeedbackEn": "Correct! Female lions are actually the primary hunters. Male lions mainly protect the territory and pride, while females hunt cooperatively with about a 25% success rate."
+    },
+    {
+      "id": "quiz-elephant-001",
+      "animalId": "elephant-001",
+      "type": "MultipleChoice",
+      "questionZh": "大象每天大約需要喝多少水？",
+      "questionEn": "How much water does an elephant need to drink per day?",
+      "options": [
+        {
+          "textZh": "20-30 公升",
+          "textEn": "20-30 liters"
+        },
+        {
+          "textZh": "50-80 公升",
+          "textEn": "50-80 liters"
+        },
+        {
+          "textZh": "150-200 公升",
+          "textEn": "150-200 liters"
+        },
+        {
+          "textZh": "300-400 公升",
+          "textEn": "300-400 liters"
+        }
+      ],
+      "answer": 2,
+      "correctFeedbackZh": "答對了！大象每天需要喝 150-200 公升的水。牠們的象鼻一次可以吸入約 8 公升的水，然後噴入口中飲用。",
+      "correctFeedbackEn": "Correct! Elephants need 150-200 liters of water daily. Their trunk can hold about 8 liters of water at once, which they then spray into their mouth."
+    },
+    {
+      "id": "quiz-elephant-002",
+      "animalId": "elephant-001",
+      "type": "TrueFalse",
+      "questionZh": "大象是唯一不能跳躍的哺乳動物。",
+      "questionEn": "Elephants are the only mammals that cannot jump.",
+      "options": null,
+      "answer": true,
+      "correctFeedbackZh": "答對了！大象確實是唯一無法跳躍的哺乳動物。這是因為牠們的腿部骨骼結構較為僵硬，主要用於支撐巨大的體重。",
+      "correctFeedbackEn": "Correct! Elephants are indeed the only mammals that cannot jump. Their leg bone structure is relatively rigid, primarily designed to support their massive weight."
+    },
+    {
+      "id": "quiz-giraffe-001",
+      "animalId": "giraffe-001",
+      "type": "MultipleChoice",
+      "questionZh": "長頸鹿的頸椎有幾節？",
+      "questionEn": "How many neck vertebrae does a giraffe have?",
+      "options": [
+        {
+          "textZh": "7 節",
+          "textEn": "7"
+        },
+        {
+          "textZh": "12 節",
+          "textEn": "12"
+        },
+        {
+          "textZh": "20 節",
+          "textEn": "20"
+        },
+        {
+          "textZh": "30 節",
+          "textEn": "30"
+        }
+      ],
+      "answer": 0,
+      "correctFeedbackZh": "答對了！雖然長頸鹿的脖子很長，但頸椎數量和人類一樣都是 7 節，只是每一節都特別長，可達 25 公分！",
+      "correctFeedbackEn": "Correct! Despite their long necks, giraffes have the same number of neck vertebrae as humans - just 7. However, each one is extremely long, up to 25 cm!"
+    },
+    {
+      "id": "quiz-penguin-001",
+      "animalId": "penguin-001",
+      "type": "MultipleChoice",
+      "questionZh": "國王企鵝最深可以潛到多深？",
+      "questionEn": "How deep can a King Penguin dive?",
+      "options": [
+        {
+          "textZh": "50 公尺",
+          "textEn": "50 meters"
+        },
+        {
+          "textZh": "100 公尺",
+          "textEn": "100 meters"
+        },
+        {
+          "textZh": "300 公尺",
+          "textEn": "300 meters"
+        },
+        {
+          "textZh": "500 公尺",
+          "textEn": "500 meters"
+        }
+      ],
+      "answer": 2,
+      "correctFeedbackZh": "答對了！國王企鵝是優秀的潛水員，可以潛入 300 公尺深的海水中捕魚，並且可以閉氣長達 5 分鐘！",
+      "correctFeedbackEn": "Correct! King Penguins are excellent divers, capable of diving up to 300 meters deep to catch fish and can hold their breath for up to 5 minutes!"
+    },
+    {
+      "id": "quiz-penguin-002",
+      "animalId": "penguin-001",
+      "type": "TrueFalse",
+      "questionZh": "國王企鵝會築巢來孵蛋。",
+      "questionEn": "King Penguins build nests to incubate their eggs.",
+      "options": null,
+      "answer": false,
+      "correctFeedbackZh": "答對了！國王企鵝不築巢，而是將蛋放在腳背上，用腹部的育兒袋保溫，這種獨特的方式讓牠們可以在寒冷的環境中保護蛋！",
+      "correctFeedbackEn": "Correct! King Penguins don't build nests. Instead, they incubate their eggs on their feet, keeping them warm with a brood pouch. This unique method protects the eggs in freezing conditions!"
+    }
+  ]
+}

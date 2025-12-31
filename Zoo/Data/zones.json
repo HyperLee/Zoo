@@ -1,0 +1,64 @@
+{
+  "zones": [
+    {
+      "id": "africa-zone",
+      "nameZh": "非洲草原區",
+      "nameEn": "African Savanna",
+      "description": "體驗非洲大草原的壯闘景象，觀賞獅子、大象、長頸鹿等經典非洲動物。",
+      "position": {
+        "x": 200,
+        "y": 150
+      },
+      "svgPathId": "africa-zone-path",
+      "color": "#F4A460"
+    },
+    {
+      "id": "polar-zone",
+      "nameZh": "極地冰原區",
+      "nameEn": "Polar Region",
+      "description": "探索南北極的冰雪世界，認識企鵝、北極熊等極地動物。",
+      "position": {
+        "x": 400,
+        "y": 100
+      },
+      "svgPathId": "polar-zone-path",
+      "color": "#87CEEB"
+    },
+    {
+      "id": "tropical-zone",
+      "nameZh": "熱帶雨林區",
+      "nameEn": "Tropical Rainforest",
+      "description": "走進茂密的熱帶雨林，發現色彩繽紛的鳥類和靈活的靈長類動物。",
+      "position": {
+        "x": 350,
+        "y": 300
+      },
+      "svgPathId": "tropical-zone-path",
+      "color": "#228B22"
+    },
+    {
+      "id": "asia-zone",
+      "nameZh": "亞洲叢林區",
+      "nameEn": "Asian Jungle",
+      "description": "探索亞洲叢林的奧秘，認識大熊貓、老虎等亞洲特有動物。",
+      "position": {
+        "x": 550,
+        "y": 200
+      },
+      "svgPathId": "asia-zone-path",
+      "color": "#32CD32"
+    },
+    {
+      "id": "aquatic-zone",
+      "nameZh": "水生世界區",
+      "nameEn": "Aquatic World",
+      "description": "潛入水生世界，觀賞海洋和淡水中的各種魚類和海洋哺乳動物。",
+      "position": {
+        "x": 150,
+        "y": 350
+      },
+      "svgPathId": "aquatic-zone-path",
+      "color": "#4169E1"
+    }
+  ]
+}

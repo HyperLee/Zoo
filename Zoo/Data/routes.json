@@ -1,0 +1,77 @@
+{
+  "routes": [
+    {
+      "id": "route-complete",
+      "nameZh": "完整導覽路線",
+      "nameEn": "Complete Tour",
+      "type": "Complete",
+      "description": "參觀動物園所有區域，完整體驗所有動物和設施，適合有充裕時間的遊客。",
+      "estimatedMinutes": 180,
+      "zoneIds": [
+        "africa-zone",
+        "polar-zone",
+        "tropical-zone",
+        "asia-zone",
+        "aquatic-zone"
+      ],
+      "animalIds": [
+        "lion-001",
+        "elephant-001",
+        "giraffe-001",
+        "penguin-001"
+      ]
+    },
+    {
+      "id": "route-highlights",
+      "nameZh": "精華導覽路線",
+      "nameEn": "Highlights Tour",
+      "type": "Highlights",
+      "description": "精選最受歡迎的動物明星，適合時間有限的遊客快速體驗精華。",
+      "estimatedMinutes": 60,
+      "zoneIds": [
+        "africa-zone",
+        "polar-zone"
+      ],
+      "animalIds": [
+        "lion-001",
+        "penguin-001"
+      ]
+    },
+    {
+      "id": "route-family",
+      "nameZh": "親子探索路線",
+      "nameEn": "Family Exploration",
+      "type": "FamilyFriendly",
+      "description": "專為親子家庭設計的路線，包含互動體驗和教育活動，孩子們的最愛！",
+      "estimatedMinutes": 90,
+      "zoneIds": [
+        "africa-zone",
+        "polar-zone",
+        "aquatic-zone"
+      ],
+      "animalIds": [
+        "elephant-001",
+        "giraffe-001",
+        "penguin-001"
+      ]
+    },
+    {
+      "id": "route-photography",
+      "nameZh": "攝影愛好者路線",
+      "nameEn": "Photography Tour",
+      "type": "Photography",
+      "description": "精選最佳拍攝點，適合攝影愛好者捕捉動物們的精彩瞬間。",
+      "estimatedMinutes": 120,
+      "zoneIds": [
+        "africa-zone",
+        "tropical-zone",
+        "polar-zone"
+      ],
+      "animalIds": [
+        "lion-001",
+        "giraffe-001",
+        "penguin-001"
+      ]
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 using Serilog;
+using Zoo.Services;
 
 // 設定 Serilog 結構化日誌記錄
 Log.Logger = new LoggerConfiguration()
@@ -27,6 +28,9 @@ try
 
     // 加入記憶體快取服務
     builder.Services.AddMemoryCache();
+
+    // 註冊 JSON 資料服務
+    builder.Services.AddSingleton<IJsonDataService, JsonDataService>();
 
     var app = builder.Build();
 
