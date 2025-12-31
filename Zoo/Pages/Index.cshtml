@@ -1,10 +1,139 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "首頁";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Hero Section -->
+<div class="bg-success bg-gradient text-white rounded-4 p-5 mb-5 shadow">
+    <div class="row align-items-center">
+        <div class="col-lg-8">
+            <h1 class="display-4 fw-bold mb-3">
+                <i class="bi bi-tree-fill me-3"></i>歡迎來到動物園導覽系統
+            </h1>
+            <p class="lead mb-4">
+                探索動物的奇妙世界，認識各種動物的生態、習性與保育知識。
+                透過互動地圖、導覽路線和知識測驗，開啟一段有趣的學習之旅！
+            </p>
+            <div class="d-flex gap-3 flex-wrap">
+                <a asp-page="/Animals/Index" class="btn btn-light btn-lg">
+                    <i class="bi bi-bug me-2"></i>探索動物
+                </a>
+                <a asp-page="/Map/Index" class="btn btn-outline-light btn-lg">
+                    <i class="bi bi-map me-2"></i>園區地圖
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-4 text-center d-none d-lg-block">
+            <i class="bi bi-globe-americas display-1"></i>
+        </div>
+    </div>
 </div>
+
+<!-- 快速導航 -->
+<div class="row g-4 mb-5">
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-4">
+            <div class="card-body">
+                <i class="bi bi-bug display-3 text-success mb-3"></i>
+                <h5 class="card-title">動物介紹</h5>
+                <p class="card-text text-muted">認識動物園裡各種可愛的動物們，了解牠們的特徵與習性</p>
+                <a asp-page="/Animals/Index" class="btn btn-outline-success">
+                    查看動物 <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-4">
+            <div class="card-body">
+                <i class="bi bi-map display-3 text-info mb-3"></i>
+                <h5 class="card-title">園區地圖</h5>
+                <p class="card-text text-muted">透過互動地圖了解動物園的整體配置，輕鬆規劃您的參觀路線</p>
+                <a asp-page="/Map/Index" class="btn btn-outline-info">
+                    查看地圖 <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-4">
+            <div class="card-body">
+                <i class="bi bi-signpost-2 display-3 text-warning mb-3"></i>
+                <h5 class="card-title">導覽路線</h5>
+                <p class="card-text text-muted">選擇預設路線或自訂您的參觀行程，不錯過任何精彩景點</p>
+                <a asp-page="/Routes/Index" class="btn btn-outline-warning">
+                    查看路線 <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 精選動物 -->
+@if (Model.FeaturedAnimals.Count > 0)
+{
+    <section class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="mb-0">
+                    <i class="bi bi-star-fill text-warning me-2"></i>精選動物
+                </h2>
+                <p class="text-muted mb-0">探索我們最受歡迎的動物明星</p>
+            </div>
+            <a asp-page="/Animals/Index" class="btn btn-outline-success">
+                查看全部 <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+        </div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+            @foreach (var animal in Model.FeaturedAnimals)
+            {
+                <div class="col">
+                    <partial name="_AnimalCard" model="animal" />
+                </div>
+            }
+        </div>
+    </section>
+}
+
+<!-- 保育知識 -->
+<section class="bg-light rounded-4 p-5 mb-5">
+    <h2 class="mb-4">
+        <i class="bi bi-shield-check text-success me-2"></i>保育知識
+    </h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="d-flex">
+                <div class="flex-shrink-0">
+                    <span class="badge bg-danger rounded-pill p-3">CR</span>
+                </div>
+                <div class="ms-3">
+                    <h6 class="mb-1">極危 (Critically Endangered)</h6>
+                    <p class="text-muted small mb-0">物種在野外面臨極高的滅絕風險</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="d-flex">
+                <div class="flex-shrink-0">
+                    <span class="badge bg-warning text-dark rounded-pill p-3">EN</span>
+                </div>
+                <div class="ms-3">
+                    <h6 class="mb-1">瀕危 (Endangered)</h6>
+                    <p class="text-muted small mb-0">物種在野外面臨很高的滅絕風險</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="d-flex">
+                <div class="flex-shrink-0">
+                    <span class="badge bg-info rounded-pill p-3">VU</span>
+                </div>
+                <div class="ms-3">
+                    <h6 class="mb-1">易危 (Vulnerable)</h6>
+                    <p class="text-muted small mb-0">物種在野外面臨高滅絕風險</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

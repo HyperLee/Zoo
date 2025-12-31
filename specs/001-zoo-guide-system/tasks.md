@@ -80,31 +80,31 @@
 
 ### 服務層
 
-- [ ] T024 建立 IAnimalService 介面於 `Zoo/Services/IAnimalService.cs`
-- [ ] T025 實作 AnimalService 於 `Zoo/Services/AnimalService.cs`（GetAllAsync、GetByIdAsync、GetRelatedAsync）
-- [ ] T026 於 `Zoo/Program.cs` 註冊 AnimalService 服務
+- [X] T024 建立 IAnimalService 介面於 `Zoo/Services/IAnimalService.cs`
+- [X] T025 實作 AnimalService 於 `Zoo/Services/AnimalService.cs`（GetAllAsync、GetByIdAsync、GetRelatedAsync）
+- [X] T026 於 `Zoo/Program.cs` 註冊 AnimalService 服務
 
 ### 頁面實作
 
-- [ ] T027 [P] [US1] 建立動物卡片部分檢視於 `Zoo/Pages/Shared/_AnimalCard.cshtml`
-- [ ] T028 [US1] 建立動物清單頁面 `Zoo/Pages/Animals/Index.cshtml` 與 `Zoo/Pages/Animals/Index.cshtml.cs`
-- [ ] T029 [US1] 建立動物詳情頁面 `Zoo/Pages/Animals/Details.cshtml` 與 `Zoo/Pages/Animals/Details.cshtml.cs`
-- [ ] T030 [P] [US1] 更新首頁 `Zoo/Pages/Index.cshtml` 顯示精選動物卡片
-- [ ] T031 [US1] 實作動物詳情頁底部的「相關動物推薦」區塊於 `Zoo/Pages/Animals/Details.cshtml`
+- [X] T027 [P] [US1] 建立動物卡片部分檢視於 `Zoo/Pages/Shared/_AnimalCard.cshtml`
+- [X] T028 [US1] 建立動物清單頁面 `Zoo/Pages/Animals/Index.cshtml` 與 `Zoo/Pages/Animals/Index.cshtml.cs`
+- [X] T029 [US1] 建立動物詳情頁面 `Zoo/Pages/Animals/Details.cshtml` 與 `Zoo/Pages/Animals/Details.cshtml.cs`
+- [X] T030 [P] [US1] 更新首頁 `Zoo/Pages/Index.cshtml` 顯示精選動物卡片
+- [X] T031 [US1] 實作動物詳情頁底部的「相關動物推薦」區塊於 `Zoo/Pages/Animals/Details.cshtml`
 
 ### 靜態資源
 
-- [ ] T032 [P] [US1] 建立動物圖片目錄結構 `Zoo/wwwroot/images/animals/`
-- [ ] T033 [P] [US1] 建立音效目錄結構 `Zoo/wwwroot/audio/`
-- [ ] T034 [P] [US1] 更新網站樣式 `Zoo/wwwroot/css/site.css` 加入動物卡片樣式
+- [X] T032 [P] [US1] 建立動物圖片目錄結構 `Zoo/wwwroot/images/animals/`
+- [X] T033 [P] [US1] 建立音效目錄結構 `Zoo/wwwroot/audio/`
+- [X] T034 [P] [US1] 更新網站樣式 `Zoo/wwwroot/css/site.css` 加入動物卡片樣式
 
 ### 測試 (US1)
 
-- [ ] T034a [US1] 建立 AnimalService 單元測試於 `Zoo.Tests/Unit/Services/AnimalServiceTests.cs`
-- [ ] T034b [US1] 建立動物清單頁面整合測試於 `Zoo.Tests/Integration/Pages/AnimalsIndexTests.cs`
-- [ ] T034c [US1] 建立動物詳情頁面整合測試於 `Zoo.Tests/Integration/Pages/AnimalsDetailsTests.cs`
+- [X] T034a [US1] 建立 AnimalService 單元測試於 `Zoo.Tests/Unit/Services/AnimalServiceTests.cs`
+- [X] T034b [US1] 建立動物清單頁面整合測試於 `Zoo.Tests/Integration/Pages/AnimalsIndexTests.cs`
+- [X] T034c [US1] 建立動物詳情頁面整合測試於 `Zoo.Tests/Integration/Pages/AnimalsDetailsTests.cs`
 
-**Checkpoint**: User Story 1 完成 - 可獨立瀏覽動物資訊（含測試通過）
+**Checkpoint**: User Story 1 完成 - 可獨立瀏覽動物資訊（含測試通過） ✅
 
 ---
 

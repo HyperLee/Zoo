@@ -32,6 +32,9 @@ try
     // 註冊 JSON 資料服務
     builder.Services.AddSingleton<IJsonDataService, JsonDataService>();
 
+    // 註冊動物服務
+    builder.Services.AddScoped<IAnimalService, AnimalService>();
+
     var app = builder.Build();
 
 // Configure the HTTP request pipeline.

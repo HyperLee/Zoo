@@ -1,0 +1,277 @@
+@page "{id}"
+@model Zoo.Pages.Animals.DetailsModel
+@{
+    ViewData["Title"] = Model.Animal?.ChineseName ?? "動物詳情";
+
+    var animal = Model.Animal!;
+
+    var conservationBadgeClass = animal.ConservationStatus switch
+    {
+        Zoo.Models.ConservationStatus.CR => "bg-danger",
+        Zoo.Models.ConservationStatus.EN => "bg-warning text-dark",
+        Zoo.Models.ConservationStatus.VU => "bg-info",
+        Zoo.Models.ConservationStatus.NT => "bg-secondary",
+        Zoo.Models.ConservationStatus.LC => "bg-success",
+        _ => "bg-light text-dark"
+    };
+
+    var conservationText = animal.ConservationStatus switch
+    {
+        Zoo.Models.ConservationStatus.CR => "極危 (Critically Endangered)",
+        Zoo.Models.ConservationStatus.EN => "瀕危 (Endangered)",
+        Zoo.Models.ConservationStatus.VU => "易危 (Vulnerable)",
+        Zoo.Models.ConservationStatus.NT => "近危 (Near Threatened)",
+        Zoo.Models.ConservationStatus.LC => "無危 (Least Concern)",
+        Zoo.Models.ConservationStatus.EW => "野外滅絕 (Extinct in the Wild)",
+        Zoo.Models.ConservationStatus.EX => "滅絕 (Extinct)",
+        _ => "未知"
+    };
+
+    string GetBiologicalClassText(Zoo.Models.BiologicalClass bc) => bc switch
+    {
+        Zoo.Models.BiologicalClass.Mammal => "哺乳類",
+        Zoo.Models.BiologicalClass.Bird => "鳥類",
+        Zoo.Models.BiologicalClass.Reptile => "爬蟲類",
+        Zoo.Models.BiologicalClass.Amphibian => "兩棲類",
+        Zoo.Models.BiologicalClass.Fish => "魚類",
+        Zoo.Models.BiologicalClass.Invertebrate => "無脊椎動物",
+        _ => "未知"
+    };
+
+    string GetHabitatText(Zoo.Models.Habitat h) => h switch
+    {
+        Zoo.Models.Habitat.TropicalRainforest => "熱帶雨林",
+        Zoo.Models.Habitat.Desert => "沙漠",
+        Zoo.Models.Habitat.Grassland => "草原",
+        Zoo.Models.Habitat.Polar => "極地",
+        Zoo.Models.Habitat.Ocean => "海洋",
+        Zoo.Models.Habitat.Freshwater => "淡水",
+        Zoo.Models.Habitat.Mountain => "山區",
+        _ => "未知"
+    };
+
+    string GetDietText(Zoo.Models.Diet d) => d switch
+    {
+        Zoo.Models.Diet.Carnivore => "肉食性",
+        Zoo.Models.Diet.Herbivore => "草食性",
+        Zoo.Models.Diet.Omnivore => "雜食性",
+        _ => "未知"
+    };
+
+    string GetActivityPatternText(Zoo.Models.ActivityPattern ap) => ap switch
+    {
+        Zoo.Models.ActivityPattern.Diurnal => "日行性",
+        Zoo.Models.ActivityPattern.Nocturnal => "夜行性",
+        Zoo.Models.ActivityPattern.Crepuscular => "晨昏性",
+        _ => "未知"
+    };
+}
+
+<div class="container-fluid px-4">
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-page="/Index">首頁</a></li>
+            <li class="breadcrumb-item"><a asp-page="/Animals/Index">動物介紹</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@animal.ChineseName</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <!-- 左側：動物圖片 -->
+        <div class="col-lg-5 mb-4">
+            <div class="card shadow">
+                <div class="position-relative">
+                    @if (animal.Media.Images.Count > 0)
+                    {
+                        <img src="@animal.Media.Images[0]" 
+                             class="card-img-top animal-detail-image" 
+                             alt="@animal.ChineseName 的照片"
+                             id="mainImage"
+                             onerror="this.src='/images/placeholder-animal.webp'">
+                    }
+                    else
+                    {
+                        <img src="@animal.Media.ThumbnailPath" 
+                             class="card-img-top animal-detail-image" 
+                             alt="@animal.ChineseName 的照片"
+                             onerror="this.src='/images/placeholder-animal.webp'">
+                    }
+                    <span class="badge @conservationBadgeClass position-absolute top-0 end-0 m-3 fs-6">
+                        @conservationText
+                    </span>
+                </div>
+                @if (animal.Media.Images.Count > 1)
+                {
+                    <div class="card-body">
+                        <div class="row g-2">
+                            @for (int i = 0; i < animal.Media.Images.Count && i < 4; i++)
+                            {
+                                var imgIndex = i;
+                                <div class="col-3">
+                                    <img src="@animal.Media.Images[imgIndex]" 
+                                         class="img-thumbnail thumbnail-selector @(i == 0 ? "active" : "")" 
+                                         alt="@animal.ChineseName 的照片 @(imgIndex + 1)"
+                                         onclick="changeMainImage('@animal.Media.Images[imgIndex]', this)"
+                                         style="cursor: pointer; height: 60px; object-fit: cover;"
+                                         onerror="this.src='/images/placeholder-animal.webp'">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(animal.Media.SoundPath))
+                {
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-outline-success w-100" onclick="playAnimalSound('@animal.Media.SoundPath')">
+                            <i class="bi bi-volume-up me-2"></i>聆聽 @animal.ChineseName 的叫聲
+                        </button>
+                        <audio id="animalSound" src="@animal.Media.SoundPath" preload="none"></audio>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- 右側：動物資訊 -->
+        <div class="col-lg-7">
+            <div class="mb-4">
+                <h1 class="display-5 mb-1">@animal.ChineseName</h1>
+                <p class="text-muted fs-5 mb-1">@animal.EnglishName</p>
+                <p class="text-muted fst-italic">@animal.ScientificName</p>
+            </div>
+
+            <!-- 分類資訊 -->
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <i class="bi bi-diagram-3 me-2"></i>分類資訊
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-tag fs-4 text-success me-3"></i>
+                                <div>
+                                    <small class="text-muted">生物分類</small>
+                                    <div class="fw-bold">@GetBiologicalClassText(animal.Classification.BiologicalClass)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-geo-alt fs-4 text-success me-3"></i>
+                                <div>
+                                    <small class="text-muted">棲息地</small>
+                                    <div class="fw-bold">@GetHabitatText(animal.Classification.Habitat)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-egg-fried fs-4 text-success me-3"></i>
+                                <div>
+                                    <small class="text-muted">飲食習性</small>
+                                    <div class="fw-bold">@GetDietText(animal.Classification.Diet)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-clock fs-4 text-success me-3"></i>
+                                <div>
+                                    <small class="text-muted">活動時間</small>
+                                    <div class="fw-bold">@GetActivityPatternText(animal.Classification.ActivityPattern)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 特徵描述 -->
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <i class="bi bi-body-text me-2"></i>特徵描述
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <h6 class="text-muted"><i class="bi bi-rulers me-2"></i>體型</h6>
+                        <p>@animal.Description.Size</p>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="text-muted"><i class="bi bi-eye me-2"></i>外觀</h6>
+                        <p>@animal.Description.Appearance</p>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="text-muted"><i class="bi bi-activity me-2"></i>習性</h6>
+                        <p>@animal.Description.Behavior</p>
+                    </div>
+                    <div>
+                        <h6 class="text-muted"><i class="bi bi-book me-2"></i>完整介紹</h6>
+                        <p>@animal.Description.FullDescriptionZh</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 趣味事實 -->
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-warning text-dark">
+                    <i class="bi bi-lightbulb me-2"></i>趣味事實
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        @foreach (var fact in animal.FunFacts)
+                        {
+                            <li class="list-group-item d-flex align-items-start">
+                                <i class="bi bi-star-fill text-warning me-3 mt-1"></i>
+                                <span>@fact</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 相關動物推薦 -->
+    @if (Model.RelatedAnimals.Count > 0)
+    {
+        <div class="mt-5">
+            <h3 class="mb-4">
+                <i class="bi bi-people text-success me-2"></i>你可能也會喜歡
+            </h3>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                @foreach (var relatedAnimal in Model.RelatedAnimals)
+                {
+                    <div class="col">
+                        <partial name="_AnimalCard" model="relatedAnimal" />
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+    <div class="mt-4 mb-5">
+        <a asp-page="/Animals/Index" class="btn btn-outline-success">
+            <i class="bi bi-arrow-left me-2"></i>返回動物清單
+        </a>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function changeMainImage(src, thumbnail) {
+            document.getElementById('mainImage').src = src;
+            document.querySelectorAll('.thumbnail-selector').forEach(t => t.classList.remove('active'));
+            thumbnail.classList.add('active');
+        }
+
+        function playAnimalSound(soundPath) {
+            const audio = document.getElementById('animalSound');
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        }
+    </script>
+}

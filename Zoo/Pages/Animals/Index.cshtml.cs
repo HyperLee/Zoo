@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Zoo.Models;
 using Zoo.Services;
 
-namespace Zoo.Pages;
+namespace Zoo.Pages.Animals;
 
 /// <summary>
-/// 首頁模型
+/// 動物清單頁面模型
 /// </summary>
 public class IndexModel : PageModel
 {
@@ -13,12 +13,12 @@ public class IndexModel : PageModel
     private readonly ILogger<IndexModel> _logger;
 
     /// <summary>
-    /// 精選動物清單
+    /// 動物清單
     /// </summary>
-    public IReadOnlyList<Animal> FeaturedAnimals { get; private set; } = [];
+    public IReadOnlyList<Animal> Animals { get; private set; } = [];
 
     /// <summary>
-    /// 初始化首頁模型
+    /// 初始化動物清單頁面模型
     /// </summary>
     /// <param name="animalService">動物服務</param>
     /// <param name="logger">日誌記錄器</param>
@@ -29,15 +29,15 @@ public class IndexModel : PageModel
     }
 
     /// <summary>
-    /// 處理 GET 請求，載入精選動物
+    /// 處理 GET 請求，載入動物清單
     /// </summary>
     /// <param name="cancellationToken">取消權杖</param>
     public async Task OnGetAsync(CancellationToken cancellationToken)
     {
-        _logger.LogInformation("載入首頁");
+        _logger.LogInformation("載入動物清單頁面");
 
-        FeaturedAnimals = await _animalService.GetFeaturedAsync(4, cancellationToken);
+        Animals = await _animalService.GetAllAsync(cancellationToken);
 
-        _logger.LogInformation("成功載入 {Count} 隻精選動物", FeaturedAnimals.Count);
+        _logger.LogInformation("成功載入 {Count} 隻動物", Animals.Count);
     }
 }

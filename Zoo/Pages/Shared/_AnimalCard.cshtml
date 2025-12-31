@@ -1,0 +1,105 @@
+@model Zoo.Models.Animal
+
+@{
+    var conservationBadgeClass = Model.ConservationStatus switch
+    {
+        Zoo.Models.ConservationStatus.CR => "bg-danger",
+        Zoo.Models.ConservationStatus.EN => "bg-warning text-dark",
+        Zoo.Models.ConservationStatus.VU => "bg-info",
+        Zoo.Models.ConservationStatus.NT => "bg-secondary",
+        Zoo.Models.ConservationStatus.LC => "bg-success",
+        _ => "bg-light text-dark"
+    };
+
+    var conservationText = Model.ConservationStatus switch
+    {
+        Zoo.Models.ConservationStatus.CR => "極危",
+        Zoo.Models.ConservationStatus.EN => "瀕危",
+        Zoo.Models.ConservationStatus.VU => "易危",
+        Zoo.Models.ConservationStatus.NT => "近危",
+        Zoo.Models.ConservationStatus.LC => "無危",
+        Zoo.Models.ConservationStatus.EW => "野外滅絕",
+        Zoo.Models.ConservationStatus.EX => "滅絕",
+        _ => "未知"
+    };
+
+    var habitatIcon = Model.Classification.Habitat switch
+    {
+        Zoo.Models.Habitat.TropicalRainforest => "bi-tree-fill",
+        Zoo.Models.Habitat.Desert => "bi-sun-fill",
+        Zoo.Models.Habitat.Grassland => "bi-flower1",
+        Zoo.Models.Habitat.Polar => "bi-snow",
+        Zoo.Models.Habitat.Ocean => "bi-water",
+        Zoo.Models.Habitat.Freshwater => "bi-droplet-fill",
+        Zoo.Models.Habitat.Mountain => "bi-triangle-fill",
+        _ => "bi-geo-alt-fill"
+    };
+
+    var dietIcon = Model.Classification.Diet switch
+    {
+        Zoo.Models.Diet.Carnivore => "bi-egg-fried",
+        Zoo.Models.Diet.Herbivore => "bi-tree",
+        Zoo.Models.Diet.Omnivore => "bi-cup-straw",
+        _ => "bi-question-circle"
+    };
+
+    var dietText = Model.Classification.Diet switch
+    {
+        Zoo.Models.Diet.Carnivore => "肉食性",
+        Zoo.Models.Diet.Herbivore => "草食性",
+        Zoo.Models.Diet.Omnivore => "雜食性",
+        _ => "未知"
+    };
+}
+
+<div class="card animal-card h-100 shadow-sm">
+    <div class="position-relative">
+        <img src="@Model.Media.ThumbnailPath" 
+             class="card-img-top animal-thumbnail" 
+             alt="@Model.ChineseName 的照片"
+             onerror="this.src='/images/placeholder-animal.webp'">
+        <span class="badge @conservationBadgeClass position-absolute top-0 end-0 m-2">
+            @conservationText
+        </span>
+    </div>
+    <div class="card-body d-flex flex-column">
+        <h5 class="card-title">
+            <a asp-page="/Animals/Details" asp-route-id="@Model.Id" class="text-decoration-none text-dark stretched-link">
+                @Model.ChineseName
+            </a>
+        </h5>
+        <p class="card-text text-muted small mb-2">
+            <em>@Model.EnglishName</em>
+        </p>
+        <p class="card-text small text-truncate mb-2" title="@Model.Description.Appearance">
+            @Model.Description.Appearance
+        </p>
+        <div class="mt-auto">
+            <div class="d-flex gap-2 flex-wrap">
+                <span class="badge bg-light text-dark" title="棲息地">
+                    <i class="bi @habitatIcon me-1"></i>@GetHabitatText(Model.Classification.Habitat)
+                </span>
+                <span class="badge bg-light text-dark" title="飲食習性">
+                    <i class="bi @dietIcon me-1"></i>@dietText
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    private static string GetHabitatText(Zoo.Models.Habitat habitat)
+    {
+        return habitat switch
+        {
+            Zoo.Models.Habitat.TropicalRainforest => "熱帶雨林",
+            Zoo.Models.Habitat.Desert => "沙漠",
+            Zoo.Models.Habitat.Grassland => "草原",
+            Zoo.Models.Habitat.Polar => "極地",
+            Zoo.Models.Habitat.Ocean => "海洋",
+            Zoo.Models.Habitat.Freshwater => "淡水",
+            Zoo.Models.Habitat.Mountain => "山區",
+            _ => "未知"
+        };
+    }
+}
