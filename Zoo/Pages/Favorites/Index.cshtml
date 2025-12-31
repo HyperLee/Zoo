@@ -1,0 +1,397 @@
+@page
+@model Zoo.Pages.Favorites.IndexModel
+@{
+    ViewData["Title"] = "我的收藏";
+}
+
+<div class="container-fluid px-4">
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-page="/Index">首頁</a></li>
+            <li class="breadcrumb-item active" aria-current="page">我的收藏</li>
+        </ol>
+    </nav>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="display-6">
+                <i class="bi bi-heart-fill text-danger me-2"></i>我的收藏
+            </h1>
+            <p class="text-muted mb-0">
+                <span id="favoriteCount">0</span> 個收藏的動物
+            </p>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-outline-success" id="exportBtn" disabled>
+                <i class="bi bi-download me-2"></i>匯出收藏
+            </button>
+            <button type="button" class="btn btn-outline-danger" id="clearAllBtn" disabled>
+                <i class="bi bi-trash me-2"></i>清除全部
+            </button>
+        </div>
+    </div>
+
+    <!-- 收藏為空時顯示 -->
+    <div id="emptyState" class="text-center py-5" style="display: none;">
+        <div class="mb-4">
+            <i class="bi bi-heart text-muted" style="font-size: 5rem;"></i>
+        </div>
+        <h3 class="text-muted mb-3">尚未收藏任何動物</h3>
+        <p class="text-muted mb-4">
+            瀏覽動物介紹頁面，點擊 <i class="bi bi-heart"></i> 按鈕將喜愛的動物加入收藏
+        </p>
+        <a asp-page="/Animals/Index" class="btn btn-success btn-lg">
+            <i class="bi bi-bug me-2"></i>探索動物
+        </a>
+    </div>
+
+    <!-- 收藏清單 -->
+    <div id="favoritesList" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        <!-- 動態載入的收藏動物卡片 -->
+    </div>
+
+    <!-- 載入中狀態 -->
+    <div id="loadingState" class="text-center py-5">
+        <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">載入中...</span>
+        </div>
+        <p class="text-muted mt-3">載入收藏清單中...</p>
+    </div>
+
+    <!-- 瀏覽記錄區塊 -->
+    <div class="mt-5">
+        <h2 class="h4 mb-4">
+            <i class="bi bi-clock-history text-success me-2"></i>最近瀏覽
+        </h2>
+        <div id="recentlyViewedEmpty" class="text-center py-4 bg-light rounded" style="display: none;">
+            <p class="text-muted mb-0">尚無瀏覽記錄</p>
+        </div>
+        <div id="recentlyViewedList" class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-3">
+            <!-- 動態載入的最近瀏覽動物 -->
+        </div>
+    </div>
+
+    <!-- 瀏覽統計 -->
+    <div class="mt-5 mb-4">
+        <div class="card bg-light">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="bi bi-bar-chart text-success me-2"></i>瀏覽統計
+                </h5>
+                <div class="row text-center">
+                    <div class="col-4">
+                        <div class="fs-3 fw-bold text-success" id="statUniqueAnimals">0</div>
+                        <div class="small text-muted">已瀏覽動物</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="fs-3 fw-bold text-primary" id="statTotalViews">0</div>
+                        <div class="small text-muted">總瀏覽次數</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="fs-3 fw-bold text-danger" id="statFavorites">0</div>
+                        <div class="small text-muted">收藏數量</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 清除確認對話框 -->
+<div class="modal fade" id="clearConfirmModal" tabindex="-1" aria-labelledby="clearConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="clearConfirmModalLabel">確認清除收藏</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="關閉"></button>
+            </div>
+            <div class="modal-body">
+                <p>確定要清除所有收藏的動物嗎？此操作無法復原。</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger" id="confirmClearBtn">確定清除</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/favorites.js" asp-append-version="true"></script>
+    <script src="~/js/history.js" asp-append-version="true"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            await loadFavorites();
+            loadRecentlyViewed();
+            updateStats();
+            initEventListeners();
+        });
+
+        // 載入收藏清單
+        async function loadFavorites() {
+            const loadingState = document.getElementById('loadingState');
+            const emptyState = document.getElementById('emptyState');
+            const favoritesList = document.getElementById('favoritesList');
+            const exportBtn = document.getElementById('exportBtn');
+            const clearAllBtn = document.getElementById('clearAllBtn');
+
+            const favoriteIds = FavoritesManager.getAll();
+            const count = favoriteIds.length;
+
+            document.getElementById('favoriteCount').textContent = count;
+
+            if (count === 0) {
+                loadingState.style.display = 'none';
+                emptyState.style.display = 'block';
+                favoritesList.style.display = 'none';
+                exportBtn.disabled = true;
+                clearAllBtn.disabled = true;
+                return;
+            }
+
+            // 啟用按鈕
+            exportBtn.disabled = false;
+            clearAllBtn.disabled = false;
+
+            // 從 API 取得動物詳細資料
+            try {
+                const response = await fetch('/api/animals');
+                if (!response.ok) {
+                    throw new Error('無法取得動物資料');
+                }
+                const allAnimals = await response.json();
+
+                // 篩選收藏的動物
+                const favoriteAnimals = allAnimals.filter(a => favoriteIds.includes(a.id));
+
+                // 產生卡片
+                favoritesList.innerHTML = '';
+                for (const animal of favoriteAnimals) {
+                    const card = createAnimalCard(animal);
+                    favoritesList.appendChild(card);
+                }
+
+                // 更新收藏按鈕狀態
+                FavoritesManager.updateAllButtons();
+
+                loadingState.style.display = 'none';
+                emptyState.style.display = 'none';
+                favoritesList.style.display = 'flex';
+
+            } catch (error) {
+                console.error('載入收藏時發生錯誤:', error);
+                loadingState.innerHTML = `
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        無法載入收藏資料，請稍後再試
+                    </div>
+                `;
+            }
+        }
+
+        // 建立動物卡片
+        function createAnimalCard(animal) {
+            const col = document.createElement('div');
+            col.className = 'col';
+
+            const conservationClass = getConservationClass(animal.conservationStatus);
+            const conservationText = getConservationText(animal.conservationStatus);
+            const habitatText = getHabitatText(animal.classification.habitat);
+            const dietText = getDietText(animal.classification.diet);
+
+            col.innerHTML = `
+                <div class="card animal-card h-100 shadow-sm" data-animal-card data-animal-id="${animal.id}">
+                    <div class="position-relative">
+                        <img src="${animal.media.thumbnailPath}" 
+                             class="card-img-top animal-thumbnail" 
+                             alt="${animal.chineseName} 的照片"
+                             onerror="this.src='/images/placeholder-animal.webp'">
+                        <span class="badge ${conservationClass} position-absolute top-0 end-0 m-2">
+                            ${conservationText}
+                        </span>
+                        <button type="button" 
+                                class="btn btn-sm btn-danger position-absolute favorite-btn-card"
+                                data-favorite-btn
+                                data-animal-id="${animal.id}"
+                                data-animal-name="${animal.chineseName}"
+                                data-animal-name-en="${animal.englishName}"
+                                data-animal-thumbnail="${animal.media.thumbnailPath}"
+                                aria-label="取消收藏 ${animal.chineseName}"
+                                title="從收藏移除"
+                                style="bottom: 10px; right: 10px; z-index: 10;">
+                            <i class="bi bi-heart-fill"></i>
+                        </button>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">
+                            <a href="/Animals/Details/${animal.id}" class="text-decoration-none text-dark stretched-link">
+                                ${animal.chineseName}
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted small mb-2">
+                            <em>${animal.englishName}</em>
+                        </p>
+                        <p class="card-text small text-truncate mb-2" title="${animal.description.appearance}">
+                            ${animal.description.appearance}
+                        </p>
+                        <div class="mt-auto">
+                            <div class="d-flex gap-2 flex-wrap">
+                                <span class="badge bg-light text-dark" title="棲息地">
+                                    <i class="bi bi-geo-alt-fill me-1"></i>${habitatText}
+                                </span>
+                                <span class="badge bg-light text-dark" title="飲食習性">
+                                    <i class="bi bi-egg-fried me-1"></i>${dietText}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            return col;
+        }
+
+        // 載入最近瀏覽
+        function loadRecentlyViewed() {
+            const recentList = document.getElementById('recentlyViewedList');
+            const emptyDiv = document.getElementById('recentlyViewedEmpty');
+            const recentItems = BrowsingHistory.getRecent(6);
+
+            if (recentItems.length === 0) {
+                emptyDiv.style.display = 'block';
+                recentList.style.display = 'none';
+                return;
+            }
+
+            emptyDiv.style.display = 'none';
+            recentList.style.display = 'flex';
+
+            recentList.innerHTML = '';
+            recentItems.forEach(item => {
+                const col = document.createElement('div');
+                col.className = 'col';
+                col.innerHTML = `
+                    <a href="/Animals/Details/${item.animalId}" class="text-decoration-none">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <img src="${item.thumbnailPath || '/images/placeholder-animal.webp'}" 
+                                 class="card-img-top" 
+                                 alt="${item.chineseName}"
+                                 style="height: 80px; object-fit: cover;"
+                                 onerror="this.src='/images/placeholder-animal.webp'">
+                            <div class="card-body p-2 text-center">
+                                <small class="text-dark fw-bold">${item.chineseName || '未知動物'}</small>
+                            </div>
+                        </div>
+                    </a>
+                `;
+                recentList.appendChild(col);
+            });
+        }
+
+        // 更新統計
+        function updateStats() {
+            const historyStats = BrowsingHistory.getStats();
+            const favoriteCount = FavoritesManager.count();
+
+            document.getElementById('statUniqueAnimals').textContent = historyStats.uniqueAnimals;
+            document.getElementById('statTotalViews').textContent = historyStats.totalViews;
+            document.getElementById('statFavorites').textContent = favoriteCount;
+        }
+
+        // 初始化事件監聽
+        function initEventListeners() {
+            // 匯出按鈕
+            document.getElementById('exportBtn').addEventListener('click', function () {
+                FavoritesManager.downloadAsTxt();
+            });
+
+            // 清除按鈕 - 顯示確認對話框
+            document.getElementById('clearAllBtn').addEventListener('click', function () {
+                const modal = new bootstrap.Modal(document.getElementById('clearConfirmModal'));
+                modal.show();
+            });
+
+            // 確認清除按鈕
+            document.getElementById('confirmClearBtn').addEventListener('click', function () {
+                FavoritesManager.clear();
+                const modal = bootstrap.Modal.getInstance(document.getElementById('clearConfirmModal'));
+                modal.hide();
+                loadFavorites();
+                updateStats();
+            });
+
+            // 監聽收藏變更
+            FavoritesManager.onChange(function (detail) {
+                if (detail.action === 'remove') {
+                    // 移除對應的卡片
+                    const card = document.querySelector(`[data-animal-card][data-animal-id="${detail.animalId}"]`);
+                    if (card) {
+                        card.closest('.col').remove();
+                    }
+                }
+                document.getElementById('favoriteCount').textContent = detail.count;
+                updateStats();
+
+                // 若收藏數為 0，顯示空狀態
+                if (detail.count === 0) {
+                    document.getElementById('emptyState').style.display = 'block';
+                    document.getElementById('favoritesList').style.display = 'none';
+                    document.getElementById('exportBtn').disabled = true;
+                    document.getElementById('clearAllBtn').disabled = true;
+                }
+            });
+        }
+
+        // 輔助函式：取得保育等級 CSS 類別
+        function getConservationClass(status) {
+            const classes = {
+                'CR': 'bg-danger',
+                'EN': 'bg-warning text-dark',
+                'VU': 'bg-info',
+                'NT': 'bg-secondary',
+                'LC': 'bg-success',
+                'EW': 'bg-dark',
+                'EX': 'bg-dark'
+            };
+            return classes[status] || 'bg-light text-dark';
+        }
+
+        // 輔助函式：取得保育等級文字
+        function getConservationText(status) {
+            const texts = {
+                'CR': '極危',
+                'EN': '瀕危',
+                'VU': '易危',
+                'NT': '近危',
+                'LC': '無危',
+                'EW': '野外滅絕',
+                'EX': '滅絕'
+            };
+            return texts[status] || '未知';
+        }
+
+        // 輔助函式：取得棲息地文字
+        function getHabitatText(habitat) {
+            const texts = {
+                'TropicalRainforest': '熱帶雨林',
+                'Desert': '沙漠',
+                'Grassland': '草原',
+                'Polar': '極地',
+                'Ocean': '海洋',
+                'Freshwater': '淡水',
+                'Mountain': '山區'
+            };
+            return texts[habitat] || '未知';
+        }
+
+        // 輔助函式：取得飲食習性文字
+        function getDietText(diet) {
+            const texts = {
+                'Carnivore': '肉食性',
+                'Herbivore': '草食性',
+                'Omnivore': '雜食性'
+            };
+            return texts[diet] || '未知';
+        }
+    </script>
+}

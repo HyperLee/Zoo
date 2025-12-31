@@ -217,14 +217,14 @@
 
 ### 前端實作
 
-- [ ] T065 [P] [US5] 建立收藏管理模組於 `Zoo/wwwroot/js/favorites.js`（localStorage 操作）
-- [ ] T066 [P] [US5] 建立瀏覽記錄模組於 `Zoo/wwwroot/js/history.js`（localStorage 操作）
-- [ ] T067 [US5] 更新動物卡片加入收藏按鈕於 `Zoo/Pages/Shared/_AnimalCard.cshtml`
-- [ ] T068 [US5] 更新動物詳情頁面加入收藏按鈕於 `Zoo/Pages/Animals/Details.cshtml`
-- [ ] T069 [US5] 實作收藏清單頁面 `Zoo/Pages/Favorites/Index.cshtml` 與 `Zoo/Pages/Favorites/Index.cshtml.cs`
-- [ ] T070 [US5] 實作收藏清單匯出功能（下載文字檔案）
+- [X] T065 [P] [US5] 建立收藏管理模組於 `Zoo/wwwroot/js/favorites.js`（localStorage 操作）
+- [X] T066 [P] [US5] 建立瀏覽記錄模組於 `Zoo/wwwroot/js/history.js`（localStorage 操作）
+- [X] T067 [US5] 更新動物卡片加入收藏按鈕於 `Zoo/Pages/Shared/_AnimalCard.cshtml`
+- [X] T068 [US5] 更新動物詳情頁面加入收藏按鈕於 `Zoo/Pages/Animals/Details.cshtml`
+- [X] T069 [US5] 實作收藏清單頁面 `Zoo/Pages/Favorites/Index.cshtml` 與 `Zoo/Pages/Favorites/Index.cshtml.cs`
+- [X] T070 [US5] 實作收藏清單匯出功能（下載文字檔案）
 
-**Checkpoint**: User Story 5 完成 - 可收藏動物與追蹤進度
+**Checkpoint**: User Story 5 完成 - 可收藏動物與追蹤進度 ✅
 
 ---
 
@@ -232,7 +232,7 @@
 
 **Goal**: 使用者可聆聽動物叫聲並觀看動畫展示
 
-**Independent Test**: 點擊播放按鈕聆聽動物叫聲；切換不同姿態圖片檢視
+**Independent Test**: 點擊播放按鈕聆聯動物叫聲；切換不同姿態圖片檢視
 
 ### 前端實作
 

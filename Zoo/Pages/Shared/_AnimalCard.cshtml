@@ -52,7 +52,7 @@
     };
 }
 
-<div class="card animal-card h-100 shadow-sm">
+<div class="card animal-card h-100 shadow-sm" data-animal-card data-animal-id="@Model.Id">
     <div class="position-relative">
         <img src="@Model.Media.ThumbnailPath" 
              class="card-img-top animal-thumbnail" 
@@ -61,6 +61,19 @@
         <span class="badge @conservationBadgeClass position-absolute top-0 end-0 m-2">
             @conservationText
         </span>
+        <!-- 收藏按鈕 -->
+        <button type="button" 
+                class="btn btn-sm btn-outline-danger position-absolute favorite-btn-card"
+                data-favorite-btn
+                data-animal-id="@Model.Id"
+                data-animal-name="@Model.ChineseName"
+                data-animal-name-en="@Model.EnglishName"
+                data-animal-thumbnail="@Model.Media.ThumbnailPath"
+                aria-label="收藏 @Model.ChineseName"
+                title="加入收藏"
+                style="bottom: 10px; right: 10px; z-index: 10;">
+            <i class="bi bi-heart"></i>
+        </button>
     </div>
     <div class="card-body d-flex flex-column">
         <h5 class="card-title">
